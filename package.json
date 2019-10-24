@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "commit": "git-cz",
     "prettier:check": "prettier --list-different \"src/**/*.ts\"",
     "prettier:write": "prettier --write \"src/**/*.ts\"",
     "release": "standard-version"
