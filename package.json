@@ -2,12 +2,14 @@
   "name": "react-timing-hooks",
   "version": "0.1.0",
   "description": "React hooks for creating timing-related effects (setTimeout, setInterval, requestAnimationFrame, requestIdleCallback)",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
     "commit": "git-cz",
     "prettier:check": "prettier --list-different \"src/**/*.ts\"",
     "prettier:write": "prettier --write \"src/**/*.ts\"",
+    "build": "tsc",
     "release": "standard-version"
   },
   "repository": {
@@ -30,20 +32,25 @@
   },
   "homepage": "https://github.com/EricLambrecht/react-timing-hooks#readme",
   "devDependencies": {
+    "@testing-library/react": "^9.3.0",
     "@testing-library/react-hooks": "^3.1.0",
     "@types/jest": "^24.0.19",
+    "@types/node": "^12.11.7",
+    "@types/react": "^16.9.10",
+    "@types/react-dom": "^16.9.2",
     "commitizen": "^4.0.3",
     "emoji-cz": "^0.3.0",
     "jest": "^24.9.0",
     "prettier": "1.18.2",
-    "react": "^16.8.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.11.0",
     "react-test-renderer": "^16.11.0",
     "standard-version": "^7.0.0",
     "ts-jest": "^24.1.0",
-    "typescript": "^2.5.3"
+    "typescript": "^3.6.4"
   },
   "peerDependencies": {
-    "react": "^16.8.0"
+    "react": "^16.8.6"
   },
   "config": {
     "commitizen": {
