@@ -73,10 +73,10 @@ Example:
 
 ```javascript
 useTimeoutEffect(timeout => {
-  if (depA && depB) {
+  if (foo) {
     timeout(() => doSomething(), 1000)
   }
-}, [depA, depB])
+}, [foo])
 ```
 
 ### `useIntervalEffect(effectCallback, deps)`
@@ -92,8 +92,8 @@ Example:
 
 ```javascript
 useIntervalEffect(interval => {
-  if (depA && depB) {
+  if (foo) {
     interval(() => doSomething(), 1000)
   }
-}, [depA, depB])
+}, [foo])
 ```
