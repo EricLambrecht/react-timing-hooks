@@ -62,10 +62,14 @@ With `react-timing-hooks` you can just write:
 **Note**: At this moment, `useIntervalEffect`, and hooks for `requestAnimationFrame` and `requestIdleCallback`
 are still in development.
 
-### `useTimeoutEffect(effectCallback)`
+### `useTimeoutEffect(effectCallback, deps)`
 
-`effectCallback` will receive one argument `timeout(f, timeout)` that has the
+* `effectCallback` will receive one argument `timeout(f, timeout)` that has the
 same signature as a native `setTimeout`
+
+* `deps` is your regular `useEffect` dependency array
+
+Example: 
 
 ```javascript
 useTimeoutEffect(timeout => {
@@ -75,15 +79,19 @@ useTimeoutEffect(timeout => {
 }, [depA, depB])
 ```
 
-### `useIntervalEffect(effectCallback)`
+### `useIntervalEffect(effectCallback, deps)`
 
 **Note**: Still in development.
 
-`effectCallback` will receive one argument `interval(f, timeout)` that has the
+* `effectCallback` will receive one argument `interval(f, timeout)` that has the
 same signature as a native `setInterval`
 
+* `deps` is your regular `useEffect` dependency array
+
+Example: 
+
 ```javascript
-useTimeoutEffect(interval => {
+useIntervalEffect(interval => {
   if (depA && depB) {
     interval(() => doSomething(), 1000)
   }
