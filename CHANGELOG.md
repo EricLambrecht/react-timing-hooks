@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.1.0-alpha.2](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.0-alpha.1...v0.1.0-alpha.2) (2019-11-07)
 
+
+### Documentation
+
+* Updated the Readme ([3d185df](https://github.com/EricLambrecht/react-timing-hooks/commit/3d185dfd550e0fc2f256ff44c7d5331162a207f0))
+
 ## 0.1.0-alpha.1 (2019-11-07)
 
 
