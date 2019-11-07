@@ -14,6 +14,7 @@ const useTimeoutEffect = (
   )
 
   useEffect(() => {
+    // TODO: effect result must be returned!
     effect(timeoutFunc)
   }, deps)
 
