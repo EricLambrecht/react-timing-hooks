@@ -72,28 +72,24 @@ same signature as a native `setTimeout`
 Example: 
 
 ```javascript
+// Delay the transition of a color everytime it changes
 useTimeoutEffect(timeout => {
-  if (foo) {
-    timeout(() => doSomething(), 1000)
+  if (color) {
+    timeout(() => transitionTo(color), 1000)
   }
-}, [foo])
+}, [color])
 ```
 
-### `useIntervalEffect(effectCallback, deps)`
+### `useInterval(intervalCallback, deps)`
 
-**Note**: Still in development.
+* `intervalCallback` will be run every _[delay]_ (second arg) seconds
 
-* `effectCallback` will receive one argument `interval(f, timeout)` that has the
-same signature as a native `setInterval`
-
-* `deps` is your regular `useEffect` dependency array
+* `delay` is the delay at which interval callback will be run. If delay is `null` the interval will be suspended.
 
 Example: 
 
 ```javascript
-useIntervalEffect(interval => {
-  if (foo) {
-    interval(() => doSomething(), 1000)
-  }
-}, [foo])
+// Increase count every 200 milliseconds
+const [count, setCount] = useState(0)
+useInterval(() => setCount(count + 1), 200)
 ```
