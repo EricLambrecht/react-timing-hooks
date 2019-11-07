@@ -1,18 +1,9 @@
 import { render, act, fireEvent } from '@testing-library/react'
 import { useTimeoutEffect } from '../.tmp/index'
 import React, { useState } from 'react'
+import { removeFlushTimers } from './helpers'
 
 jest.useFakeTimers()
-
-/*
-  react-test-renderer seems to schedule timeouts with _flushCallback and 0ms timeout which pollute this test
-  This function get's rid of those without removing our own timeouts
- */
-const removeFlushTimers = () => {
-  act(() => {
-    jest.advanceTimersByTime(1)
-  })
-}
 
 const TestComponent: React.FC = () => {
   const [output, setOutput] = useState('initial')
