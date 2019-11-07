@@ -13,53 +13,9 @@ any other dependencies.
 * no new API to learn (same es `useEffect`)
 * super leight-weight
 
-See [docs](#Documentation)
-
-## Examples
-
-You often have timeouts that run under a certain condition. In these cases a cleanup
-often has to be done in a separate `useEffect` call that really only cleans up on
-unmount. 
-
-You might have code like this for example:
-
-```javascript
-  import { useEffect } from 'react'
-
-  // ... 
-
-  const timeoutId = useRef(null)
-
-  useEffect(() => {
-    if (depA && depB) {
-      timeoutId.current = setTimeout(() => doSomething(), 1000)
-    }
-  }, [depA, depB])
-
-  useEffect(() => {
-    return function onUnmount() {
-      if (timeoutId.current !== null) {
-        clearTimeout(timeoutId.current)
-      }
-    }
-  }, [timeoutId])
-```
-
-With `react-timing-hooks` you can just write:
-
-```javascript
-  import { useTimeoutEffect } from 'react-timing-hooks'
-
-  // ... 
-  
-  useTimeoutEffect((timeout) => {
-    if (depA && depB) {
-      timeout(() => doSomething(), 1000)
-    }
-  }, [depA, depB])
-```
-
-`react-timing-hooks` will automatically take care of cleaning up the timeouts for you.
+## Table of Contents
+1. [Docs and examples](#Documentation)
+2. [Why bother?](#why-bother)
 
 ## Documentation
 
@@ -116,3 +72,50 @@ useIdleCallbackEffect(onIdle => {
   }
 }, [page])
 ```
+
+
+## Why bother?
+
+You often have timeouts that run under a certain condition. In these cases a cleanup
+often has to be done in a separate `useEffect` call that really only cleans up on
+unmount. 
+
+You might have code like this for example:
+
+```javascript
+  import { useEffect } from 'react'
+
+  // ... 
+
+  const timeoutId = useRef(null)
+
+  useEffect(() => {
+    if (depA && depB) {
+      timeoutId.current = setTimeout(() => doSomething(), 1000)
+    }
+  }, [depA, depB])
+
+  useEffect(() => {
+    return function onUnmount() {
+      if (timeoutId.current !== null) {
+        clearTimeout(timeoutId.current)
+      }
+    }
+  }, [timeoutId])
+```
+
+With `react-timing-hooks` you can just write:
+
+```javascript
+  import { useTimeoutEffect } from 'react-timing-hooks'
+
+  // ... 
+  
+  useTimeoutEffect((timeout) => {
+    if (depA && depB) {
+      timeout(() => doSomething(), 1000)
+    }
+  }, [depA, depB])
+```
+
+`react-timing-hooks` will automatically take care of cleaning up the timeouts for you.
