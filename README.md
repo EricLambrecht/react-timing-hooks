@@ -5,11 +5,15 @@ containing timeouts, intervals etc. without having to worry about storing "timeo
 clean up of leaking timers. Apart from that this lib is super light-weight, since it doesn't include
 any other dependencies.
 
+**This package is still in alpha. It is not yet feature complete.** 
+
 #### TL;DR
 
 * less boilerplate to write
 * no new API to learn (same es `useEffect`)
 * super leight-weight
+
+See [docs](#Documentation)
 
 ## Examples
 
@@ -59,8 +63,7 @@ With `react-timing-hooks` you can just write:
 
 ## Documentation
 
-**Note**: At this moment, `useIntervalEffect`, and hooks for `requestAnimationFrame` and `requestIdleCallback`
-are still in development.
+**Note**: A hook for `requestAnimationFrame` and an interval-versions of `requestIdleCallback` is still in development
 
 ### `useTimeoutEffect(effectCallback, deps)`
 
