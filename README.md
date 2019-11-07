@@ -80,7 +80,7 @@ useTimeoutEffect(timeout => {
 }, [color])
 ```
 
-### `useInterval(intervalCallback, deps)`
+### `useInterval(intervalCallback, delay)`
 
 * `intervalCallback` will be run every _[delay]_ (second arg) seconds
 
@@ -92,4 +92,24 @@ Example:
 // Increase count every 200 milliseconds
 const [count, setCount] = useState(0)
 useInterval(() => setCount(count + 1), 200)
+```
+
+### `useIdleCallbackEffect(effectCallback, deps)`
+
+* `effectCallback` will receive one argument `requestIdleCallback(f, opts)` that has the
+same signature as the native [`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)
+
+* `deps` is your regular `useEffect` dependency array
+
+**Note:** This hook will print a warning if the browser doesn't support `requestIdleCallback`.
+
+Example: 
+
+```javascript
+// Track page view when browser is idle
+useIdleCallbackEffect(onIdle => {
+  if (page) {
+    onIdle(() => trackPageView(page))
+  }
+}, [page])
 ```
