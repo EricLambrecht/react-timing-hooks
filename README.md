@@ -14,8 +14,11 @@ any other dependencies.
 * super leight-weight
 
 ## Table of Contents
-1. [Docs and examples](#Documentation)
-2. [Why bother?](#why-bother)
+* [Docs and examples](#Documentation)
+  * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
+  * [useInterval](#useintervalintervalcallback-delay)
+  * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
+* [Why bother?](#why-bother)
 
 ## Documentation
 
@@ -76,11 +79,13 @@ useIdleCallbackEffect(onIdle => {
 
 ## Why bother?
 
-You often have timeouts that run under a certain condition. In these cases a cleanup
-often has to be done in a separate `useEffect` call that really only cleans up on
-unmount. 
+Writing a timeout or anything similar requires a lot of boilerplate (if you don't do it quick and dirty).
+This library is supposed to give you easy access to those functionalities while keeping your code clean.
 
-You might have code like this for example:
+For example: You might have a timeout that runs under a certain condition. In this case a cleanup
+has to be done in a separate `useEffect` call that cleans everything up (but only on unmount).
+
+Your code could look like this:
 
 ```javascript
   import { useEffect } from 'react'
@@ -118,4 +123,4 @@ With `react-timing-hooks` you can just write:
   }, [depA, depB])
 ```
 
-`react-timing-hooks` will automatically take care of cleaning up the timeouts for you.
+In this case `react-timing-hooks` automatically took care of cleaning up the timeout for you (if the component is mounted for less than a second for instance).
