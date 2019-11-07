@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0-alpha.4](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.0-alpha.3...v0.1.0-alpha.4) (2019-11-07)
+
+
+### Bug Fixes
+
+* Added return types to index export ([3ddb7ef](https://github.com/EricLambrecht/react-timing-hooks/commit/3ddb7efd41afd0537e5141c964d64c6c39dafbbc))
+
 ## [0.1.0-alpha.3](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.0-alpha.2...v0.1.0-alpha.3) (2019-11-07)
 
 
