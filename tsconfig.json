@@ -7,7 +7,7 @@
       "dom.iterable",
       "esnext"
     ],
-    "outDir": "./dist",
+    "outDir": "./.tmp",
     "sourceMap": true,
     "strict": true,
     "noImplicitAny": true,
@@ -26,6 +26,7 @@
   ],
   "exclude": [
     "**/*.test.ts",
+    "**/*.test.tsx",
     "node_modules"
   ]
 }

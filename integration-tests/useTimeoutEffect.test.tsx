@@ -1,5 +1,5 @@
 import { render, act, fireEvent } from '@testing-library/react'
-import { useTimeoutEffect } from '../dist/index'
+import { useTimeoutEffect } from '../.tmp/index'
 import React, { useState } from 'react'
 
 jest.useFakeTimers()
@@ -18,18 +18,26 @@ const TestComponent: React.FC = () => {
   const [output, setOutput] = useState('initial')
   const [invokeTimeout, setInvokeTimeout] = useState(false)
 
-  useTimeoutEffect(timeout => {
-    if (invokeTimeout) {
-      timeout(() => {
-        setOutput('foobar')
-      }, 500)
-    }
-  }, [invokeTimeout])
+  useTimeoutEffect(
+    timeout => {
+      if (invokeTimeout) {
+        timeout(() => {
+          setOutput('foobar')
+        }, 500)
+      }
+    },
+    [invokeTimeout]
+  )
 
-  return <div>
-    <p data-testid="output">{output}</p>
-    <button data-testid="button" onClick={() => setInvokeTimeout(true)}></button>
-  </div>
+  return (
+    <div>
+      <p data-testid="output">{output}</p>
+      <button
+        data-testid="button"
+        onClick={() => setInvokeTimeout(true)}
+      ></button>
+    </div>
+  )
 }
 
 describe('useTimeoutEffect() Integration Test', () => {

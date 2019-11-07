@@ -6,11 +6,15 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
+    "test:integration": "rimraf \"./tmp\" && npm run build && jest integration-tests",
     "commit": "git-cz",
-    "prettier:check": "prettier --list-different \"src/**/*.ts\"",
-    "prettier:write": "prettier --write \"src/**/*.ts\"",
+    "prettier:check": "prettier --list-different \"{src,integration-tests}/**/*.{ts,tsx}\"",
+    "prettier:write": "prettier --write \"{src,integration-tests}/**/*.{ts,tsx}\"",
     "build": "tsc",
-    "release": "standard-version"
+    "build:watch": "npm run build -- --watch",
+    "build:prod": "rimraf \"./dist\" && npm run build -- --outDir \"./dist\"",
+    "release": "standard-version",
+    "prepublishOnly": "npm run test"
   },
   "repository": {
     "type": "git",
@@ -47,6 +51,7 @@
     "react-dom": "^16.11.0",
     "react-test-renderer": "^16.11.0",
     "replace": "^1.1.1",
+    "rimraf": "^3.0.0",
     "standard-version": "^7.0.0",
     "ts-jest": "^24.1.0",
     "typescript": "^3.6.4"
@@ -61,6 +66,7 @@
   },
   "standard-version": {
     "scripts": {
+      "prerelease": "npm run build:prod",
       "postchangelog": "replace  \"🐛 \" \"\" CHANGELOG.md&&replace \"✨ \" \"\" CHANGELOG.md"
     }
   }

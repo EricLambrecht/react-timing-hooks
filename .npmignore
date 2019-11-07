@@ -1,7 +1,9 @@
 .*
 **/tsconfig.json
-**/prettier.config.json
+**/prettier.config.js
+**/jest.config.js
 
+.tmp
 node_modules
 src
 integration-tests
