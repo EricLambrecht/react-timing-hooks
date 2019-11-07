@@ -37,6 +37,7 @@
   },
   "homepage": "https://github.com/EricLambrecht/react-timing-hooks#readme",
   "devDependencies": {
+    "@shopify/jest-dom-mocks": "^2.8.5",
     "@testing-library/react": "^9.3.0",
     "@testing-library/react-hooks": "^3.1.0",
     "@types/jest": "^24.0.19",
@@ -46,6 +47,7 @@
     "commitizen": "^4.0.3",
     "emoji-cz": "^0.3.0",
     "jest": "^24.9.0",
+    "node-fetch": "^2.6.0",
     "prettier": "1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.11.0",
