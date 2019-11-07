@@ -72,7 +72,7 @@ same signature as a native `setTimeout`
 Example: 
 
 ```javascript
-// Delay the transition of a color everytime it changes
+// Delay the transition of a color by one second everytime it changes
 useTimeoutEffect(timeout => {
   if (color) {
     timeout(() => transitionTo(color), 1000)
@@ -84,7 +84,7 @@ useTimeoutEffect(timeout => {
 
 * `intervalCallback` will be run every _[delay]_ (second arg) seconds
 
-* `delay` is the delay at which interval callback will be run. If delay is `null` the interval will be suspended.
+* `delay` is the delay at which the callback will be run. If delay is `null` the interval will be suspended.
 
 Example: 
 
