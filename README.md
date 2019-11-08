@@ -18,6 +18,7 @@ any other dependencies.
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
+  * [useIdleCallback](#useidlecallbackcallback-options)
   * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
 * [Why bother?](#why-bother)
 
@@ -27,9 +28,9 @@ any other dependencies.
 
 ### `useTimeout(callback, timeout)`
 
-* `callback` a function that will be invoked as soon as the timeout expires
+* `callback` - a function that will be invoked as soon as the timeout expires
 
-* `timeout` the timeout in milliseconds
+* `timeout` - the timeout in milliseconds
 
 Example: 
 
@@ -42,10 +43,10 @@ return <button onClick={hideDelayed}>Hide!</button>
 
 ### `useTimeoutEffect(effectCallback, deps)`
 
-* `effectCallback` will receive one argument `timeout(f, timeout)` that has the
+* `effectCallback` - will receive one argument `timeout(f, timeout)` that has the
 same signature as a native `setTimeout`
 
-* `deps` is your regular `useEffect` dependency array
+* `deps` - is your regular `useEffect` dependency array
 
 Example: 
 
@@ -60,9 +61,9 @@ useTimeoutEffect(timeout => {
 
 ### `useInterval(intervalCallback, delay)`
 
-* `intervalCallback` will be run every _[delay]_ (second arg) seconds
+* `intervalCallback` - will be run every _[delay]_ (second arg) seconds
 
-* `delay` is the delay at which the callback will be run. If delay is `null` the interval will be suspended.
+* `delay` - is the delay at which the callback will be run. If delay is `null` the interval will be suspended.
 
 Example: 
 
@@ -72,12 +73,27 @@ const [count, setCount] = useState(0)
 useInterval(() => setCount(count + 1), 200)
 ```
 
+### `useIdleCallback(callback, options)`
+
+* `callback` - a function that will be invoked as soon as the browser decides to run the idle callback
+
+* `options` - options for `requestIdleCallback`
+
+Example: 
+
+```javascript
+// Track button click when idle
+const trackClickWhenIdle = useIdleCallback(trackClick)
+
+return <button onClick={trackClickWhenIdle}>Track me!</button>
+```
+
 ### `useIdleCallbackEffect(effectCallback, deps)`
 
-* `effectCallback` will receive one argument `requestIdleCallback(f, opts)` that has the
+* `effectCallback` - will receive one argument `requestIdleCallback(f, opts)` that has the
 same signature as the native [`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)
 
-* `deps` is your regular `useEffect` dependency array
+* `deps` - is your regular `useEffect` dependency array
 
 **Note:** This hook will print a warning if the browser doesn't support `requestIdleCallback`.
 
