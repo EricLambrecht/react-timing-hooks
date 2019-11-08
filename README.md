@@ -10,11 +10,12 @@ any other dependencies.
 #### TL;DR
 
 * less boilerplate to write
-* no new API to learn (same es `useEffect`)
+* simple API
 * super leight-weight
 
 ## Table of Contents
 * [Docs and examples](#Documentation)
+  * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
   * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
@@ -23,6 +24,21 @@ any other dependencies.
 ## Documentation
 
 **Note**: A hook for `requestAnimationFrame` and an interval-versions of `requestIdleCallback` is still in development
+
+### `useTimeout(callback, timeout)`
+
+* `callback` a function that will be invoked as soon as the timeout expires
+
+* `timeout` the timeout in milliseconds
+
+Example: 
+
+```javascript
+// Hide something after 2 seconds
+const hideDelayed = useTimeout(() => setHide(true), 2000)
+
+return <button onClick={hideDelayed}>Hide!</button>
+```
 
 ### `useTimeoutEffect(effectCallback, deps)`
 
@@ -115,8 +131,7 @@ With `react-timing-hooks` you can just write:
   import { useTimeoutEffect } from 'react-timing-hooks'
 
   // ... 
-  
-  useTimeoutEffect((timeout) => {
+  useEffect((timeout) => {
     if (depA && depB) {
       timeout(() => doSomething(), 1000)
     }
