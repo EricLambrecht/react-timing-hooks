@@ -18,6 +18,8 @@ any other dependencies.
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
+  * [useAnimationFrame](#useanimationframecallback)
+  * [useAnimationFrameLoop](#useanimationframeloopcallback)
   * [useIdleCallback](#useidlecallbackcallback-options)
   * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
 * [Why bother?](#why-bother)
@@ -77,15 +79,20 @@ useInterval(() => setCount(count + 1), 200)
 
 * `callback` - a function that will be invoked on the next animation frame
 
+
+### `useAnimationFrameLoop(callback)`
+
+* `callback` - a function that will be invoked in an animation frame loop
+
 Example: 
 
 ```javascript
-// Draw something on next animation frame
-const drawNextFrame = useAnimationFrame(draw)
-
-return <button onClick={() => }>Draw something</button>
+// Update canvas on every frame
+const updateCanvas () => { 
+    // ... 
+}
+useAnimationFrameLoop(updateCanvas)
 ```
-
 
 
 ### `useIdleCallback(callback, options)`
