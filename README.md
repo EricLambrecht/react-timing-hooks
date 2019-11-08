@@ -73,6 +73,21 @@ const [count, setCount] = useState(0)
 useInterval(() => setCount(count + 1), 200)
 ```
 
+### `useAnimationFrame(callback)`
+
+* `callback` - a function that will be invoked on the next animation frame
+
+Example: 
+
+```javascript
+// Draw something on next animation frame
+const drawNextFrame = useAnimationFrame(draw)
+
+return <button onClick={() => }>Draw something</button>
+```
+
+
+
 ### `useIdleCallback(callback, options)`
 
 * `callback` - a function that will be invoked as soon as the browser decides to run the idle callback
