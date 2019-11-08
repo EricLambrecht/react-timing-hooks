@@ -8,6 +8,7 @@ import useAnimationFrame from './animation-frame/useAnimationFrame'
 import { IntervalCallback } from './interval/types'
 import { TimeoutEffectCallback } from './timeout/types'
 import { IdleCallbackEffectCallback } from './idle-callback/types'
+import { Callback } from './types'
 
 export {
   useAnimationFrame,
@@ -19,4 +20,5 @@ export {
   IdleCallbackEffectCallback,
   IntervalCallback,
   TimeoutEffectCallback,
+  Callback,
 }
