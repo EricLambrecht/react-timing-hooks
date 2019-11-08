@@ -1,4 +1,5 @@
 import useTimeoutEffect from './timeout/useTimeoutEffect'
+import useTimeout from './timeout/useTimeout'
 import useInterval from './interval/useInterval'
 import useIdleCallbackEffect from './idle-callback/useIdleCallbackEffect'
 
@@ -10,6 +11,7 @@ export {
   useTimeoutEffect,
   useInterval,
   useIdleCallbackEffect,
+  useTimeout,
   IntervalCallback,
   TimeoutEffectCallback,
   IdleCallbackEffectCallback,
