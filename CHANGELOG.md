@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.0-alpha.6...v0.1.0) (2019-11-08)
+
+
+### Features
+
+* Added new hook "useAnimationFrame" ([6808e6a](https://github.com/EricLambrecht/react-timing-hooks/commit/6808e6a418026fc2585695676f9cafc65e0a3b33))
+* Added new hook "useAnimationFrameLoop" ([147067c](https://github.com/EricLambrecht/react-timing-hooks/commit/147067cb6a9bcb0d75e2aadb6523b8cad48e525c))
+
+
+### Bug Fixes
+
+* Add callback type to index.js ([38d7c6f](https://github.com/EricLambrecht/react-timing-hooks/commit/38d7c6ff3d8b9ba81027e99f464a2009cb6a5ad1))
+
 ## [0.1.0-alpha.6](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.0-alpha.5...v0.1.0-alpha.6) (2019-11-08)
 
 
