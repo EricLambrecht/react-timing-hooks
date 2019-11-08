@@ -173,7 +173,7 @@ With `react-timing-hooks` you can just write:
   import { useTimeoutEffect } from 'react-timing-hooks'
 
   // ... 
-  useEffect((timeout) => {
+  useTimeoutEffect((timeout) => {
     if (depA && depB) {
       timeout(() => doSomething(), 1000)
     }
