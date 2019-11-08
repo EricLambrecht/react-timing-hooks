@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import useIdleCallbackEffect from './useIdleCallbackEffect'
+// @ts-ignore
 import { ensureMocksReset, requestIdleCallback } from '@shopify/jest-dom-mocks'
 
 describe('useIdleCallbackEffect', () => {

@@ -1,6 +1,7 @@
 import { render, act, fireEvent } from '@testing-library/react'
 import React, { useEffect, useState } from 'react'
 import { useIdleCallback } from '../.tmp/index'
+// @ts-ignore
 import { requestIdleCallback } from '@shopify/jest-dom-mocks'
 
 requestIdleCallback.mock()
