@@ -1,11 +1,11 @@
 import { DependencyList, useCallback, useEffect, useRef } from 'react'
-import { TimeoutEffectCallback } from './types'
+import { TimeoutEffectCallback, TimeoutId } from './types'
 
 const useTimeoutEffect = (
   effect: TimeoutEffectCallback,
   deps: DependencyList
 ) => {
-  const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const timeoutId = useRef<TimeoutId | null>(null)
   const timeoutFunc = useCallback(
     (handler: () => any, timeout: number) => {
       timeoutId.current = setTimeout(handler, timeout)
