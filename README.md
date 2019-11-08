@@ -1,11 +1,11 @@
 # react-timing-hooks
 
-This library contains (or will contain) a bunch of hooks that can be used to trigger effects
-containing timeouts, intervals etc. without having to worry about storing "timeoutIds" or proper
-clean up of leaking timers. Apart from that this lib is super light-weight, since it doesn't include
-any other dependencies.
+This package contains a bunch of hooks that allow you to make use of `setTimeout`, 
+`setInterval`, `setIdleCallback` and `requestAnimationFrame` in your react-components _without_
+having to worry about handling "IDs" or the clean up of leaking timers etc. Apart from that
+the hooks are quite easy to use. 
 
-**This package is still in alpha. It is not yet feature complete.** 
+Oh, and the lib is super light-weight, too, since it doesn't include any other dependencies!
 
 #### TL;DR
 
@@ -25,8 +25,6 @@ any other dependencies.
 * [Why bother?](#why-bother)
 
 ## Documentation
-
-**Note**: A hook for `requestAnimationFrame` and an interval-versions of `requestIdleCallback` is still in development
 
 ### `useTimeout(callback, timeout)`
 
@@ -49,6 +47,9 @@ return <button onClick={hideDelayed}>Hide!</button>
 same signature as a native `setTimeout`
 
 * `deps` - is your regular `useEffect` dependency array
+
+This works like a regular `useEffect` hook, except that it adds a `setTimeout` like function
+to the callback args.
 
 Example: 
 
@@ -116,6 +117,9 @@ return <button onClick={trackClickWhenIdle}>Track me!</button>
 same signature as the native [`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)
 
 * `deps` - is your regular `useEffect` dependency array
+
+This works like a regular `useEffect` hook, except that it adds a `requestIdleCallbackEffect` like function
+to the callback args.
 
 **Note:** This hook will print a warning if the browser doesn't support `requestIdleCallback`.
 
