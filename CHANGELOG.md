@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0-alpha.6](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.0-alpha.5...v0.1.0-alpha.6) (2019-11-08)
+
+
+### Features
+
+* Added new hook "useIdleCallback" ([20cdc46](https://github.com/EricLambrecht/react-timing-hooks/commit/20cdc46ebb104352216abefc22dd0f3685291580))
+* Added new hook "useTimeout" ([5ca6de6](https://github.com/EricLambrecht/react-timing-hooks/commit/5ca6de6d617c19b3b9757f5f2381ffb79089d9c5))
+
 ## [0.1.0-alpha.5](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.0-alpha.4...v0.1.0-alpha.5) (2019-11-07)
 
 
