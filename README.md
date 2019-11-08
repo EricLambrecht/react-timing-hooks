@@ -41,6 +41,8 @@ const hideDelayed = useTimeout(() => setHide(true), 2000)
 return <button onClick={hideDelayed}>Hide!</button>
 ```
 
+------
+
 ### `useTimeoutEffect(effectCallback, deps)`
 
 * `effectCallback` - will receive one argument `timeout(f, timeout)` that has the
@@ -62,6 +64,8 @@ useTimeoutEffect(timeout => {
 }, [color])
 ```
 
+------
+
 ### `useInterval(intervalCallback, delay)`
 
 * `intervalCallback` - will be run every _[delay]_ (second arg) seconds
@@ -76,10 +80,13 @@ const [count, setCount] = useState(0)
 useInterval(() => setCount(count + 1), 200)
 ```
 
+------
+
 ### `useAnimationFrame(callback)`
 
 * `callback` - a function that will be invoked on the next animation frame
 
+------
 
 ### `useAnimationFrameLoop(callback)`
 
@@ -95,6 +102,7 @@ const updateCanvas () => {
 useAnimationFrameLoop(updateCanvas)
 ```
 
+------
 
 ### `useIdleCallback(callback, options)`
 
@@ -110,6 +118,8 @@ const trackClickWhenIdle = useIdleCallback(trackClick)
 
 return <button onClick={trackClickWhenIdle}>Track me!</button>
 ```
+
+------
 
 ### `useIdleCallbackEffect(effectCallback, deps)`
 
