@@ -14,6 +14,7 @@ Oh, and the lib is super light-weight, too, since it doesn't include any other d
 * super leight-weight
 
 ## Table of Contents
+* [Installation](#installation)
 * [Docs and examples](#Documentation)
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
@@ -23,6 +24,15 @@ Oh, and the lib is super light-weight, too, since it doesn't include any other d
   * [useIdleCallback](#useidlecallbackcallback-options)
   * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
 * [Why bother?](#why-bother)
+
+## Installation
+
+```shell script
+# via npm
+npm i react-timing-hooks
+# via yarn
+yarn add react-timing-hooks
+```
 
 ## Documentation
 
