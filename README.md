@@ -1,3 +1,7 @@
+![minified](https://badgen.net/bundlephobia/minzip/react-timing-hooks)
+![types](https://badgen.net/npm/types/react-timing-hooks)
+![checks](https://badgen.net/github/checks/EricLambrecht/react-timing-hooks)
+
 # react-timing-hooks
 
 This package contains a bunch of hooks that allow you to make use of `setTimeout`, 
