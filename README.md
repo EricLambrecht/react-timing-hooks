@@ -15,7 +15,7 @@ Oh, and the lib is super light-weight, too, since it doesn't include any other d
 
 ## Table of Contents
 * [Installation](#installation)
-* [Documentation (ans examples)](#Documentation)
+* [Documentation (and examples)](#Documentation)
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
