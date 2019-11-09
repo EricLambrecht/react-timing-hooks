@@ -15,7 +15,7 @@ Oh, and the lib is super light-weight, too, since it doesn't include any other d
 
 ## Table of Contents
 * [Installation](#installation)
-* [Docs and examples](#Documentation)
+* [Documentation (ans examples)](#Documentation)
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
@@ -30,6 +30,7 @@ Oh, and the lib is super light-weight, too, since it doesn't include any other d
 ```shell script
 # via npm
 npm i react-timing-hooks
+
 # via yarn
 yarn add react-timing-hooks
 ```
