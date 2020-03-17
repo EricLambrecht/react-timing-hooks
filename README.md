@@ -28,6 +28,7 @@ Oh, and the lib is super light-weight, too, since it doesn't include any other d
   * [useIdleCallback](#useidlecallbackcallback-options)
   * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
 * [Why bother?](#why-bother)
+* [Contributing](#contributing)
 
 ## Installation
 
@@ -111,7 +112,7 @@ Example:
 
 ```javascript
 // Update canvas on every frame
-const updateCanvas () => { 
+const updateCanvas = () => { 
     // ... 
 }
 useAnimationFrameLoop(updateCanvas)
@@ -206,3 +207,11 @@ With `react-timing-hooks` you can just write:
 ```
 
 In this case `react-timing-hooks` automatically took care of cleaning up the timeout for you (if the component is mounted for less than a second for instance).
+
+## Contributing
+
+Contributions are welcome as long as you follow these simple rules:
+
+1. All commit messages must adhere to the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format. So **please use `npm run commit`** to commit your staged changes.
+2. Test everything before you commit it: `npm run test` will take care of that.
+3. Use [prettier](https://prettier.io) while developing. You can check your code with `npm run prettier:check` to make sure everything's formatted correctly.
