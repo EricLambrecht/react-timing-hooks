@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "jest",
+    "test": "npm run test:unit && npm run test:integration",
     "test:unit": "jest src",
     "test:integration": "rimraf \"./tmp\" && npm run build && jest integration-tests",
     "commit": "git-cz",
@@ -15,7 +15,7 @@
     "build:watch": "npm run build -- --watch",
     "build:prod": "rimraf \"./dist\" && npm run build -- --outDir \"./dist\"",
     "release": "standard-version",
-    "prepublishOnly": "npm run test"
+    "prepublishOnly": "npm run test && npm run test:integration && npm run build:prod"
   },
   "repository": {
     "type": "git",
