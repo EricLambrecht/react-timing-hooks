@@ -14,7 +14,7 @@
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
     "build:prod": "rimraf \"./dist\" && npm run build -- --outDir \"./dist\"",
-    "release": "cli-confirm \"Do you really want to create a new release? (Y/N)\" && standard-version --dry-run",
+    "release": "cli-confirm \"Do you really want to create a new release? (Y/N)\" && standard-version",
     "prepublishOnly": "cli-confirm \"Do you really want to publish the current release? (Y/N)\" && npm run test && npm run test:integration && npm run build:prod"
   },
   "repository": {
