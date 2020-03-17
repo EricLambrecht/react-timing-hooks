@@ -14,8 +14,8 @@
     "build": "tsc",
     "build:watch": "npm run build -- --watch",
     "build:prod": "rimraf \"./dist\" && npm run build -- --outDir \"./dist\"",
-    "release": "standard-version",
-    "prepublishOnly": "npm run test && npm run test:integration && npm run build:prod"
+    "release": "cli-confirm \"Do you really want to create a new release? (Y/N)\" && standard-version --dry-run",
+    "prepublishOnly": "cli-confirm \"Do you really want to publish the current release? (Y/N)\" && npm run test && npm run test:integration && npm run build:prod"
   },
   "repository": {
     "type": "git",
@@ -45,6 +45,7 @@
     "@types/node": "^12.12.30",
     "@types/react": "^16.9.23",
     "@types/react-dom": "^16.9.5",
+    "cli-confirm": "^1.0.1",
     "commitizen": "^4.0.3",
     "emoji-cz": "^0.3.1",
     "jest": "^24.9.0",
