@@ -104,18 +104,20 @@ useInterval(() => setCount(count + 1), 200)
 
 ------
 
-### `useAnimationFrameLoop(callback)`
+### `useAnimationFrameLoop(callback, stop = false)`
 
 * `callback` - a function that will be invoked in an animation frame loop
+* `stop = false` - an optional parameter to stop/pause the loop. It can be resumed by setting it to false again.
 
 Example: 
 
 ```javascript
 // Update canvas on every frame
+const [stop, setStop] = useState(false)
 const updateCanvas = () => { 
     // ... 
 }
-useAnimationFrameLoop(updateCanvas)
+useAnimationFrameLoop(updateCanvas, stop)
 ```
 
 ------
