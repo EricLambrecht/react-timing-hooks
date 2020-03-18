@@ -11,18 +11,14 @@ const useAnimationFrameLoop = (callback: Callback) => {
 
   const nextCallback = useCallback(() => {
     rafCallback.current()
-    next()
+    runNextAnimationFrame()
   }, [])
 
   const runNextAnimationFrame = useAnimationFrame(nextCallback)
 
-  const next = useCallback(() => {
+  useEffect(() => {
     runNextAnimationFrame()
   }, [runNextAnimationFrame])
-
-  useEffect(() => {
-    next()
-  }, [next])
 }
 
 export default useAnimationFrameLoop
