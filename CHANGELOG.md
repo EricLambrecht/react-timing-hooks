@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.2.0...v0.2.1) (2020-03-18)
+
+
+### Bug Fixes
+
+* Fix doc in README ([fb927cb](https://github.com/EricLambrecht/react-timing-hooks/commit/fb927cb11cd1b1336f0788d4ca2d7c10c4df7031))
+
 ## [0.2.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.4...v0.2.0) (2020-03-18)
 
 
