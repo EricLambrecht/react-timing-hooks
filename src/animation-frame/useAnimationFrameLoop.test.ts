@@ -84,7 +84,6 @@ describe('useAnimationFrameLoop', () => {
       if (i < pauseOn) {
         expect(testCallback).toHaveBeenCalledTimes(i)
       } else if (i < resumeOn) {
-        console.log(i)
         expect(testCallback).toHaveBeenCalledTimes(pauseOn)
       } else {
         expect(testCallback).toHaveBeenCalledTimes(i - pauseOn)
