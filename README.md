@@ -84,7 +84,7 @@ useTimeoutEffect(timeout => {
 
 ### `useInterval(intervalCallback, delay)`
 
-* `intervalCallback` - will be run every _[delay]_ (second arg) seconds
+* `intervalCallback` - will be run every _[delay]_ milliseconds
 
 * `delay` - is the delay at which the callback will be run. If delay is `null` the interval will be suspended.
 
@@ -107,6 +107,7 @@ useInterval(() => setCount(count + 1), 200)
 ### `useAnimationFrameLoop(callback, stop = false)`
 
 * `callback` - a function that will be invoked in an animation frame loop
+
 * `stop = false` - an optional parameter to stop/pause the loop. It can be resumed by setting it to false again.
 
 Example: 
