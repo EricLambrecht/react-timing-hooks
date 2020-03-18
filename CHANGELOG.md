@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.4...v0.2.0) (2020-03-18)
+
+
+### Features
+
+* useAnimationFrameLoop can now be stopped ([854c9fb](https://github.com/EricLambrecht/react-timing-hooks/commit/854c9fb2e454c174b1f250e2868ecb125d54a951)), closes [#1](https://github.com/EricLambrecht/react-timing-hooks/issues/1)
+
 ### [0.1.4](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.1.2...v0.1.4) (2020-03-17)
 
 
