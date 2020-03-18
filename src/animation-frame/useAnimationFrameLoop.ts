@@ -2,23 +2,27 @@ import { Callback } from '../types'
 import useAnimationFrame from './useAnimationFrame'
 import { useCallback, useEffect, useRef } from 'react'
 
-const useAnimationFrameLoop = (callback: Callback) => {
+const useAnimationFrameLoop = (callback: Callback, stop = false) => {
   const rafCallback = useRef<Callback>(() => null)
+  const stopValue = useRef<boolean>(false)
 
   useEffect(() => {
     rafCallback.current = callback
-  }, [callback])
+    stopValue.current = stop
+  }, [callback, stop])
 
   const nextCallback = useCallback(() => {
-    rafCallback.current()
-    runNextAnimationFrame()
+    if (!stopValue.current) {
+      rafCallback.current()
+    }
+    runInLoop()
   }, [])
 
-  const runNextAnimationFrame = useAnimationFrame(nextCallback)
+  const runInLoop = useAnimationFrame(nextCallback)
 
   useEffect(() => {
-    runNextAnimationFrame()
-  }, [runNextAnimationFrame])
+    runInLoop()
+  }, [runInLoop])
 }
 
 export default useAnimationFrameLoop

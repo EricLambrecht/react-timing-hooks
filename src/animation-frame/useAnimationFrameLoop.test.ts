@@ -55,4 +55,40 @@ describe('useAnimationFrameLoop', () => {
       }
     }
   })
+
+  it('can be paused and resumed with second parameter', () => {
+    const testCallback = jest.fn()
+
+    const { rerender } = renderHook(
+      (stop: boolean) => {
+        useAnimationFrameLoop(testCallback, stop)
+      },
+      { initialProps: false }
+    )
+
+    expect(testCallback).toHaveBeenCalledTimes(0)
+
+    const pauseOn = 3
+    const resumeOn = 6
+
+    for (let i = 1; i <= 10; i++) {
+      act(() => {
+        animationFrame.runFrame()
+      })
+      if (i === pauseOn) {
+        rerender(true)
+      }
+      if (i === resumeOn) {
+        rerender(false)
+      }
+      if (i < pauseOn) {
+        expect(testCallback).toHaveBeenCalledTimes(i)
+      } else if (i < resumeOn) {
+        console.log(i)
+        expect(testCallback).toHaveBeenCalledTimes(pauseOn)
+      } else {
+        expect(testCallback).toHaveBeenCalledTimes(i - pauseOn)
+      }
+    }
+  })
 })
