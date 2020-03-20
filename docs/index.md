@@ -2,7 +2,7 @@
 
 ## Table of Contents
 * [Installation](#installation)
-* [API reference (with examples)](#Documentation)
+* [API reference (with examples)](#documentation)
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
@@ -21,7 +21,7 @@ npm i react-timing-hooks
 yarn add react-timing-hooks
 ```
 
-## Documentation
+## API
 
 ### `useTimeout(callback, timeout)`
 
