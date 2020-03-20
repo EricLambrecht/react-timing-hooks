@@ -23,11 +23,13 @@
   },
   "keywords": [
     "react",
-    "hooks",
+    "hook",
     "timeout",
     "interval",
     "timing",
     "effects",
+    "animation",
+    "frame",
     "requestAnimationFrame",
     "requestIdleCallback"
   ],
