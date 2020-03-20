@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 🎉🎉🎉 [1.0.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.2.1...v1.0.0) (2020-03-20) 🎉🎉🎉
+
+This package has now reached a state that justifies a version 1.0.0. Technically this is version 0.2.1 with a new README and a new dedicated API documentation (which you can view [here](https://ericlambrecht.github.io/react-timing-hooks)). However, I want the public API to be considered stable at this point — which 0.X.X is [not](https://semver.org/#spec-item-4) — hence the bump to 1.0.0.
+
+Fell free to try it out and leave feedback on [Github](https://github.com/EricLambrecht/react-timing-hooks)! :)
+
 ### [0.2.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v0.2.0...v0.2.1) (2020-03-18)
 
 
