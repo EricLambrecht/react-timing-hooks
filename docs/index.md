@@ -2,7 +2,7 @@
 
 ## Table of Contents
 * [Installation](#installation)
-* [API reference (with examples)](#documentation)
+* [API reference (with examples)](#api)
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
