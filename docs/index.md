@@ -1,6 +1,8 @@
+# React Timing Hooks Documentation
+
 ## Table of Contents
 * [Installation](#installation)
-* [Documentation (and examples)](#Documentation)
+* [API reference (with examples)](#Documentation)
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
@@ -8,8 +10,6 @@
   * [useAnimationFrameLoop](#useanimationframeloopcallback)
   * [useIdleCallback](#useidlecallbackcallback-options)
   * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
-* [Why bother?](#why-bother)
-* [Contributing](#contributing)
 
 ## Installation
 

@@ -2,168 +2,44 @@
 ![types](https://badgen.net/npm/types/react-timing-hooks)
 ![checks](https://badgen.net/github/checks/EricLambrecht/react-timing-hooks)
 
-# react-timing-hooks
+# React Timing Hooks
 
-This package contains a bunch of hooks that allow you to make use of `setTimeout`, 
-`setInterval`, `setIdleCallback` and `requestAnimationFrame` in your react-components _without_
-having to worry about handling "IDs" or the clean up of leaking timers etc. Apart from that
-the hooks are quite easy to use. 
+## Features
 
-Oh, and the lib is super light-weight, too, since it doesn't include any other dependencies!
+* Several React hooks for 
+    * `requestAnimationFrame`
+    * `setTimeout`
+    * `setInterval`
+    * `requestIdleCallback`
+* Callbacks, Loops and Effects
+* Full Typescript support  
+* [lightweight](https://bundlephobia.com/result?p=react-timing-hooks) (~1KB minzipped, no external dependencies)
 
-#### TL;DR
+## Usage
+   
+```jsx harmony
+import { useState } from 'react'
+import { useAnimationFrameLoop } from 'react-timing-hooks'
 
-* less boilerplate to write
-* simple API
-* super leight-weight
+const AnimationFrameCounter = ({ depA, depB }) => {
+  const [count, setCount] = useState(0)
+  const [stop, setStop] = useState(false)
 
-## Table of Contents
-* [Installation](#installation)
-* [Documentation (and examples)](#Documentation)
-  * [useTimeout](#usetimeoutcallback-timeout)
-  * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
-  * [useInterval](#useintervalintervalcallback-delay)
-  * [useAnimationFrame](#useanimationframecallback)
-  * [useAnimationFrameLoop](#useanimationframeloopcallback)
-  * [useIdleCallback](#useidlecallbackcallback-options)
-  * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
-* [Why bother?](#why-bother)
-* [Contributing](#contributing)
-
-## Installation
-
-```shell script
-# via npm
-npm i react-timing-hooks
-
-# via yarn
-yarn add react-timing-hooks
-```
-
-## Documentation
-
-### `useTimeout(callback, timeout)`
-
-* `callback` - a function that will be invoked as soon as the timeout expires
-
-* `timeout` - the timeout in milliseconds
-
-Example: 
-
-```javascript
-// Hide something after 2 seconds
-const hideDelayed = useTimeout(() => setHide(true), 2000)
-
-return <button onClick={hideDelayed}>Hide!</button>
-```
-
-------
-
-### `useTimeoutEffect(effectCallback, deps)`
-
-* `effectCallback` - will receive one argument `timeout(f, timeout)` that has the
-same signature as a native `setTimeout`
-
-* `deps` - is your regular `useEffect` dependency array
-
-This works like a regular `useEffect` hook, except that it adds a `setTimeout` like function
-to the callback args.
-
-Example: 
-
-```javascript
-// Delay the transition of a color by one second everytime it changes
-useTimeoutEffect(timeout => {
-  if (color) {
-    timeout(() => transitionTo(color), 1000)
-  }
-}, [color])
-```
-
-------
-
-### `useInterval(intervalCallback, delay)`
-
-* `intervalCallback` - will be run every _[delay]_ milliseconds
-
-* `delay` - is the delay at which the callback will be run. If delay is `null` the interval will be suspended.
-
-Example: 
-
-```javascript
-// Increase count every 200 milliseconds
-const [count, setCount] = useState(0)
-useInterval(() => setCount(count + 1), 200)
-```
-
-------
-
-### `useAnimationFrame(callback)`
-
-* `callback` - a function that will be invoked on the next animation frame
-
-------
-
-### `useAnimationFrameLoop(callback, stop = false)`
-
-* `callback` - a function that will be invoked in an animation frame loop
-
-* `stop = false` - an optional parameter to stop/pause the loop. It can be resumed by setting it to false again.
-
-Example: 
-
-```javascript
-// Update canvas on every frame
-const [stop, setStop] = useState(false)
-const updateCanvas = () => { 
-    // ... 
+  useAnimationFrameLoop(() => {
+    setCount(count + 1)
+  }, stop)
+  
+  return (
+     <div>
+      <p>{count}</p>
+      <button onClick={() => setStop(!stop)}>
+        Stop counting
+      </button>
+    </div>
+  )
 }
-useAnimationFrameLoop(updateCanvas, stop)
-```
-
-------
-
-### `useIdleCallback(callback, options)`
-
-* `callback` - a function that will be invoked as soon as the browser decides to run the idle callback
-
-* `options` - options for `requestIdleCallback`
-
-Example: 
-
-```javascript
-// Track button click when idle
-const trackClickWhenIdle = useIdleCallback(trackClick)
-
-return <button onClick={trackClickWhenIdle}>Track me!</button>
-```
-
-------
-
-### `useIdleCallbackEffect(effectCallback, deps)`
-
-* `effectCallback` - will receive one argument `requestIdleCallback(f, opts)` that has the
-same signature as the native [`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)
-
-* `deps` - is your regular `useEffect` dependency array
-
-This works like a regular `useEffect` hook, except that it adds a `requestIdleCallbackEffect` like function
-to the callback args.
-
-**Note:** This hook will print a warning if the browser doesn't support `requestIdleCallback`.
-
-Example: 
-
-```javascript
-// Track page view when browser is idle
-useIdleCallbackEffect(onIdle => {
-  if (page) {
-    onIdle(() => trackPageView(page))
-  }
-}, [page])
-```
-
-
+```   
+   
 ## Why bother?
 
 Writing a timeout or anything similar requires a lot of boilerplate (if you don't do it quick and dirty).
@@ -174,19 +50,19 @@ has to be done in a separate `useEffect` call that cleans everything up (but onl
 
 Your code could look like this:
 
-```javascript
-  import { useEffect } from 'react'
+```jsx harmony
+import { useEffect } from 'react'
 
-  // ... 
-
+const TimeoutRenderer = ({ depA, depB }) => {
+  const [output, setOutput] = useState(null)
   const timeoutId = useRef(null)
-
+  
   useEffect(() => {
     if (depA && depB) {
-      timeoutId.current = setTimeout(() => doSomething(), 1000)
+      timeoutId.current = setTimeout(() => setOutput('Hello World'), 1000)
     }
   }, [depA, depB])
-
+  
   useEffect(() => {
     return function onUnmount() {
       if (timeoutId.current !== null) {
@@ -194,27 +70,41 @@ Your code could look like this:
       }
     }
   }, [timeoutId])
+    
+  return output ? (
+    <div>{output}</div>
+  ) : null
+}
 ```
 
 With `react-timing-hooks` you can just write:
 
-```javascript
-  import { useTimeoutEffect } from 'react-timing-hooks'
+```jsx harmony
+import { useState } from 'react'
+import { useTimeoutEffect } from 'react-timing-hooks'
 
-  // ... 
+const TimeoutRenderer = ({ depA, depB }) => {
+  const [output, setOutput] = useState(null)
+
   useTimeoutEffect((timeout) => {
     if (depA && depB) {
-      timeout(() => doSomething(), 1000)
+      timeout(() => setOutput('Hello World'), 1000)
     }
   }, [depA, depB])
+    
+  return output ? (
+    <div>{output}</div>
+  ) : null
+}
 ```
 
 In this case `react-timing-hooks` automatically took care of cleaning up the timeout for you (if the component is mounted for less than a second for instance).
+   
+## Documentation
+
+see [API.md](https://github.com/EricLambrecht/react-timing-hooks/blob/master/docs/API.md)
+  
 
 ## Contributing
 
-Contributions are welcome as long as you follow these simple rules:
-
-1. All commit messages must adhere to the [conventional commit](https://www.conventionalcommits.org/en/v1.0.0/) format. So **please use `npm run commit`** to commit your staged changes.
-2. Test everything before you commit it: `npm run test` will take care of that.
-3. Use [prettier](https://prettier.io) while developing. You can check your code with `npm run prettier:check` to make sure everything's formatted correctly.
+see [CONTRIBUTING.md](https://github.com/EricLambrecht/react-timing-hooks/blob/master/CONTRIBUTING.md)

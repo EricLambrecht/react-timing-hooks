@@ -2,8 +2,14 @@
 **/tsconfig.json
 **/prettier.config.js
 **/jest.config.js
+**/jest.setup.js
+_*
+
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
 
 .tmp
 node_modules
+docs
 src
 integration-tests
