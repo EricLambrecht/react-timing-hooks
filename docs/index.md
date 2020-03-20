@@ -31,7 +31,7 @@ yarn add react-timing-hooks
 
 Example: 
 
-```jsx harmony
+```JSX
 // Hide something after 2 seconds
 const hideDelayed = useTimeout(() => setHide(true), 2000)
 
@@ -112,7 +112,7 @@ useAnimationFrameLoop(updateCanvas, stop)
 
 Example: 
 
-```jsx harmony
+```JSX
 // Track button click when idle
 const trackClickWhenIdle = useIdleCallback(trackClick)
 
