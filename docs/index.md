@@ -13,7 +13,7 @@
 
 ## Installation
 
-```shell script
+```bash
 # via npm
 npm i react-timing-hooks
 
