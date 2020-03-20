@@ -102,7 +102,7 @@ In this case `react-timing-hooks` automatically took care of cleaning up the tim
    
 ## Documentation
 
-see [API.md](https://github.com/EricLambrecht/react-timing-hooks/blob/master/docs/API.md)
+[https://ericlambrecht.github.io/react-timing-hooks/](https://ericlambrecht.github.io/react-timing-hooks/)
   
 
 ## Contributing
