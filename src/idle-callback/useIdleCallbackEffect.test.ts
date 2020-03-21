@@ -45,6 +45,23 @@ describe('useIdleCallbackEffect', () => {
     expect(testCallback).toHaveBeenCalledTimes(0)
   })
 
+  it('is executing cleanup function', () => {
+    const onUnmount = jest.fn()
+
+    const { unmount } = renderHook(() =>
+      useIdleCallbackEffect(() => {
+        return () => {
+          onUnmount('success')
+        }
+      }, [])
+    )
+
+    unmount()
+    requestIdleCallback.runIdleCallbacks()
+
+    expect(onUnmount).toHaveBeenCalledWith('success')
+  })
+
   describe('if requestIdleCallback is unsupported', () => {
     let realWarn: (message?: any, ...optionalParams: any[]) => void
 

@@ -34,4 +34,21 @@ describe('useTimeoutEffect', () => {
 
     expect(timeoutHandler).toHaveBeenCalledTimes(0)
   })
+
+  it('is executing cleanup function', () => {
+    const onUnmount = jest.fn()
+
+    const { unmount } = renderHook(() =>
+      useTimeoutEffect(() => {
+        return () => {
+          onUnmount('success')
+        }
+      }, [])
+    )
+
+    unmount()
+    jest.runAllTimers()
+
+    expect(onUnmount).toHaveBeenCalledWith('success')
+  })
 })

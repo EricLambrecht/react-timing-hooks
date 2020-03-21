@@ -38,8 +38,7 @@ const useIdleCallbackEffect = (
   )
 
   useEffect(() => {
-    // TODO: effect result must be returned!
-    effect(idleCallbackFunc)
+    return effect(idleCallbackFunc)
   }, deps)
 
   useEffect(() => {
