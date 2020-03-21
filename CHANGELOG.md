@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.0.1...v1.1.0) (2020-03-21)
+
+
+### Features
+
+* Allow tree shaking by adding a es module export. ([bee51c6](https://github.com/EricLambrecht/react-timing-hooks/commit/bee51c68c88c9d05aeb037d96a7978ee9e01f2aa))
+
+
+### Bug Fixes
+
+* Fix effect cleanups not being executed (useTimeoutEffect & useIdleCallbackEffect) ([f62e393](https://github.com/EricLambrecht/react-timing-hooks/commit/f62e39399e72b49107fae387698a8bd46cb6607c))
+
 ### [1.0.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.0.0...v1.0.1) (2020-03-20)
 
 Updated npm keywords.
