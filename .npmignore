@@ -3,6 +3,8 @@
 **/prettier.config.js
 **/jest.config.js
 **/jest.setup.js
+**/rollup.config.js
+**/rollup.config.prod.js
 _*
 
 CODE_OF_CONDUCT.md

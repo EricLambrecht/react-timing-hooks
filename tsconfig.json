@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "umd",
+    "module": "es6",
     "lib": [
       "dom",
       "dom.iterable",
