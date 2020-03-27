@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react'
-import { IntervalCallback } from './types'
 
 /**
  * This hook was inspired by Dan Abramov's blogpost:
@@ -8,8 +7,11 @@ import { IntervalCallback } from './types'
  * @param callback
  * @param delay
  */
-const useInterval = (callback: IntervalCallback, delay: number | null) => {
-  const intervalCallback = useRef<IntervalCallback>(() => null)
+const useInterval = <T extends (...args: never[]) => unknown>(
+  callback: T,
+  delay: number | null
+): void => {
+  const intervalCallback = useRef<T>(callback)
 
   useEffect(() => {
     intervalCallback.current = callback
