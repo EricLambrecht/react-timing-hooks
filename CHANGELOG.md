@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.2.0...v1.3.0) (2020-03-27)
+
+
+### Features
+
+* Add utility hook "useTimer" ([1874244](https://github.com/EricLambrecht/react-timing-hooks/commit/18742443a2316ae2902e972b2a5879155e5fa375))
+
 ## [1.2.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.1.1...v1.2.0) (2020-03-27)
 
 
