@@ -1,7 +1,7 @@
-![npm](https://flat.badgen.net/npm/v/react-timing-hooks)
-![minified](https://flat.badgen.net/bundlephobia/minzip/react-timing-hooks)
+[![npm](https://flat.badgen.net/npm/v/react-timing-hooks)](https://www.npmjs.com/package/react-timing-hooks)
+[![minified](https://flat.badgen.net/bundlephobia/minzip/react-timing-hooks)](https://bundlephobia.com/result?p=react-timing-hooks)
 ![types](https://flat.badgen.net/npm/types/react-timing-hooks)
-![checks](https://flat.badgen.net/github/checks/EricLambrecht/react-timing-hooks)
+[![checks](https://flat.badgen.net/github/checks/EricLambrecht/react-timing-hooks)](https://github.com/EricLambrecht/react-timing-hooks)
 
 # React Timing Hooks
 
@@ -28,10 +28,6 @@ yarn add react-timing-hooks
 ```
 
 ## Usage
-
-```bash
-npm i react-timing-hooks
-```
    
 ```jsx harmony
 import { useState } from 'react'
