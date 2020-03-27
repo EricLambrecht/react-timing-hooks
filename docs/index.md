@@ -6,6 +6,7 @@
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
+  * [useTimer](#usetimerstart)
   * [useAnimationFrame](#useanimationframecallback)
   * [useAnimationFrameLoop](#useanimationframeloopcallback)
   * [useIdleCallback](#useidlecallbackcallback-options)
@@ -75,6 +76,20 @@ Example:
 // Increase count every 200 milliseconds
 const [count, setCount] = useState(0)
 useInterval(() => setCount(count + 1), 200)
+```
+
+------
+
+### `useTimer(start = 0)`
+
+* `start` - starting number (default is 0)
+
+Example: 
+
+```javascript
+// this will count upwards every second
+const timerValue = useTimer(0)
+return <span>{timerValue}</span>
 ```
 
 ------
