@@ -1,9 +1,11 @@
-import { Callback } from '../types'
 import useAnimationFrame from './useAnimationFrame'
 import { useCallback, useEffect, useRef } from 'react'
 
-const useAnimationFrameLoop = (callback: Callback, stop = false) => {
-  const rafCallback = useRef<Callback>(() => null)
+const useAnimationFrameLoop = <T extends (...args: never[]) => unknown>(
+  callback: T,
+  stop = false
+): void => {
+  const rafCallback = useRef<T>(callback)
   const stopValue = useRef<boolean>(false)
 
   useEffect(() => {
