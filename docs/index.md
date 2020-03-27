@@ -6,7 +6,7 @@
   * [useTimeout](#usetimeoutcallback-timeout)
   * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
   * [useInterval](#useintervalintervalcallback-delay)
-  * [useTimer](#usetimerstart)
+  * [useTimer](#usetimerstart--0)
   * [useAnimationFrame](#useanimationframecallback)
   * [useAnimationFrameLoop](#useanimationframeloopcallback)
   * [useIdleCallback](#useidlecallbackcallback-options)
