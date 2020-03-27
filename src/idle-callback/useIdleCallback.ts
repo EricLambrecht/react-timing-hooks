@@ -4,7 +4,6 @@ import {
   RequestIdleCallbackHandle,
   RequestIdleCallbackOptions,
 } from './types'
-import { Callback } from '../types'
 
 declare global {
   interface Window {
@@ -20,16 +19,16 @@ declare global {
  * @param callback The callback that is invoked as soons as the browser invokes the idle callback
  * @param options Options for requestIdleCallback
  */
-const useIdleCallback = (
-  callback: Callback,
+const useIdleCallback = <T extends (...args: never[]) => unknown>(
+  callback: T,
   options?: RequestIdleCallbackOptions
-) => {
+): ((...args: Parameters<T>) => void) => {
   if (!window.requestIdleCallback) {
     console.warn('This browser does not support "requestIdleCallback"')
     return callback
   }
 
-  const ricCallback = useRef<Callback>(() => null)
+  const ricCallback = useRef<T>(callback)
   const [handle, setHandle] = useState<RequestIdleCallbackHandle | null>(null)
 
   useEffect(() => {
@@ -44,8 +43,8 @@ const useIdleCallback = (
     }
   }, [handle])
 
-  return useCallback(
-    (...args: unknown[]) => {
+  return useCallback<(...args: Parameters<T>) => void>(
+    (...args: Parameters<T>) => {
       const h = window.requestIdleCallback(
         () => ricCallback.current(...args),
         options
