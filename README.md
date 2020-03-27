@@ -7,7 +7,7 @@
 
 ## Features
 
-* Several React hooks for 
+* Several React hooks wrapping 
     * `requestAnimationFrame`
     * `setTimeout`
     * `setInterval`
