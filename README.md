@@ -12,7 +12,9 @@
     * `setTimeout`
     * `setInterval`
     * `requestIdleCallback`
-* Callbacks, Loops and Effects
+* Additional utility hooks like
+  * `useTimer`
+  * `useAnimationFrameLoop`
 * Full Typescript support  
 * [Lightweight](https://bundlephobia.com/result?p=react-timing-hooks) (less than 1KB minzipped, no external dependencies)
 * Tree-shakable
