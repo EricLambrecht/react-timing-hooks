@@ -1,6 +1,6 @@
 {
   "name": "react-timing-hooks",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "React hooks for setTimeout, setInterval, requestAnimationFrame, requestIdleCallback",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -16,7 +16,7 @@
     "build": "rollup -c",
     "build:watch": "npm run build -- --watch",
     "build:prod": "rimraf \"./dist\" && rollup -c rollup.config.prod.js",
-    "release": "cli-confirm \"Do you really want to create a new release? (Y/N)\" && standard-version",
+    "release": "standard-version --dry-run && cli-confirm \"Do you really want to create a new release? (Y/N)\" && standard-version",
     "prepublishOnly": "cli-confirm \"Do you really want to publish the current release? (Y/N)\" && npm run test && npm run build:prod"
   },
   "repository": {

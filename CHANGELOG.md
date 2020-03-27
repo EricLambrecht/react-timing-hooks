@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.1.1...v1.2.0) (2020-03-27)
+
+
+### Features
+
+* Make useAnimationFrame and useAnimationFrame loop generic and improve overall typing ([7d69dd8](https://github.com/EricLambrecht/react-timing-hooks/commit/7d69dd8b025c10ece46e0885c330ca67f647c9dd))
+* Make useIdleCallback generic and improve overall typing ([c5282d5](https://github.com/EricLambrecht/react-timing-hooks/commit/c5282d58d2e4dfcf7b379f8afd5db6b405586493))
+* Make useInterval generic and improve overall typing ([3cc08aa](https://github.com/EricLambrecht/react-timing-hooks/commit/3cc08aa27277f826077c4cabe5e98c0467dbb4b0))
+* Make useTimeout generic and improve overall typing ([a65921a](https://github.com/EricLambrecht/react-timing-hooks/commit/a65921a44334e9c9aa511cb89c957822807a04c4))
+
 ### [1.1.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.1.0...v1.1.1) (2020-03-21)
 
 
