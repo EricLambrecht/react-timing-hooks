@@ -1,12 +1,15 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { TimeoutCallback, TimeoutId } from './types'
+import { TimeoutId } from './types'
 
 /**
  * @param callback The callback that is invoked after the timeout expired
  * @param timeout A timeout in milliseconds
  */
-const useTimeout = (callback: TimeoutCallback, timeout: number) => {
-  const timeoutCallback = useRef<TimeoutCallback>(() => null)
+function useTimeout<T extends (...args: never[]) => unknown>(
+  callback: T,
+  timeout: number
+): (...args: Parameters<T>) => void {
+  const timeoutCallback = useRef<T>(callback)
   const [timeoutId, setTimeoutId] = useState<TimeoutId | null>(null)
 
   useEffect(() => {
@@ -21,8 +24,8 @@ const useTimeout = (callback: TimeoutCallback, timeout: number) => {
     }
   }, [timeoutId])
 
-  return useCallback(
-    (...args: unknown[]) => {
+  return useCallback<(...args: Parameters<T>) => void>(
+    (...args: Parameters<T>) => {
       const id = setTimeout(() => timeoutCallback.current(...args), timeout)
       setTimeoutId(id)
     },
