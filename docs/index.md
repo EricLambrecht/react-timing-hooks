@@ -125,6 +125,8 @@ useAnimationFrameLoop(updateCanvas, stop)
 
 * `options` - options for `requestIdleCallback`
 
+**Note:** This hook will print a warning if the browser doesn't support `requestIdleCallback`.
+
 Example: 
 
 ```javascript
@@ -143,7 +145,7 @@ same signature as the native [`requestIdleCallback`](https://developer.mozilla.o
 
 * `deps` - is your regular `useEffect` dependency array
 
-This works like a regular `useEffect` hook, except that it adds a `requestIdleCallbackEffect` like function
+This works like a regular `useEffect` hook, except that it adds a `requestIdleCallback` like function
 to the callback args.
 
 **Note:** This hook will print a warning if the browser doesn't support `requestIdleCallback`.
