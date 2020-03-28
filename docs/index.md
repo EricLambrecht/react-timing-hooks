@@ -2,15 +2,19 @@
 
 ## Table of Contents
 * [Installation](#installation)
-* [API reference (with examples)](#api)
-  * [useTimeout](#usetimeoutcallback-timeout)
-  * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
-  * [useInterval](#useintervalintervalcallback-delay)
-  * [useTimer](#usetimerstart--0)
-  * [useAnimationFrame](#useanimationframecallback)
-  * [useAnimationFrameLoop](#useanimationframeloopcallback)
-  * [useIdleCallback](#useidlecallbackcallback-options)
-  * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
+* [API](#api)
+    * [Timeouts](#timeouts)
+        * [useTimeout](#usetimeoutcallback-timeout)
+        * [useTimeoutEffect](#usetimeouteffecteffectcallback-deps)
+    * [Intervals](#intervals)    
+        * [useInterval](#useintervalintervalcallback-delay)
+        * [useTimer](#usetimerstart--0)
+    * [Animation](#animation)
+        * [useAnimationFrame](#useanimationframecallback)
+        * [useAnimationFrameLoop](#useanimationframeloopcallback)
+    * [Idle Callbacks](#idle-callbacks)   
+        * [useIdleCallback](#useidlecallbackcallback-options)
+        * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
 
 ## Installation
 
@@ -22,31 +26,35 @@ npm i react-timing-hooks
 yarn add react-timing-hooks
 ```
 
+**Note:** You have to install `react@16.8.0` (or higher), too, in order to use this package.
+
 ## API
 
-### `useTimeout(callback, timeout)`
+### Timeouts
 
-* `callback` - a function that will be invoked as soon as the timeout expires
+#### `useTimeout(callback, timeout)`
 
-* `timeout` - the timeout in milliseconds
+* `callback` — a function that will be invoked as soon as the timeout expires
+* `timeout` — the timeout in milliseconds
 
 Example: 
 
 ```javascript
+import { useTimeout } from 'react-timing-hooks'
+
 // Hide something after 2 seconds
 const hideDelayed = useTimeout(() => setHide(true), 2000)
 
 return <button onClick={hideDelayed}>Hide!</button>
 ```
 
-------
+-----
 
-### `useTimeoutEffect(effectCallback, deps)`
+#### `useTimeoutEffect(effectCallback, deps)`
 
-* `effectCallback` - will receive one argument `timeout(f, timeout)` that has the
+* `effectCallback` — will receive one argument `timeout(f, timeout)` that has the
 same signature as a native `setTimeout`
-
-* `deps` - is your regular `useEffect` dependency array
+* `deps` — is your regular `useEffect` dependency array
 
 This works like a regular `useEffect` hook, except that it adds a `setTimeout` like function
 to the callback args.
@@ -54,6 +62,8 @@ to the callback args.
 Example: 
 
 ```javascript
+import { useTimeoutEffect } from 'react-timing-hooks'
+
 // Delay the transition of a color by one second everytime it changes
 useTimeoutEffect(timeout => {
   if (color) {
@@ -62,53 +72,59 @@ useTimeoutEffect(timeout => {
 }, [color])
 ```
 
-------
 
-### `useInterval(intervalCallback, delay)`
+### Intervals
 
-* `intervalCallback` - will be run every _[delay]_ milliseconds
+#### `useInterval(intervalCallback, delay)`
 
-* `delay` - is the delay at which the callback will be run. If delay is `null` the interval will be suspended.
+* `intervalCallback` — will be run every _[delay]_ milliseconds
+* `delay` — is the delay at which the callback will be run. If delay is `null` the interval will be suspended.
 
 Example: 
 
 ```javascript
+import { useInterval } from 'react-timing-hooks'
+
 // Increase count every 200 milliseconds
 const [count, setCount] = useState(0)
 useInterval(() => setCount(count + 1), 200)
 ```
 
-------
+-----
 
-### `useTimer(start = 0)`
+#### `useTimer(start = 0)`
 
-* `start` - starting number (default is 0)
+* `start` — starting number (default is 0)
 
 Example: 
 
 ```javascript
+import { useTimer } from 'react-timing-hooks'
+
 // this will count upwards every second
 const timerValue = useTimer(0)
 return <span>{timerValue}</span>
 ```
 
+
+### Animation
+
+#### `useAnimationFrame(callback)`
+
+* `callback` — a function that will be invoked on the next animation frame
+
 ------
 
-### `useAnimationFrame(callback)`
+#### `useAnimationFrameLoop(callback, stop = false)`
 
-* `callback` - a function that will be invoked on the next animation frame
-
-------
-
-### `useAnimationFrameLoop(callback, stop = false)`
-
-* `callback` - a function that will be invoked in an animation frame loop
-
-* `stop = false` - an optional parameter to stop/pause the loop. It can be resumed by setting it to false again.
+* `callback` — a function that will be invoked in an animation frame loop
+* `stop = false` — an optional parameter to stop/pause the loop. It can be resumed by setting it to false again.
 
 Example: 
 
 ```javascript
+import { useAnimationFrameLoop } from 'react-timing-hooks'
+
 // Update canvas on every frame
 const [stop, setStop] = useState(false)
 const updateCanvas = () => { 
@@ -117,33 +133,34 @@ const updateCanvas = () => {
 useAnimationFrameLoop(updateCanvas, stop)
 ```
 
-------
 
-### `useIdleCallback(callback, options)`
+### Idle Callbacks
 
-* `callback` - a function that will be invoked as soon as the browser decides to run the idle callback
+#### `useIdleCallback(callback, options)`
 
-* `options` - options for `requestIdleCallback`
+* `callback` — a function that will be invoked as soon as the browser decides to run the idle callback
+* `options` — options for `requestIdleCallback`
 
 **Note:** This hook will print a warning if the browser doesn't support `requestIdleCallback`.
 
 Example: 
 
 ```javascript
+import { useIdleCallback } from 'react-timing-hooks'
+
 // Track button click when idle
 const trackClickWhenIdle = useIdleCallback(trackClick)
 
 return <button onClick={trackClickWhenIdle}>Track me!</button>
 ```
 
-------
+-----
 
-### `useIdleCallbackEffect(effectCallback, deps)`
+#### `useIdleCallbackEffect(effectCallback, deps)`
 
-* `effectCallback` - will receive one argument `requestIdleCallback(f, opts)` that has the
+* `effectCallback` — will receive one argument `requestIdleCallback(f, opts)` that has the
 same signature as the native [`requestIdleCallback`](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback)
-
-* `deps` - is your regular `useEffect` dependency array
+* `deps` — is your regular `useEffect` dependency array
 
 This works like a regular `useEffect` hook, except that it adds a `requestIdleCallback` like function
 to the callback args.
@@ -153,6 +170,8 @@ to the callback args.
 Example: 
 
 ```javascript
+import { useIdleCallbackEffect } from 'react-timing-hooks'
+
 // Track page view when browser is idle
 useIdleCallbackEffect(onIdle => {
   if (page) {
@@ -160,3 +179,8 @@ useIdleCallbackEffect(onIdle => {
   }
 }, [page])
 ```
+
+
+
+
+
