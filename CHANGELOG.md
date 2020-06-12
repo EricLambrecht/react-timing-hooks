@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.3.2...v1.4.0) (2020-06-12)
+
+
+### Features
+
+* Add second param to useTimeoutEffect callback to manually clean the timeout ([428c3f7](https://github.com/EricLambrecht/react-timing-hooks/commit/428c3f759bb3a6e117b288c484e5cfe76e396c49))
+
 ### [1.3.2](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.3.1...v1.3.2) (2020-03-28)
 
 Updated `homepage` in `package.json` and overhauled the [documentation](https://ericlambrecht.github.io/react-timing-hooks/).
