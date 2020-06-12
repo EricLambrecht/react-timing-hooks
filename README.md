@@ -51,6 +51,10 @@ const AnimationFrameCounter = ({ depA, depB }) => {
   )
 }
 ```   
+
+## Documentation
+
+[https://ericlambrecht.github.io/react-timing-hooks/](https://ericlambrecht.github.io/react-timing-hooks/)
    
 ## Why bother?
 
@@ -111,10 +115,6 @@ const TimeoutRenderer = ({ depA, depB }) => {
 ```
 
 In this case `react-timing-hooks` automatically took care of cleaning up the timeout for you (if the component is mounted for less than a second for instance).
-   
-## Documentation
-
-[https://ericlambrecht.github.io/react-timing-hooks/](https://ericlambrecht.github.io/react-timing-hooks/)
   
 
 ## Contributing

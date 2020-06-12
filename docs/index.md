@@ -50,8 +50,6 @@ const hideDelayed = useTimeout(() => setHide(true), 2000)
 return <button onClick={hideDelayed}>Hide!</button>
 ```
 
------
-
 #### `useTimeoutEffect(effectCallback, deps)`
 
 * `effectCallback` — will receive two arguments: `timeout(f, timeout)` (which has the
@@ -92,7 +90,6 @@ const [count, setCount] = useState(0)
 useInterval(() => setCount(count + 1), 200)
 ```
 
------
 
 #### `useTimer(start = 0)`
 
@@ -117,7 +114,7 @@ return <span>{timerValue}</span>
 
 Queued animation frame callbacks will be automatically canceled on unmount.
 
-------
+
 
 #### `useAnimationFrameLoop(callback, stop = false)`
 
@@ -160,7 +157,7 @@ const trackClickWhenIdle = useIdleCallback(trackClick)
 return <button onClick={trackClickWhenIdle}>Track me!</button>
 ```
 
------
+
 
 #### `useIdleCallbackEffect(effectCallback, deps)`
 
