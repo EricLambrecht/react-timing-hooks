@@ -54,12 +54,12 @@ return <button onClick={hideDelayed}>Hide!</button>
 
 #### `useTimeoutEffect(effectCallback, deps)`
 
-* `effectCallback` — will receive one argument `timeout(f, timeout)` that has the
-same signature as a native `setTimeout`
+* `effectCallback` — will receive two arguments: `timeout(f, timeout)` (which has the
+same signature as a native `setTimeout`), and a `cleanup` function to manually clear the current timeout if that is desired.
 * `deps` — is your regular `useEffect` dependency array
 
 This works like a regular `useEffect` hook, except that it adds a `setTimeout` like function
-to the callback args. The timeout will be cleared on unmount.
+to the callback args. Any timeout will be automatically cleared on unmount.
 
 Example: 
 
@@ -67,7 +67,7 @@ Example:
 import { useTimeoutEffect } from 'react-timing-hooks'
 
 // Delay the transition of a color by one second everytime it changes
-useTimeoutEffect(timeout => {
+useTimeoutEffect((timeout, clear) => {
   if (color) {
     timeout(() => transitionTo(color), 1000)
   }

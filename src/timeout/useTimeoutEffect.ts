@@ -14,7 +14,11 @@ const useTimeoutEffect = (
   )
 
   useEffect(() => {
-    return effect(timeoutFunc)
+    return effect(timeoutFunc, () => {
+      if (timeoutId.current) {
+        clearTimeout(timeoutId.current)
+      }
+    })
   }, deps)
 
   useEffect(() => {

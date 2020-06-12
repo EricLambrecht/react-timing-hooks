@@ -51,4 +51,19 @@ describe('useTimeoutEffect', () => {
 
     expect(onUnmount).toHaveBeenCalledWith('success')
   })
+
+  it('can be cleared manually', () => {
+    const timeoutHandler = jest.fn()
+
+    renderHook(() =>
+      useTimeoutEffect((timeout, clearTimeout) => {
+        timeout(timeoutHandler, 500)
+        clearTimeout()
+      }, [])
+    )
+
+    jest.advanceTimersByTime(500)
+
+    expect(timeoutHandler).toHaveBeenCalledTimes(0)
+  })
 })
