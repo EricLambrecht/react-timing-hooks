@@ -1,0 +1,35 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+.main-content {
+  p {
+    font-size: 1rem;
+  }
+
+  ul, ol {
+    font-size: 0.9rem;
+
+    code {
+      font-size: 0.8rem;
+    }
+
+    li:not(:first-child) {
+      margin-top: 4px;
+    }
+  }
+
+  h4 > code {
+    font-size: 1rem;
+    font-weight: 700;
+  }
+}
+
+@media screen and (max-width: 64em) and (min-width: 42em) {
+  .main-content {
+    p {
+      font-size: 1rem;
+    }
+  }
+}
