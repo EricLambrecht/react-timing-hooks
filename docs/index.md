@@ -37,6 +37,8 @@ yarn add react-timing-hooks
 * `callback` — a function that will be invoked as soon as the timeout expires
 * `timeout` — the timeout in milliseconds
 
+The hook will take care of clearing the timeout on unmount, too.
+
 Example: 
 
 ```javascript
@@ -57,7 +59,7 @@ same signature as a native `setTimeout`
 * `deps` — is your regular `useEffect` dependency array
 
 This works like a regular `useEffect` hook, except that it adds a `setTimeout` like function
-to the callback args.
+to the callback args. The timeout will be cleared on unmount.
 
 Example: 
 
@@ -113,6 +115,8 @@ return <span>{timerValue}</span>
 
 * `callback` — a function that will be invoked on the next animation frame
 
+Queued animation frame callbacks will be automatically canceled on unmount.
+
 ------
 
 #### `useAnimationFrameLoop(callback, stop = false)`
@@ -141,6 +145,8 @@ useAnimationFrameLoop(updateCanvas, stop)
 * `callback` — a function that will be invoked as soon as the browser decides to run the idle callback
 * `options` — options for `requestIdleCallback`
 
+Any registered idle callbacks will be canceled on unmount.
+
 **Note:** This hook will print a warning if the browser doesn't support `requestIdleCallback`.
 
 Example: 
@@ -163,7 +169,7 @@ same signature as the native [`requestIdleCallback`](https://developer.mozilla.o
 * `deps` — is your regular `useEffect` dependency array
 
 This works like a regular `useEffect` hook, except that it adds a `requestIdleCallback` like function
-to the callback args.
+to the callback args. Any registered idle callbacks will be canceled on unmount.
 
 **Note:** This hook will print a warning if the browser doesn't support `requestIdleCallback`.
 
