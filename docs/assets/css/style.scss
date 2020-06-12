@@ -27,6 +27,18 @@
   h4 > code {
     font-size: 1rem;
     font-weight: 700;
+    position: relative;
+
+    ::before {
+      content: '';
+      display: inline-block;
+      position: absolute;
+      left: -26px;
+      top: 10px;
+      background: #dce6f0;
+      height: 3px;
+      width: 13px;
+    }
   }
 }
 
