@@ -29,7 +29,7 @@
     font-weight: 700;
     position: relative;
 
-    ::before {
+    &::before {
       content: '';
       display: inline-block;
       position: absolute;
