@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.4.0...v1.4.1) (2020-07-25)
+
+
+### Bug Fixes
+
+* Fix timeouts not being properly unmounted (if more than 1) ([df2d247](https://github.com/EricLambrecht/react-timing-hooks/commit/df2d2476a5bd899ba8a362cb2ae5636f6d4089ab)), closes [#4](https://github.com/EricLambrecht/react-timing-hooks/issues/4)
+
 ## [1.4.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.3.2...v1.4.0) (2020-06-12)
 
 
