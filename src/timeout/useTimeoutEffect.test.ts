@@ -35,6 +35,28 @@ describe('useTimeoutEffect', () => {
     expect(timeoutHandler).toHaveBeenCalledTimes(0)
   })
 
+  // Former bug: https://github.com/EricLambrecht/react-timing-hooks/issues/4
+  it('properly cleans up multiple timeouts after unmount', () => {
+    const timeoutHandler = jest.fn()
+    const timeoutHandler2 = jest.fn()
+    const timeoutHandler3 = jest.fn()
+
+    const { unmount } = renderHook(() =>
+      useTimeoutEffect(timeout => {
+        timeout(timeoutHandler, 500)
+        timeout(timeoutHandler2, 500)
+        timeout(timeoutHandler3, 500)
+      }, [])
+    )
+
+    unmount()
+    jest.runAllTimers()
+
+    expect(timeoutHandler).toHaveBeenCalledTimes(0)
+    expect(timeoutHandler2).toHaveBeenCalledTimes(0)
+    expect(timeoutHandler3).toHaveBeenCalledTimes(0)
+  })
+
   it('is executing cleanup function', () => {
     const onUnmount = jest.fn()
 

@@ -5,29 +5,34 @@ const useTimeoutEffect = (
   effect: TimeoutEffectCallback,
   deps: DependencyList
 ) => {
-  const timeoutId = useRef<TimeoutId | null>(null)
+  const timeoutIds = useRef<TimeoutId[]>([])
   const timeoutFunc = useCallback(
     (handler: () => any, timeout: number) => {
-      timeoutId.current = setTimeout(handler, timeout)
+      const id = setTimeout(handler, timeout)
+      timeoutIds.current.push(id)
     },
-    [timeoutId]
+    [timeoutIds]
   )
 
   useEffect(() => {
     return effect(timeoutFunc, () => {
-      if (timeoutId.current) {
-        clearTimeout(timeoutId.current)
+      if (timeoutIds.current.length > 0) {
+        timeoutIds.current.forEach(id => {
+          clearTimeout(id)
+        })
       }
     })
   }, deps)
 
   useEffect(() => {
     return function onUnmount() {
-      if (timeoutId.current !== null) {
-        clearTimeout(timeoutId.current)
+      if (timeoutIds.current.length > 0) {
+        timeoutIds.current.forEach(id => {
+          clearTimeout(id)
+        })
       }
     }
-  }, [timeoutId])
+  }, [timeoutIds])
 }
 
 export default useTimeoutEffect
