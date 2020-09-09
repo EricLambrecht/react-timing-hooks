@@ -63,7 +63,7 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.26.11",
     "rollup-plugin-typescript2": "^0.26.0",
-    "standard-version": "^8.0.2",
+    "standard-version": "^9.0.0",
     "ts-jest": "^25.5.1",
     "typescript": "^3.9.7"
   },
