@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.4.1...v1.4.2) (2020-09-24)
+
+
+### Bug Fixes
+
+* Fix potential security issue in lodash ([e9fe8fe](https://github.com/EricLambrecht/react-timing-hooks/commit/e9fe8fe63e74a91f1ad93869a43f9badb9e0bdf0))
+* Fix security issue in dot-prop by updating standard-version ([c2fa24e](https://github.com/EricLambrecht/react-timing-hooks/commit/c2fa24ead10892a627fba8a53ade64472df84100))
+
 ### [1.4.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.4.0...v1.4.1) (2020-07-25)
 
 
