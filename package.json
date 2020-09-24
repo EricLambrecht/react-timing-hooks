@@ -44,10 +44,10 @@
   "homepage": "https://ericlambrecht.github.io/react-timing-hooks/",
   "devDependencies": {
     "@shopify/jest-dom-mocks": "^2.9.1",
-    "@testing-library/react": "^10.4.9",
+    "@testing-library/react": "^11.0.4",
     "@testing-library/react-hooks": "^3.4.1",
-    "@types/jest": "^26.0.13",
-    "@types/node": "^13.13.17",
+    "@types/jest": "^26.0.14",
+    "@types/node": "^13.13.21",
     "@types/react": "^16.9.49",
     "@types/react-dom": "^16.9.8",
     "cli-confirm": "^1.0.1",
@@ -61,10 +61,10 @@
     "react-test-renderer": "^16.13.1",
     "replace": "^1.2.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.26.11",
+    "rollup": "^2.28.2",
     "rollup-plugin-typescript2": "^0.26.0",
     "standard-version": "^9.0.0",
-    "ts-jest": "^26.3.0",
+    "ts-jest": "^26.4.0",
     "typescript": "^3.9.7"
   },
   "peerDependencies": {
