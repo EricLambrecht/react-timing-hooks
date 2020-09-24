@@ -20,7 +20,7 @@ describe('useIdleCallbackEffect', () => {
     const testCallback = jest.fn()
 
     renderHook(() =>
-      useIdleCallbackEffect(requestIdleCallback => {
+      useIdleCallbackEffect((requestIdleCallback) => {
         requestIdleCallback(testCallback)
       }, [])
     )
@@ -34,7 +34,7 @@ describe('useIdleCallbackEffect', () => {
     const testCallback = jest.fn()
 
     const { unmount } = renderHook(() =>
-      useIdleCallbackEffect(requestIdleCallback => {
+      useIdleCallbackEffect((requestIdleCallback) => {
         requestIdleCallback(testCallback)
       }, [])
     )
@@ -83,7 +83,7 @@ describe('useIdleCallbackEffect', () => {
       const testCallback = jest.fn()
 
       renderHook(() =>
-        useIdleCallbackEffect(requestIdleCallback => {
+        useIdleCallbackEffect((requestIdleCallback) => {
           requestIdleCallback(testCallback)
         }, [])
       )

@@ -55,7 +55,7 @@
     "emoji-cz": "^0.3.1",
     "jest": "^26.4.2",
     "node-fetch": "^2.6.1",
-    "prettier": "^1.19.1",
+    "prettier": "^2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-test-renderer": "^16.13.1",

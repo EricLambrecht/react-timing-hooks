@@ -10,7 +10,7 @@ const TestComponent: React.FC = () => {
   const [invokeTimeout, setInvokeTimeout] = useState(false)
 
   useTimeoutEffect(
-    timeout => {
+    (timeout) => {
       if (invokeTimeout) {
         timeout(() => {
           setOutput('foobar')

@@ -17,7 +17,7 @@ const useTimeoutEffect = (
   useEffect(() => {
     return effect(timeoutFunc, () => {
       if (timeoutIds.current.length > 0) {
-        timeoutIds.current.forEach(id => {
+        timeoutIds.current.forEach((id) => {
           clearTimeout(id)
         })
       }
@@ -27,7 +27,7 @@ const useTimeoutEffect = (
   useEffect(() => {
     return function onUnmount() {
       if (timeoutIds.current.length > 0) {
-        timeoutIds.current.forEach(id => {
+        timeoutIds.current.forEach((id) => {
           clearTimeout(id)
         })
       }

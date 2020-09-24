@@ -10,7 +10,7 @@ describe('useTimeoutEffect', () => {
     const timeoutHandler = jest.fn()
 
     renderHook(() =>
-      useTimeoutEffect(timeout => {
+      useTimeoutEffect((timeout) => {
         timeout(timeoutHandler, 500)
       }, [])
     )
@@ -24,7 +24,7 @@ describe('useTimeoutEffect', () => {
     const timeoutHandler = jest.fn()
 
     const { unmount } = renderHook(() =>
-      useTimeoutEffect(timeout => {
+      useTimeoutEffect((timeout) => {
         timeout(timeoutHandler, 500)
       }, [])
     )
@@ -42,7 +42,7 @@ describe('useTimeoutEffect', () => {
     const timeoutHandler3 = jest.fn()
 
     const { unmount } = renderHook(() =>
-      useTimeoutEffect(timeout => {
+      useTimeoutEffect((timeout) => {
         timeout(timeoutHandler, 500)
         timeout(timeoutHandler2, 500)
         timeout(timeoutHandler3, 500)

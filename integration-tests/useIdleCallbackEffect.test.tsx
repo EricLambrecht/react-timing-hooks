@@ -11,7 +11,7 @@ const TestComponent: React.FC = () => {
   const [invokeRequest, setInvokeRequest] = useState(false)
 
   useIdleCallbackEffect(
-    requestCallback => {
+    (requestCallback) => {
       if (invokeRequest) {
         requestCallback(() => {
           setOutput('foobar')
