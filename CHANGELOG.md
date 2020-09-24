@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [1.4.2](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.4.1...v1.4.2) (2020-09-24)
 
+Warning: This build does not support Node 8 anymore. Please use version 2.0.0 instead.
+
 
 ### Bug Fixes
 
