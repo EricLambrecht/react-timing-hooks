@@ -1,9 +1,9 @@
-name: React Timing Hooks - on push
+name: React Timing Hooks – Build & Test
 on: [push]
 
 jobs:
   build:
-    name: ${{ matrix.os }}
+    name: ${{ matrix.os }}, Node ${{ matrix.node-version }}
     runs-on: ${{ matrix.os }}
 
     strategy:
