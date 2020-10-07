@@ -1,31 +1,31 @@
-name: Node CI
-
+name: React Timing Hooks - on push
 on: [push]
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
+    name: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
         node-version: [10.x, 12.x, 14.x]
 
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node ${{ matrix.node-version }} on ${{ matrix.os }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
     - name: npm install
       run: npm ci
-    - name: lint and unit tests
+    - name: Lint and unit tests
       run: |
         npm run prettier:check
         npm run test:unit
-    - name: integration tests
+    - name: Integration tests
       run: |
         npm run build --if-present
-        npm run test:integration        
+        npm run test:integration
       env:
         CI: true
