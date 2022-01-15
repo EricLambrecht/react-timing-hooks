@@ -34,19 +34,19 @@ describe('useClock() Integration Test', () => {
       jest.advanceTimersByTime(1000)
     })
     expect(getSecondsFromFormattedTime(getByTestId('output').textContent)).toBe(
-      secondsAtTestStart + 1
+      (secondsAtTestStart + 1) % 60
     )
     act(() => {
       jest.advanceTimersByTime(1000)
     })
     expect(getSecondsFromFormattedTime(getByTestId('output').textContent)).toBe(
-      secondsAtTestStart + 2
+      (secondsAtTestStart + 2) % 60
     )
     act(() => {
       jest.advanceTimersByTime(4000)
     })
     expect(getSecondsFromFormattedTime(getByTestId('output').textContent)).toBe(
-      secondsAtTestStart + 6
+      (secondsAtTestStart + 6) % 60
     )
     unmount()
     removeFlushTimers()
