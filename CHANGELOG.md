@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v2.0.0...v2.1.0) (2022-01-15)
+
+
+### Features
+
+* Add a new hook "useClock" that displays time ([7e88d12](https://github.com/EricLambrecht/react-timing-hooks/commit/7e88d1225ec2f28f5edb5f8f976e7c603674dac8)), closes [#17](https://github.com/EricLambrecht/react-timing-hooks/issues/17)
+
 ## [2.0.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v1.4.2...v2.0.0) (2020-09-24)
 
 
