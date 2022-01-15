@@ -19,6 +19,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install
       run: npm ci
+    - name: install locales for integration tests
+      run: |
+        npm install -g full-icu
+        echo "NODE_ICU_DATA=`node-full-icu-path 2>/dev/null`" >> $GITHUB_ENV
+      shell: bash
     - name: Lint and unit tests
       run: |
         npm run prettier:check

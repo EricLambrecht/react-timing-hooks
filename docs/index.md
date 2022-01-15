@@ -9,9 +9,10 @@
     * [Intervals](#intervals)    
         * [useInterval](#useintervalintervalcallback-delay)
         * [useTimer](#usetimerstart--0)
+        * [useClock](#useclockstarttimeinmilliseconds--datenow-formatter--date-date--datetolocaletimestring)
     * [Animation](#animation)
         * [useAnimationFrame](#useanimationframecallback)
-        * [useAnimationFrameLoop](#useanimationframeloopcallback)
+        * [useAnimationFrameLoop](#useanimationframeloopcallback-stop--false)
     * [Idle Callbacks](#idle-callbacks)   
         * [useIdleCallback](#useidlecallbackcallback-options)
         * [useIdleCallbackEffect](#useidlecallbackeffecteffectcallback-deps)
@@ -103,6 +104,21 @@ import { useTimer } from 'react-timing-hooks'
 // this will count upwards every second
 const timerValue = useTimer(0)
 return <span>{timerValue}</span>
+```
+
+#### `useClock(startTimeInMilliseconds = Date.now(), formatter = (date: Date) => date.toLocaleTimeString())`
+
+* `startTimeInMilliseconds` — a number in milliseconds where the time is supposed to start (defaults to `Date.now()`)
+* `formatter` — a functions that turns the date that is updated every second into a string. The string will then be the output of the hook. Defaults to locale string. 
+
+Example:
+
+```javascript
+import { useClock } from 'react-timing-hooks'
+
+// this will show a time like 1:13:56 PM that is updated every second. Like a clock.
+const currentTime = useClock()
+return <span>{currentTime}</span>
 ```
 
 
