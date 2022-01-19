@@ -1,6 +1,6 @@
 {
   "name": "react-timing-hooks",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "React hooks for setTimeout, setInterval, requestAnimationFrame, requestIdleCallback",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -48,17 +48,17 @@
     "@testing-library/react-hooks": "^3.4.1",
     "@types/jest": "^26.0.14",
     "@types/node": "^13.13.21",
-    "@types/react": "^16.9.49",
-    "@types/react-dom": "^16.9.8",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "cli-confirm": "^1.0.1",
     "commitizen": "^4.2.1",
     "emoji-cz": "^0.3.1",
     "jest": "^26.4.2",
     "node-fetch": "^2.6.1",
     "prettier": "^2.1.2",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-test-renderer": "^16.13.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
     "replace": "^1.2.0",
     "rimraf": "^3.0.2",
     "rollup": "^2.28.2",
@@ -68,7 +68,7 @@
     "typescript": "^4.0.3"
   },
   "peerDependencies": {
-    "react": "^16.8.6"
+    "react": "^16.8.0 || ^17.0.0"
   },
   "config": {
     "commitizen": {
