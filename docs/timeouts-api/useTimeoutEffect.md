@@ -38,7 +38,7 @@ useTimeoutEffect((timeout, clear) => {
 
 The effect callback receives two arguments: 
 
-1. `timeout(cb, timeout)`: This has the same signature as a native `setTimeout`.
+1. `timeout(cb, timeout)`: This has the same signature as a native `setTimeout`. The only difference is, that timeouts created with this function will automatically be cleared when you unmount the component.
 2. `clear`: A function to manually clear the current timeout if that is desired. (Timeouts will be cleared automatically on unmount).
 
 

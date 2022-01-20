@@ -25,7 +25,7 @@ This hook can be used to render a clock, i.e. a time-string that updates every s
 | Name             | Description                                                          |
 |:-----------------|:---------------------------------------------------------------------|
 | callback         | bla                          |
-| timeout          | the timeout in milliseconds
+| timeout          | the timeout in milliseconds  |
 
 ### Return value
 
