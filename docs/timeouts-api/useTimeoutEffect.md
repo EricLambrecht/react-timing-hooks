@@ -3,7 +3,7 @@ title: useTimeoutEffect
 parent: Timeouts
 ---
 
-# useTimeoutEffect(effectCallback, deps)
+# useTimeoutEffect
 
 This works like a regular `useEffect` hook, except that it adds a `setTimeout` like function
 to the callback args. This way, one our multiple timeouts can be triggered every time state or props of your component change.

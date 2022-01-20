@@ -3,7 +3,7 @@ title: useTimeout
 parent: Timeouts
 ---
 
-# useTimeout(callback, timeout)
+# useTimeout
 
 Use this hook if you want to create a function/handler that executes once after a specific amount of time.
 This can be used to debounce certain event handlers for example.
@@ -23,7 +23,7 @@ return <button onClick={hideDelayed}>Hide!</button>
 
 ## Params
 
-`useTimeout(callback, timeout)`
+> `useTimeout(callback, timeout)`
 
 | name         | description                                                          |
 |:-------------|:---------------------------------------------------------------------|
