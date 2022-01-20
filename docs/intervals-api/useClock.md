@@ -10,16 +10,10 @@ This hook can be used to render a clock, i.e. a time-string that updates every s
 
 ## Example
 
-## Params
+## API
 
-useClock(startTimeInMilliseconds, formatter)
+### Params
 
 `useClock(startTimeInMilliseconds, formatter)`
-
-> useClock(startTimeInMilliseconds, formatter)
-
-```javascript
-useClock(startTimeInMilliseconds, formatter)
-```
 
 useClock(startTimeInMilliseconds = Date.now(), formatter = (date: Date) => date.toLocaleTimeString())

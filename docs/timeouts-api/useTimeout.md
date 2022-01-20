@@ -5,6 +5,8 @@ parent: Timeouts
 
 # useTimeout
 
+A react wrapper for [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) – no leaks on unmount!{: .fs-6 .fw-300 }
+
 Use this hook if you want to create a function/handler that executes once after a specific amount of time.
 This can be used to debounce certain event handlers for example.
 
@@ -21,7 +23,9 @@ const hideDelayed = useTimeout(() => setHide(true), 2000)
 return <button onClick={hideDelayed}>Hide!</button>
 ```
 
-## Params
+## API
+
+### Params
 
 `useTimeout(callback, timeout)`
 
@@ -30,7 +34,7 @@ return <button onClick={hideDelayed}>Hide!</button>
 | callback     | a function that will be invoked as soon as the timeout expires       |
 | timeout      | the timeout in milliseconds
 
-## Return value
+### Return value
 
 A function will be returned, that - once executed - will run the `callback`-function after `{timeout}` milliseconds
 
