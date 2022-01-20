@@ -25,7 +25,9 @@ useTimeoutEffect((timeout, clear) => {
 }, [color])
 ```
 
-## Params
+## API
+
+### Params
 
 `useTimeoutEffect(effectCallback, timeout)`
 
@@ -34,7 +36,7 @@ useTimeoutEffect((timeout, clear) => {
 | effectCallback | Like a regular `useEffect` callback, but receives it receives two arguments, see below |
 | timeout        | This is your regular `useEffect` dependency array
 
-### effectCallback(timeout, clear)
+##### effectCallback(timeout, clear)
 
 The effect callback receives two arguments: 
 

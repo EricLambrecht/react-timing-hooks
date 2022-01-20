@@ -1,5 +1,5 @@
 ---
-title: useIdleCallback
+title: useIdleCallbackEffect
 parent: Idle Callbacks
 nav_order: 2
 ---
@@ -37,7 +37,7 @@ useIdleCallbackEffect(onIdle => {
 | effectCallback   | Works like a `useEffect` callback, but receives one argument, instead of none. See below for details. |
 | deps             | Your regular `useEffect` dependency array. |
 
-#### effectCallback(requestIdleCallback)
+##### effectCallback(requestIdleCallback)
 
 The effect callback receives one argument:
 

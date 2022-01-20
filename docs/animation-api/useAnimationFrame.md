@@ -30,7 +30,7 @@ return <button onClick={runMyFuncOnAnimationFrame}>Click Me</button>
 
 | Name             | Description                                                          |
 |:-----------------|:---------------------------------------------------------------------|
-| callback         | A function that will be called at the next available animation frame. See [requestIAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) |
+| callback         | A function that will be called at the next available animation frame. See [requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) |
 
 ### Return value
 

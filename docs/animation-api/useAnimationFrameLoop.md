@@ -9,7 +9,7 @@ nav_order: 1
 Use this hook if you want to execute something (like css updates, or Web GL rendering) in an animation frame loop in your React component.
 
 The browser will call your function approximately 60 times a second (60 FPS) if the performance of your app allows it.
-See [requestIAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) to learn 
+See [requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) to learn 
 more about the inner workings of "animation frames".
 
 ## Example
@@ -27,7 +27,7 @@ useAnimationFrameLoop(updateCanvas, stop)
 
 ### Another example
 
-In a vanilla javascript web gl application you might have code like this:
+In a vanilla javascript WebGL application you might have code like this:
 
 ```javascript
 /* Vanilla JS */
@@ -39,9 +39,9 @@ const draw = () => {
 }
 ```
 
-In React this would need additional logic to cancel the animation frame request if the parent component unmounts.
+In a React component this would need additional logic to cancel the animation frame request if the parent component unmounts.
 
-With `useAnimationFrameLoop` you don't have to worry about that and implement it like this instead:
+With `useAnimationFrameLoop` you don't have to worry about that and can implement it like this instead:
 
 ```javascript
 /* React */
