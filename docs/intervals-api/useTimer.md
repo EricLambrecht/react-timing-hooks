@@ -26,7 +26,7 @@ return <span>{timerValue}</span>
 
 | Name             | Default | Description                     |
 |:-----------------|:--------|:--------------------------------|
-| start            | `0`     | The initial value               |
+| start            | `0`     | The initial value of the timer  |
 
 
 ### Return value

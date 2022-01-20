@@ -4,9 +4,9 @@ parent: Intervals
 nav_order: 3
 ---
 
-#useClock
+# useClock
 
-This hook can be used to render a reactive text clock, i.e. a time-string that updates every second.
+This hook can be used to render a reactive "text clock", i.e. a time-string that updates every second.
 
 ## Example
 
@@ -26,8 +26,8 @@ return <span>{currentTime}</span>
 
 | Name                        | Default                                     | Description                                                          |
 |:----------------------------|:--------------------------------------------|:---------------------------------------------------------------------|
-| startTimeInMilliseconds     | `Date.now()`                                | A number in milliseconds where the time is supposed to start.        |
-| formatter                   | `(date: Date) => date.toLocaleTimeString()` | A functions that turns the date that is updated every second into a string. The string will then be the output of the hook. |
+| startTimeInMilliseconds     | `Date.now()`                                | A number in milliseconds, marking the start time.                    |
+| formatter                   | `(date: Date) => date.toLocaleTimeString()` | A function that turns the date which is updated every second into a string. This string will then be the output of the hook. |
 
 ### Return value
 
