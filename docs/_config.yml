@@ -1,4 +1,4 @@
-theme: pmarsceill/just-the-docs
+remote_theme: pmarsceill/just-the-docs
 title: React Timing Hooks
 description: API documentation for react-timing-hooks
 search_enabled: true
