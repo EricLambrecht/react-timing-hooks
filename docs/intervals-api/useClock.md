@@ -12,7 +12,9 @@ This hook can be used to render a clock, i.e. a time-string that updates every s
 
 ## Params
 
-> `useClock(startTimeInMilliseconds, formatter)`
+useClock(startTimeInMilliseconds, formatter)
+
+`useClock(startTimeInMilliseconds, formatter)`
 
 > useClock(startTimeInMilliseconds, formatter)
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Intervalls
+title: Intervals
 nav_order: 3
 has_children: true
 ---

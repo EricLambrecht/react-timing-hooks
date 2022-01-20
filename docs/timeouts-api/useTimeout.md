@@ -23,7 +23,7 @@ return <button onClick={hideDelayed}>Hide!</button>
 
 ## Params
 
-> `useTimeout(callback, timeout)`
+`useTimeout(callback, timeout)`
 
 | name         | description                                                          |
 |:-------------|:---------------------------------------------------------------------|

@@ -27,7 +27,7 @@ useTimeoutEffect((timeout, clear) => {
 
 ## Params
 
-useTimeoutEffect(effectCallback, timeout)
+> useTimeoutEffect(effectCallback, timeout)
 
 | name           | description                                                          |
 |:---------------|:---------------------------------------------------------------------|
