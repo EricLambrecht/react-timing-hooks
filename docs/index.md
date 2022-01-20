@@ -8,6 +8,8 @@ has_children: false
 
 # React Timing Hooks Documentation
 
+**NOTE**: This documentation is currently under reconstruction to improve readability. You will find the old docs on this page. And the new one via the sidebar.
+
 ## Table of Contents
 * [Installation](#installation)
 * [API](#api)
