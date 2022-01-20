@@ -3,18 +3,18 @@ import { useCallback, useEffect, useRef } from 'react'
 
 const useAnimationFrameLoop = <T extends (...args: never[]) => unknown>(
   callback: T,
-  stop = false
+  pause = false
 ): void => {
   const rafCallback = useRef<T>(callback)
-  const stopValue = useRef<boolean>(false)
+  const pauseValue = useRef<boolean>(false)
 
   useEffect(() => {
     rafCallback.current = callback
-    stopValue.current = stop
-  }, [callback, stop])
+    pauseValue.current = pause
+  }, [callback, pause])
 
   const nextCallback = useCallback(() => {
-    if (!stopValue.current) {
+    if (!pauseValue.current) {
       rafCallback.current()
     }
     runInLoop()

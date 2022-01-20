@@ -7,25 +7,30 @@ jest.useFakeTimers()
 
 const TestComponent: React.FC = () => {
   const [output, setOutput] = useState('initial')
-  const [invokeTimeout, setInvokeTimeout] = useState(false)
+  const [output2, setOutput2] = useState('initial2')
+  const [invokeTimeouts, setInvokeTimeouts] = useState(false)
 
   useTimeoutEffect(
     (timeout) => {
-      if (invokeTimeout) {
+      if (invokeTimeouts) {
         timeout(() => {
           setOutput('foobar')
         }, 500)
+        timeout(() => {
+          setOutput2('n1m8')
+        }, 1500)
       }
     },
-    [invokeTimeout]
+    [invokeTimeouts]
   )
 
   return (
     <div>
       <p data-testid="output">{output}</p>
+      <p data-testid="output-2">{output2}</p>
       <button
         data-testid="button"
-        onClick={() => setInvokeTimeout(true)}
+        onClick={() => setInvokeTimeouts(true)}
       ></button>
     </div>
   )
@@ -39,6 +44,7 @@ describe('useTimeoutEffect() Integration Test', () => {
       jest.runAllTimers()
     })
     expect(getByTestId('output').textContent).toBe('initial')
+    expect(getByTestId('output-2').textContent).toBe('initial2')
 
     const button = getByTestId('button')
     fireEvent.click(button)
@@ -47,9 +53,10 @@ describe('useTimeoutEffect() Integration Test', () => {
       jest.runAllTimers()
     })
     expect(getByTestId('output').textContent).toBe('foobar')
+    expect(getByTestId('output-2').textContent).toBe('n1m8')
   })
 
-  it('will only create one timer and clean it up on unmount', async () => {
+  it('will only create two timers and clean them up on unmount', async () => {
     const { unmount, getByTestId } = render(<TestComponent />)
 
     act(() => {
@@ -61,7 +68,7 @@ describe('useTimeoutEffect() Integration Test', () => {
     fireEvent.click(button)
 
     removeFlushTimers()
-    expect(jest.getTimerCount()).toBe(1)
+    expect(jest.getTimerCount()).toBe(2)
 
     unmount()
     removeFlushTimers()
