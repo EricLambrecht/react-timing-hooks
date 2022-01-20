@@ -1,3 +1,4 @@
-theme: jekyll-theme-cayman
-title: React Timing Hooks API
+theme: pmarsceill/just-the-docs
+title: React Timing Hooks
 description: API documentation for react-timing-hooks
+search_enabled: true

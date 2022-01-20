@@ -1,3 +1,11 @@
+---
+layout: default
+title: Quick Start
+nav_order: 1
+has_children: false
+---
+
+
 # React Timing Hooks Documentation
 
 ## Table of Contents
