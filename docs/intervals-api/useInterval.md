@@ -6,7 +6,8 @@ nav_order: 1
 
 # useInterval
 
-A react wrapper for [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) – no leaks on unmount!{: .fs-6 .fw-300 }
+A react wrapper for [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) – no leaks on unmount!
+{: .fs-6 .fw-300 }
 
 This hook allows you to do certain actions at a regular interval, i.e. **loops**. 
 It is a react-wrapper for the native javascript function `setInterval`.

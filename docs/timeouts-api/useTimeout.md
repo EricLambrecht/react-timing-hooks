@@ -5,7 +5,8 @@ parent: Timeouts
 
 # useTimeout
 
-A react wrapper for [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) – no leaks on unmount!{: .fs-6 .fw-300 }
+A react wrapper for [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) – no leaks on unmount!
+{: .fs-6 .fw-300 }
 
 Use this hook if you want to create a function/handler that executes once after a specific amount of time.
 This can be used to debounce certain event handlers for example.
