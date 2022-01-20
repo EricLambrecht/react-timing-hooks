@@ -23,6 +23,8 @@ return <button onClick={hideDelayed}>Hide!</button>
 
 ## Params
 
+`useTimeout(callback, timeout)`
+
 | name         | description                                                          |
 |:-------------|:---------------------------------------------------------------------|
 | callback     | a function that will be invoked as soon as the timeout expires       |
