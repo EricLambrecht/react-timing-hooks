@@ -115,6 +115,22 @@ const TimeoutRenderer = ({ depA, depB }) => {
 ```
 
 In this case `react-timing-hooks` automatically took care of cleaning up the timeout for you (if the component is mounted for less than a second for instance).
+
+### Memoization
+
+You **don't have to worry about memoization** of your callbacks (by using `useCallback`) for example. React Timing Hooks is taking care of that for you. So even if you pass a simple inline arrow function to one of these hooks, the return value (if there is one) will not change on every render but instead stay the same (i.e. it will be memoized).
+
+This means something like this is safe to do:
+
+```javascript
+const [foo, setFoo] = useState(null)
+const onFooChange = useTimeout(() => console.log('foo changed one second ago!'), 1000)
+
+// the following effect will run only when "foo" changes, just as expected. "onFooChange" is memoized and safe to use in a dependency array.
+useEffect(() => {
+  onFooChange()
+}, [foo, onFooChange])
+```
   
 
 ## Contributing
