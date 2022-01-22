@@ -25,8 +25,8 @@ return <span>{currentTime}</span>
 
 ## API
 
-`useClock<T>(startTimeInMilliseconds: number, options: ClockOptions)`
-{: .fs-6 .fw-300 }
+`useClock<T>(options: ClockOptions)`
+{: .fs-5 .fw-300 }
 
 ### Params
 
