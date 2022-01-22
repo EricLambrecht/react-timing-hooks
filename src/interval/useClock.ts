@@ -24,9 +24,12 @@ const useClock = <T = string>(
   const currentTimeInSeconds = useTimer(startTimeInSeconds)
   const date = new Date(currentTimeInSeconds * 1000)
   if (options?.customFormatter) {
-    return options?.customFormatter(date);
+    return options?.customFormatter(date)
   }
-  return date.toLocaleTimeString(options?.locales, options?.dateTimeFormatOptions)
+  return date.toLocaleTimeString(
+    options?.locales,
+    options?.dateTimeFormatOptions
+  )
 }
 
 export default useClock

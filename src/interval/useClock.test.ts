@@ -53,7 +53,10 @@ describe('useClock', () => {
   it('supports custom dateTimeFormat options', () => {
     const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
     const { result } = renderHook(() =>
-      useClock(testTimeInMilliseconds, { locales: 'en-EN', dateTimeFormatOptions: { timeZone: 'Asia/Tokyo' } })
+      useClock(testTimeInMilliseconds, {
+        locales: 'en-EN',
+        dateTimeFormatOptions: { timeZone: 'Asia/Tokyo' },
+      })
     )
     expect(result.current).toBe('9:59:14 PM')
 
@@ -76,7 +79,7 @@ describe('useClock', () => {
   it('supports custom formatting', () => {
     const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
     const testFormatter = (date: Date) =>
-      date.toLocaleTimeString('de-DE', { timeZone: 'Europe/Berlin' }) + "foobar"
+      date.toLocaleTimeString('de-DE', { timeZone: 'Europe/Berlin' }) + 'foobar'
     const { result } = renderHook(() =>
       useClock(testTimeInMilliseconds, { customFormatter: testFormatter })
     )

@@ -8,9 +8,8 @@ import { IdleCallbackEffectCallback } from './idle-callback/types'
 import useIdleCallback from './idle-callback/useIdleCallback'
 import useAnimationFrame from './animation-frame/useAnimationFrame'
 import useAnimationFrameLoop from './animation-frame/useAnimationFrameLoop'
-import useClock from "./interval/useClock";
-import { ClockOptions } from "./interval/useClock";
-
+import useClock from './interval/useClock'
+import { ClockOptions } from './interval/useClock'
 
 export {
   useAnimationFrame,
@@ -24,5 +23,5 @@ export {
   useTimeoutEffect,
   IdleCallbackEffectCallback,
   TimeoutEffectCallback,
-  ClockOptions
+  ClockOptions,
 }
