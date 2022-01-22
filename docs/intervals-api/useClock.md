@@ -26,6 +26,7 @@ return <span>{currentTime}</span>
 ## API
 
 `useClock<T>(startTimeInMilliseconds: number, options: ClockOptions)`
+{: .fs-6 .fw-300 }
 
 ### Params
 
@@ -37,8 +38,8 @@ Alternatively, a completely custom formatter can also be used (see `options.cust
 |:----------------------------|:-----|:--------------------------------------------|:---------------------------------------------------------------------|
 | `startTimeInMilliseconds`   |`number`| `Date.now()`                                | A number in milliseconds, marking the start time.                    |
 | `options`                   |`object`| `undefined`                                 | An object of options, see below                                      |
-| `options.locales`           |`string or string[]`      | `undefined` | A function that turns the date which is updated every second into a string. This string will then be the output of the hook. |
-| `options.dateTimeFormatOptions` |`Intl.DateTimeFormatOptions`| `undefined` | A function that turns the date which is updated every second into a string. This string will then be the output of the hook. |
+| `options.locales`           |`string or string[]`      | `undefined` | Locales forwarded to `Date.toLocaleTimeString()`, ignored if custom formatter is used. |
+| `options.dateTimeFormatOptions` |`Intl.DateTimeFormatOptions`| `undefined` | Options forwarded to `Date.toLocaleTimeString()`, ignored if custom formatter is used. |
 | `options.customFormatter`    |`(date: Date) => T` | `undefined` | Alters the return value of `useClock`. Must return `T`. |
 
 ### Generic type
