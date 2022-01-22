@@ -9,22 +9,22 @@ describe('useClock', () => {
   it('displays/returns the correct time, every second', () => {
     const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
     const { result } = renderHook(() => useClock(testTimeInMilliseconds))
-    expect(result.current).toContain(':59:14 PM')
+    expect(result.current).toContain(':59:14')
 
     act(() => {
       jest.advanceTimersByTime(1000)
     })
-    expect(result.current).toContain(':59:15 PM')
+    expect(result.current).toContain(':59:15')
 
     act(() => {
       jest.advanceTimersByTime(1000)
     })
-    expect(result.current).toContain(':59:16 PM')
+    expect(result.current).toContain(':59:16')
 
     act(() => {
       jest.advanceTimersByTime(2000) // 2(!) seconds
     })
-    expect(result.current).toContain(':59:18 PM')
+    expect(result.current).toContain(':59:18')
   })
 
   it('supports changing locale', () => {
@@ -53,7 +53,7 @@ describe('useClock', () => {
   it('supports custom dateTimeFormat options', () => {
     const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
     const { result } = renderHook(() =>
-      useClock(testTimeInMilliseconds, { dateTimeFormatOptions: { timeZone: 'Asia/Tokyo' } })
+      useClock(testTimeInMilliseconds, { locales: 'en-EN', dateTimeFormatOptions: { timeZone: 'Asia/Tokyo' } })
     )
     expect(result.current).toBe('9:59:14 PM')
 
