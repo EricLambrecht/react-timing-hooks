@@ -6,7 +6,12 @@ nav_order: 3
 
 # useClock
 
-This hook can be used to render a reactive "text clock", i.e. a time-string that updates every second.
+This hook creates a sort of clock, i.e. a reactive time-based value that updates every second.
+
+The output of useClock is easily customizable via the `options` argument, see [below](#params).
+
+`useClock` is also generic (by default `useClock<string>` is used). The generic type has to be specified if a 
+custom formatter (see `options.customFormatter`) is used that returns something else than a string.
 
 ## Example
 
@@ -20,15 +25,26 @@ return <span>{currentTime}</span>
 
 ## API
 
+`useClock<T>(startTimeInMilliseconds: number, options: ClockOptions)`
+
 ### Params
 
-`useClock(startTimeInMilliseconds, formatter)`
+`Date.toLocaleTimeString` is used to output the time. The output can be formatted via `options.locales` and/or `options.dateTimeFormatOptions`. 
 
-| Name                        | Default                                     | Description                                                          |
-|:----------------------------|:--------------------------------------------|:---------------------------------------------------------------------|
-| startTimeInMilliseconds     | `Date.now()`                                | A number in milliseconds, marking the start time.                    |
-| formatter                   | `(date: Date) => date.toLocaleTimeString()` | A function that turns the date which is updated every second into a string. This string will then be the output of the hook. |
+Alternatively, a completely custom formatter can also be used (see `options.customFormatter`).
+
+| Name                        | Type | Default                                     | Description                                                          |
+|:----------------------------|:-----|:--------------------------------------------|:---------------------------------------------------------------------|
+| `startTimeInMilliseconds`   |`number`| `Date.now()`                                | A number in milliseconds, marking the start time.                    |
+| `options`                   |`object`| `undefined`                                 | An object of options, see below                                      |
+| `options.locales`           |`string or string[]`      | `undefined` | A function that turns the date which is updated every second into a string. This string will then be the output of the hook. |
+| `options.dateTimeFormatOptions` |`Intl.DateTimeFormatOptions`| `undefined` | A function that turns the date which is updated every second into a string. This string will then be the output of the hook. |
+| `options.customFormatter`    |`(date: Date) => T` | `undefined` | Alters the return value of `useClock`. Must return `T`. |
+
+### Generic type
+
+Defaults to `string`. Does have to be set only when a custom formatter is used.
 
 ### Return value
 
-The time string – updated every second.
+A formatted time string (by default) or the output of `options.customFormatter` (if set) – updated every second.
