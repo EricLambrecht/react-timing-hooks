@@ -36,11 +36,11 @@ Alternatively, a completely custom formatter can also be used (see `options.cust
 
 | Name                        | Type | Default                                     | Description                                                          |
 |:----------------------------|:-----|:--------------------------------------------|:---------------------------------------------------------------------|
-| `startTimeInMilliseconds`   |`number`| `Date.now()`                                | A number in milliseconds, marking the start time.                    |
 | `options`                   |`object`| `undefined`                                 | An object of options, see below                                      |
 | `options.locales`           |`string or string[]`      | `undefined` | Locales forwarded to `Date.toLocaleTimeString()`, ignored if custom formatter is used. |
 | `options.dateTimeFormatOptions` |`Intl.DateTimeFormatOptions`| `undefined` | Options forwarded to `Date.toLocaleTimeString()`, ignored if custom formatter is used. |
 | `options.customFormatter`    |`(date: Date) => T` | `undefined` | Alters the return value of `useClock`. Must return `T`. |
+| `options.startTimeInMilliseconds` |`number`| `Date.now()`                                | A number in milliseconds, marking the start time of the clock.                    |
 
 ### Generic type
 

@@ -8,7 +8,7 @@ describe('useClock', () => {
 
   it('displays/returns the correct time, every second', () => {
     const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
-    const { result } = renderHook(() => useClock(testTimeInMilliseconds))
+    const { result } = renderHook(() => useClock({ startTimeInMilliseconds: testTimeInMilliseconds }))
     expect(result.current).toContain(':59:14')
 
     act(() => {
@@ -30,7 +30,7 @@ describe('useClock', () => {
   it('supports changing locale', () => {
     const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
     const { result } = renderHook(() =>
-      useClock(testTimeInMilliseconds, { locales: 'fr-FR' })
+      useClock({ startTimeInMilliseconds: testTimeInMilliseconds, locales: 'fr-FR' })
     )
     expect(result.current).toBe('13:59:14')
 
@@ -53,7 +53,8 @@ describe('useClock', () => {
   it('supports custom dateTimeFormat options', () => {
     const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
     const { result } = renderHook(() =>
-      useClock(testTimeInMilliseconds, {
+      useClock({
+        startTimeInMilliseconds: testTimeInMilliseconds,
         locales: 'en-EN',
         dateTimeFormatOptions: { timeZone: 'Asia/Tokyo' },
       })
@@ -81,7 +82,7 @@ describe('useClock', () => {
     const testFormatter = (date: Date) =>
       date.toLocaleTimeString('de-DE', { timeZone: 'Europe/Berlin' }) + 'foobar'
     const { result } = renderHook(() =>
-      useClock(testTimeInMilliseconds, { customFormatter: testFormatter })
+      useClock({ startTimeInMilliseconds: testTimeInMilliseconds, customFormatter: testFormatter })
     )
     expect(result.current).toBe('13:59:14foobar')
 
