@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.2.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v2.2.0...v2.2.1) (2022-01-22)
+
+
+### Bug Fixes
+
+* Fix useClock export, also change it's api while still possible ([5ebc423](https://github.com/EricLambrecht/react-timing-hooks/commit/5ebc423e1f58e58680934d784ffaa50493dd81ae))
+
 ## [2.2.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v2.1.0...v2.2.0) (2022-01-19)
 
 Add support for React 17.
