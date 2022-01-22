@@ -1,7 +1,7 @@
 import { act, render } from '@testing-library/react'
 import React from 'react'
 import { removeFlushTimers } from './helpers'
-import useClock from '../src/interval/useClock'
+import { useClock } from '../.tmp/index'
 
 jest.useFakeTimers()
 

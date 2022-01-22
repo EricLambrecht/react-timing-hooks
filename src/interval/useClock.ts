@@ -1,13 +1,32 @@
 import useTimer from './useTimer'
 
-const useClock = (
+export interface ClockOptions<T> {
+  locales?: string | string[]
+  dateTimeFormatOptions?: Intl.DateTimeFormatOptions
+  customFormatter?: (date: Date) => T
+}
+
+/**
+ * Creates a sort of clock, i.e. a reactive time-based value that updates every second.
+ * useClock is generic (by default useClock<string> is used). The generic type defines the return type which can be
+ * changed by using a custom formatter (see options.customFormatter).
+ *
+ * @template [T=string]
+ * @param startTimeInMilliseconds Used to initialize the clock with a Javascript Date.
+ * @param options options.locales and options.dateTimeFormatOptions will be directly forwarded to date.toLocaleTimeString(). You can also use options.customFormatter to override the output of the hook. The output must match the generic type of the hook.
+ * @returns {T}
+ */
+const useClock = <T = string>(
   startTimeInMilliseconds = Date.now(),
-  formatter = (date: Date) => date.toLocaleTimeString()
+  options?: ClockOptions<T>
 ) => {
   const startTimeInSeconds = startTimeInMilliseconds / 1000
   const currentTimeInSeconds = useTimer(startTimeInSeconds)
   const date = new Date(currentTimeInSeconds * 1000)
-  return formatter(date)
+  if (options?.customFormatter) {
+    return options?.customFormatter(date);
+  }
+  return date.toLocaleTimeString(options?.locales, options?.dateTimeFormatOptions)
 }
 
 export default useClock

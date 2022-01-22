@@ -27,12 +27,10 @@ describe('useClock', () => {
     expect(result.current).toContain(':59:18 PM')
   })
 
-  it('supports custom formatting', () => {
+  it('supports changing locale', () => {
     const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
-    const testFormatter = (date: Date) =>
-      date.toLocaleTimeString('de-DE', { timeZone: 'Europe/Berlin' })
     const { result } = renderHook(() =>
-      useClock(testTimeInMilliseconds, testFormatter)
+      useClock(testTimeInMilliseconds, { locales: 'fr-FR' })
     )
     expect(result.current).toBe('13:59:14')
 
@@ -50,5 +48,53 @@ describe('useClock', () => {
       jest.advanceTimersByTime(2000) // 2(!) seconds
     })
     expect(result.current).toBe('13:59:18')
+  })
+
+  it('supports custom dateTimeFormat options', () => {
+    const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
+    const { result } = renderHook(() =>
+      useClock(testTimeInMilliseconds, { dateTimeFormatOptions: { timeZone: 'Asia/Tokyo' } })
+    )
+    expect(result.current).toBe('9:59:14 PM')
+
+    act(() => {
+      jest.advanceTimersByTime(1000)
+    })
+    expect(result.current).toBe('9:59:15 PM')
+
+    act(() => {
+      jest.advanceTimersByTime(1000)
+    })
+    expect(result.current).toBe('9:59:16 PM')
+
+    act(() => {
+      jest.advanceTimersByTime(2000) // 2(!) seconds
+    })
+    expect(result.current).toBe('9:59:18 PM')
+  })
+
+  it('supports custom formatting', () => {
+    const testTimeInMilliseconds = 1642251554998 // Jan 15th 2022, 1:59:14 PM
+    const testFormatter = (date: Date) =>
+      date.toLocaleTimeString('de-DE', { timeZone: 'Europe/Berlin' }) + "foobar"
+    const { result } = renderHook(() =>
+      useClock(testTimeInMilliseconds, { customFormatter: testFormatter })
+    )
+    expect(result.current).toBe('13:59:14foobar')
+
+    act(() => {
+      jest.advanceTimersByTime(1000)
+    })
+    expect(result.current).toBe('13:59:15foobar')
+
+    act(() => {
+      jest.advanceTimersByTime(1000)
+    })
+    expect(result.current).toBe('13:59:16foobar')
+
+    act(() => {
+      jest.advanceTimersByTime(2000) // 2(!) seconds
+    })
+    expect(result.current).toBe('13:59:18foobar')
   })
 })
