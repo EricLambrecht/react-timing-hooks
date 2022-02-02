@@ -15,7 +15,7 @@ has_children: false
 npm i react-timing-hooks
 
 # via yarn
-yarn add react-timing-hooks2612
+yarn add react-timing-hooks
 ```
 
 **Note:** You have to install React `^16.8.0` or `^17.0.0`, too, in order to use this package.
