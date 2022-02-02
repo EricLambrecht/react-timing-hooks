@@ -35,11 +35,11 @@ There are currently hooks available for:
 The APIs of all hooks are documented on this page (see sidebar). They should be pretty straight forward, but feel free
 to add an issue on GitHub if you have any ideas for improvement.
 
-### Typescript / Treeshaking
+### Typescript
 
 This package is developed in Typescript, so everything is typed out of the box. You don't need to install types seperately.
 
-### Package size
+### Package size / Treeshaking
 
 This package is extremely small already (see [here](https://bundlephobia.com/result?p=react-timing-hooks)), but your bundle
 size will be even less affected by this package, because it's completely **tree-shakable**, i.e. only hooks you actually use
@@ -55,7 +55,7 @@ has to be done in a separate `useEffect` call that cleans everything up (but onl
 
 Your code could look like this:
 
-```jsx harmony
+```javascript
 import { useEffect } from 'react'
 
 const TimeoutRenderer = ({ depA, depB }) => {
@@ -84,7 +84,7 @@ const TimeoutRenderer = ({ depA, depB }) => {
 
 With `react-timing-hooks` you can just write:
 
-```jsx harmony
+```javascript
 import { useState } from 'react'
 import { useTimeoutEffect } from 'react-timing-hooks'
 
