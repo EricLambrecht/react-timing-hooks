@@ -1,19 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import {
-  RequestIdleCallbackDeadline,
-  RequestIdleCallbackHandle,
-  RequestIdleCallbackOptions,
-} from './types'
-
-declare global {
-  interface Window {
-    requestIdleCallback: (
-      callback: (deadline: RequestIdleCallbackDeadline) => unknown,
-      options?: RequestIdleCallbackOptions
-    ) => RequestIdleCallbackHandle
-    cancelIdleCallback: (handle: RequestIdleCallbackHandle) => void
-  }
-}
+import { RequestIdleCallbackHandle, RequestIdleCallbackOptions } from './types'
 
 /**
  * @param callback The callback that is invoked as soons as the browser invokes the idle callback

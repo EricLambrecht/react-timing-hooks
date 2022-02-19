@@ -6,16 +6,6 @@ import {
   RequestIdleCallbackOptions,
 } from './types'
 
-declare global {
-  interface Window {
-    requestIdleCallback: (
-      callback: (deadline: RequestIdleCallbackDeadline) => unknown,
-      options?: RequestIdleCallbackOptions
-    ) => RequestIdleCallbackHandle
-    cancelIdleCallback: (handle: RequestIdleCallbackHandle) => void
-  }
-}
-
 const useIdleCallbackEffect = (
   effect: IdleCallbackEffectCallback,
   deps: DependencyList
