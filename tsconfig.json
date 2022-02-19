@@ -19,7 +19,8 @@
     "declaration": true,
     "jsx": "react",
     "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node"
   },
   "include": [
     "./src"
