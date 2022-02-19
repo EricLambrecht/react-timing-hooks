@@ -34,25 +34,26 @@ describe('useClock', () => {
     const { result } = renderHook(() =>
       useClock({
         startTimeInMilliseconds: testTimeInMilliseconds,
+        dateTimeFormatOptions: { timeZone: 'UTC' },
         locales: 'fr-FR',
       })
     )
-    expect(result.current).toBe('13:59:14')
+    expect(result.current).toBe('12:59:14')
 
     act(() => {
       jest.advanceTimersByTime(1000)
     })
-    expect(result.current).toBe('13:59:15')
+    expect(result.current).toBe('12:59:15')
 
     act(() => {
       jest.advanceTimersByTime(1000)
     })
-    expect(result.current).toBe('13:59:16')
+    expect(result.current).toBe('12:59:16')
 
     act(() => {
       jest.advanceTimersByTime(2000) // 2(!) seconds
     })
-    expect(result.current).toBe('13:59:18')
+    expect(result.current).toBe('12:59:18')
   })
 
   it('supports custom dateTimeFormat options', () => {
