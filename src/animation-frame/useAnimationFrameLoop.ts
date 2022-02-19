@@ -16,15 +16,17 @@ const useAnimationFrameLoop = <T extends (...args: never[]) => unknown>(
   const nextCallback = useCallback(() => {
     if (!pauseValue.current) {
       rafCallback.current()
+      runInLoop()
     }
-    runInLoop()
   }, [])
 
   const runInLoop = useAnimationFrame(nextCallback)
 
   useEffect(() => {
-    runInLoop()
-  }, [runInLoop])
+    if (!pause) {
+      runInLoop()
+    }
+  }, [runInLoop, pause])
 }
 
 export default useAnimationFrameLoop

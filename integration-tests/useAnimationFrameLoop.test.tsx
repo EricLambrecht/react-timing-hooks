@@ -121,7 +121,7 @@ describe('useAnimationFrameLoop() Integration Test', () => {
       const promise = new Promise<void>((r) => setTimeout(r, 250))
       await act(() => promise)
       expect(
-        renderMock.mock.calls.filter((args) => args[0] === true) // rendere call where paused was true
+        renderMock.mock.calls.filter((args) => args[0] === true) // render call where paused was true
       ).toHaveLength(1)
     })
   })
