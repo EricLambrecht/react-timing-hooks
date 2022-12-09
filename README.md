@@ -1,4 +1,4 @@
-<img src="https://github.com/EricLambrecht/react-timing-hooks/raw/master/logo.png" width="720" />
+<img src="https://github.com/EricLambrecht/react-timing-hooks/raw/master/logo.png" width="680" />
 
 [![npm](https://flat.badgen.net/npm/v/react-timing-hooks)](https://www.npmjs.com/package/react-timing-hooks)
 [![minified](https://flat.badgen.net/bundlephobia/minzip/react-timing-hooks)](https://bundlephobia.com/result?p=react-timing-hooks)
