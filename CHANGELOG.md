@@ -7,7 +7,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* Drop support for Node 10 and 12 which have reached end of life.
+Support for Node 10 and 12 was dropped (since they already reached EOL).
+
+However, the API itself has **no** breaking changes, so it should be safe to update as long as you use Node 14 or higher!
+
 
 ### Features
 
