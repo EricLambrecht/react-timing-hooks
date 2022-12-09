@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.0.0...v3.1.0) (2022-12-09)
+
+
+### Features
+
+* **timeout:** Allow manual clearance of timeouts ([8a589b8](https://github.com/EricLambrecht/react-timing-hooks/commit/8a589b8ec78eb7fb9f536289993471171d353322)), closes [#28](https://github.com/EricLambrecht/react-timing-hooks/issues/28)
+
 ## [3.0.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v2.2.3...v3.0.0) (2022-12-09)
 
 
