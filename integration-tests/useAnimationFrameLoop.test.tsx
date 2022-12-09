@@ -120,9 +120,10 @@ describe('useAnimationFrameLoop() Integration Test', () => {
       await userEvent.click(pauseButton)
       const promise = new Promise<void>((r) => setTimeout(r, 250))
       await act(() => promise)
+      const expectedCalls = 1
       expect(
         renderMock.mock.calls.filter((args) => args[0] === true) // render call where paused was true
-      ).toHaveLength(1)
+      ).toHaveLength(expectedCalls)
     })
   })
 })

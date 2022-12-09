@@ -1,7 +1,8 @@
-import { act, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import React from 'react'
 import { removeFlushTimers } from './helpers'
 import { useClock } from '../.tmp/index'
+import { advanceTimersUsingAct } from '../src/testing/advanceTimersUsingAct'
 
 jest.useFakeTimers()
 
@@ -23,28 +24,22 @@ describe('useClock() Integration Test', () => {
     }
     return 0
   }
-  it('displays a time string which is updated every second', () => {
+  it('displays a time string which is updated every second', async () => {
     const { getByTestId, unmount } = render(<TestComponent />)
 
     const secondsAtTestStart = getSecondsFromFormattedTime(
       getByTestId('output').textContent
     )
 
-    act(() => {
-      jest.advanceTimersByTime(1000)
-    })
+    await advanceTimersUsingAct(1)
     expect(getSecondsFromFormattedTime(getByTestId('output').textContent)).toBe(
       (secondsAtTestStart + 1) % 60
     )
-    act(() => {
-      jest.advanceTimersByTime(1000)
-    })
+    await advanceTimersUsingAct(1)
     expect(getSecondsFromFormattedTime(getByTestId('output').textContent)).toBe(
       (secondsAtTestStart + 2) % 60
     )
-    act(() => {
-      jest.advanceTimersByTime(4000)
-    })
+    await advanceTimersUsingAct(4)
     expect(getSecondsFromFormattedTime(getByTestId('output').textContent)).toBe(
       (secondsAtTestStart + 6) % 60
     )

@@ -1,43 +1,34 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react'
 import useTimer from './useTimer'
+import { advanceTimersUsingAct } from '../testing/advanceTimersUsingAct'
 
 describe('useTimer', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
 
-  it('counts up every second', () => {
+  it('counts up every second', async () => {
     const { result } = renderHook(() => useTimer())
     expect(result.current).toBe(0)
 
-    act(() => {
-      jest.advanceTimersByTime(1000)
-    })
+    await advanceTimersUsingAct(1)
     expect(result.current).toBe(1)
 
-    act(() => {
-      jest.advanceTimersByTime(1000)
-    })
+    await advanceTimersUsingAct(1)
     expect(result.current).toBe(2)
 
-    act(() => {
-      jest.advanceTimersByTime(2000)
-    })
+    await advanceTimersUsingAct(2)
     expect(result.current).toBe(4)
   })
 
-  it('accepts start value', () => {
+  it('accepts start value', async () => {
     const { result } = renderHook(() => useTimer(900))
     expect(result.current).toBe(900)
 
-    act(() => {
-      jest.advanceTimersByTime(1000)
-    })
+    await advanceTimersUsingAct(1)
     expect(result.current).toBe(901)
 
-    act(() => {
-      jest.advanceTimersByTime(5000)
-    })
+    await advanceTimersUsingAct(5)
     expect(result.current).toBe(906)
   })
 })
