@@ -18,7 +18,7 @@ npm i react-timing-hooks
 yarn add react-timing-hooks
 ```
 
-**Note:** You have to install React `^16.8.0` or `^17.0.0`, too, in order to use this package.
+**Note:** You have to install React `^16.8.0`, `^17.0.0` or `^18.0.0`, too, in order to use this package.
    
 ## Overview
 
