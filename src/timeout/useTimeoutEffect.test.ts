@@ -74,11 +74,12 @@ describe('useTimeoutEffect', () => {
     expect(onUnmount).toHaveBeenCalledWith('success')
   })
 
-  it('can be cleared manually', () => {
+  it('can be completely cleared manually', () => {
     const timeoutHandler = jest.fn()
 
     renderHook(() =>
       useTimeoutEffect((timeout, clearTimeout) => {
+        timeout(timeoutHandler, 500)
         timeout(timeoutHandler, 500)
         clearTimeout()
       }, [])
@@ -87,5 +88,21 @@ describe('useTimeoutEffect', () => {
     jest.advanceTimersByTime(500)
 
     expect(timeoutHandler).toHaveBeenCalledTimes(0)
+  })
+
+  it('can be specifically cleared via id', () => {
+    const timeoutHandler = jest.fn()
+
+    renderHook(() =>
+      useTimeoutEffect((timeout) => {
+        const id = timeout(timeoutHandler, 500)
+        timeout(timeoutHandler, 500)
+        clearTimeout(id)
+      }, [])
+    )
+
+    jest.advanceTimersByTime(500)
+
+    expect(timeoutHandler).toHaveBeenCalledTimes(1)
   })
 })

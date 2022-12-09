@@ -33,12 +33,13 @@ return <button onClick={hideDelayed}>Hide!</button>
 | name         | description                                                          |
 |:-------------|:---------------------------------------------------------------------|
 | callback     | a function that will be invoked as soon as the timeout expires       |
-| timeout      | the timeout in milliseconds
+| timeout      | the timeout in milliseconds                                          |
 
 ### Return value
 
-A function will be returned, that - once executed - will run the `callback`-function after `{timeout}` milliseconds
+A function will be returned, that - once executed - will run the `callback`-function after `{timeout}` milliseconds.
+The function will also return the timeout id in case you want to clear it manually via `clearTimeout(id)`.
 
 ## Notes
 
-This hook will automatically clear any pending timeout on unmount.
+This hook will automatically clear any pending timeout on unmount. Timeout's can be cleared manually as well (see "Return value").

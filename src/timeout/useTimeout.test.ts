@@ -12,7 +12,9 @@ describe('useTimeout', () => {
 
     renderHook(() => {
       const func = useTimeout(timeoutHandler, 500)
-      useEffect(() => func(), [func])
+      useEffect(() => {
+        func()
+      }, [func])
     })
 
     jest.advanceTimersByTime(500)
@@ -25,8 +27,41 @@ describe('useTimeout', () => {
 
     const { unmount } = renderHook(() => {
       const func = useTimeout(timeoutHandler, 500)
-      useEffect(() => func(), [func])
+      useEffect(() => {
+        func()
+      }, [func])
     })
+
+    unmount()
+    jest.runAllTimers()
+
+    expect(timeoutHandler).toHaveBeenCalledTimes(0)
+  })
+
+  it('returns the timeout id for manual clearance', () => {
+    const timeoutHandler = jest.fn()
+
+    const { unmount, result } = renderHook(() =>
+      useTimeout(timeoutHandler, 500)
+    )
+    expect(result.current).toBeInstanceOf(Function)
+    expect(result.current()).toEqual(expect.any(Number))
+
+    unmount()
+    jest.runAllTimers()
+
+    expect(timeoutHandler).toHaveBeenCalledTimes(1)
+  })
+
+  it('timeout can be manually cleared', () => {
+    const timeoutHandler = jest.fn()
+
+    const { unmount, result } = renderHook(() =>
+      useTimeout(timeoutHandler, 500)
+    )
+    const timeoutId = result.current()
+    expect(timeoutId).toEqual(expect.any(Number))
+    clearTimeout(timeoutId)
 
     unmount()
     jest.runAllTimers()

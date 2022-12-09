@@ -10,6 +10,7 @@ const useTimeoutEffect = (
     (handler: () => any, timeout: number) => {
       const id = setTimeout(handler, timeout)
       timeoutIds.current.push(id)
+      return id
     },
     [timeoutIds]
   )

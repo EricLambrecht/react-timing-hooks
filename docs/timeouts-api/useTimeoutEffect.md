@@ -34,16 +34,17 @@ useTimeoutEffect((timeout, clear) => {
 | name           | description                                                          |
 |:---------------|:---------------------------------------------------------------------|
 | effectCallback | Like a regular `useEffect` callback, but receives it receives two arguments, see below |
-| timeout        | This is your regular `useEffect` dependency array
+| timeout        | This is your regular `useEffect` dependency array                                      |
 
 ##### effectCallback(timeout, clear)
 
 The effect callback receives two arguments: 
 
 1. `timeout(cb, timeout)`: This has the same signature as a native `setTimeout`. The only difference is, that timeouts created with this function will automatically be cleared when you unmount the component.
-2. `clear`: A function to manually clear the current timeout if that is desired. (Timeouts will be cleared automatically on unmount).
+2. `clear`: A function to manually clear all spawned timeouts if that is desired. (Timeouts will be cleared automatically on unmount).
 
 
 ## Notes
 
-This hook will automatically clear any pending timeout(s) on unmount. You don't have to clean up the timeouts manually. But you can (using the second param of the effect callback).
+This hook will automatically clear any pending timeout(s) on unmount. You don't have to clean up the timeouts manually. 
+However, you can clear them manually via the returned id (or all at once using the second param of the effect callback).
