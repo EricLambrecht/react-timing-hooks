@@ -6,7 +6,7 @@ has_children: false
 ---
 
 
-# React Timing Hooks Documentation
+<img alt="logo" src="https://github.com/EricLambrecht/react-timing-hooks/raw/master/logo.png" width="680" />
 
 ## Installation
 
