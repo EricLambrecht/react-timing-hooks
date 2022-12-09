@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v2.2.3...v3.0.0) (2022-12-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* Drop support for Node 10 and 12 which have reached end of life.
+
+### Features
+
+* **react:** Add official support for React 18 ([cf7114f](https://github.com/EricLambrecht/react-timing-hooks/commit/cf7114fd485a4c7a1f07cf57a1ef946a193d34de))
+
+
+### ci
+
+* 🚀 Do not test Node 10 and 12 anymore, add tests for Node 18 ([2f2a670](https://github.com/EricLambrecht/react-timing-hooks/commit/2f2a670e11db69ef7204f44d5eea1f51995ce4ab))
+
 ### [2.2.3](https://github.com/EricLambrecht/react-timing-hooks/compare/v2.2.2...v2.2.3) (2022-02-19)
 
 
