@@ -1,6 +1,6 @@
 // @ts-ignore
 import { animationFrame, ensureMocksReset } from '@shopify/jest-dom-mocks'
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act } from '@testing-library/react'
 import useAnimationFrameLoop from './useAnimationFrameLoop'
 
 describe('useAnimationFrameLoop', () => {

@@ -120,9 +120,15 @@ describe('useAnimationFrameLoop() Integration Test', () => {
       await userEvent.click(pauseButton)
       const promise = new Promise<void>((r) => setTimeout(r, 250))
       await act(() => promise)
+      /**
+       * Since the update to React 18, this number is sometimes 1, sometimes 2. Since the intent of this test
+       * is only to prevent infinite render loops (which would be a significantly higher number), we just check
+       * whether we're in the right ballpark.
+       */
+      const maxNumberOfCalls = 3
       expect(
-        renderMock.mock.calls.filter((args) => args[0] === true) // render call where paused was true
-      ).toHaveLength(1)
+        renderMock.mock.calls.filter((args) => args[0] === true).length // render call where paused was true
+      ).toBeLessThan(maxNumberOfCalls)
     })
   })
 })

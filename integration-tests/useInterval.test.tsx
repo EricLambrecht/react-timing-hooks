@@ -2,6 +2,7 @@ import { act, fireEvent, render } from '@testing-library/react'
 import { useInterval } from '../.tmp/index'
 import React, { useState } from 'react'
 import { removeFlushTimers } from './helpers'
+import { advanceTimersUsingAct } from '../src/testing/advanceTimersUsingAct'
 
 jest.useFakeTimers()
 
@@ -28,7 +29,7 @@ const TestComponent: React.FC = () => {
 }
 
 describe('useInterval() Integration Test', () => {
-  it('runs the handler function every time the delay has passed', () => {
+  it('runs the handler function every time the delay has passed', async () => {
     const { getByTestId, unmount } = render(<TestComponent />)
 
     act(() => {
@@ -39,13 +40,9 @@ describe('useInterval() Integration Test', () => {
     const button = getByTestId('button')
     fireEvent.click(button)
 
-    act(() => {
-      jest.advanceTimersByTime(500)
-    })
+    await advanceTimersUsingAct(1, 500)
     expect(getByTestId('output').textContent).toBe('1')
-    act(() => {
-      jest.advanceTimersByTime(2000)
-    })
+    await advanceTimersUsingAct(4, 500)
     expect(getByTestId('output').textContent).toBe('5')
     unmount()
     removeFlushTimers()
