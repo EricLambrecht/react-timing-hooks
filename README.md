@@ -39,7 +39,7 @@ yarn add react-timing-hooks
 
 ## Examples
 
-#### Delay a button click action
+#### `useTimeout()`: Delay a button click action
 ```jsx harmony
 import { useState } from 'react'
 import { useTimeout } from 'react-timing-hooks'
@@ -55,12 +55,39 @@ const TimeoutRenderer = () => {
 }
 ```
 
-#### Display the current time, in real-time
+#### `useTimeout()`: Delay a button click action
 ```jsx harmony
 import { useState } from 'react'
 import { useTimeout } from 'react-timing-hooks'
 
-const ClockRenderer = () => {
+const TimeoutRenderer = () => {
+  const [output, setOutput] = useState(null)
+  const onButtonClick = useTimeout(() => setOutput('Hello World'), 1000)
+
+  return <div>
+    <button onClick={onButtonClick}>Start timeout!</button>
+    <p>{output}</p>
+  </div>
+}
+```
+
+#### `useTimer`: Display how long the user has been browsing
+```jsx harmony
+import { useState } from 'react'
+import { useTimer } from 'react-timing-hooks'
+
+const BrowsingTime = () => {
+  const elapsedSeconds = useTimer()
+  return <span>You've been browsing this page for {elapsedSeconds} seconds.</span>
+}
+```
+
+#### `useClock`: Display the current time, in real-time
+```jsx harmony
+import { useState } from 'react'
+import { useTimeout } from 'react-timing-hooks'
+
+const Clock = () => {
   // This will show a time like 1:13:56 PM (supports localized formats as well).
   // The displayed time will update every second
   const currentTime = useClock()
@@ -68,7 +95,7 @@ const ClockRenderer = () => {
 }
 ```
 
-#### Create an animation frame loop
+#### `useAnimationFrameLoop`: Create an animation frame loop
 
 ```jsx harmony
 import { useState } from 'react'
