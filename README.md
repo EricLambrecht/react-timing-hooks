@@ -37,6 +37,11 @@ npm i react-timing-hooks
 yarn add react-timing-hooks
 ```
 
+### Documentation
+
+[https://ericlambrecht.github.io/react-timing-hooks/](https://ericlambrecht.github.io/react-timing-hooks/)
+
+
 ## Examples
 
 #### `useTimeout()`: Delay a button click action
@@ -120,14 +125,13 @@ const AnimationFrameCounter = ({ depA, depB }) => {
 }
 ```   
 
-## Documentation
-
-[https://ericlambrecht.github.io/react-timing-hooks/](https://ericlambrecht.github.io/react-timing-hooks/)
-
 ## Why does this exist?
 
-Writing a timeout or anything similar requires a lot of **boilerplate** (if you don't do it quick and dirty).
-This library is supposed to give you easy access to those functionalities while keeping your code clean and concise. 
+I was once working for a company where the project required lots of timeouts and such. I quickly noticed that 
+writing a timeout or anything similar requires a lot of **boilerplate** (if you don't do it quick and dirty).
+Dan Abramov showcased this in [one of his blogposts](https://overreacted.io/making-setinterval-declarative-with-react-hooks/) a while a go.
+
+This library is supposed to give you easy access to those time-related functionalities while keeping your code clean and concise. 
 You will **not** have to manually clean up timers or intervals (but you still can!).
 Additionally, many frequent use cases have their own utility hook, like `useClock` or `useAnimationFrameLoop`.
 Needless to say, every hook is already tested and typed (so you don't have to).
