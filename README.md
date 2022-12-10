@@ -1,21 +1,31 @@
-<img src="https://github.com/EricLambrecht/react-timing-hooks/raw/master/logo.png" width="680" />
+<img alt="logo" src="https://github.com/EricLambrecht/react-timing-hooks/raw/master/logo.png" width="680" />
 
 [![npm](https://flat.badgen.net/npm/v/react-timing-hooks)](https://www.npmjs.com/package/react-timing-hooks)
 [![minified](https://flat.badgen.net/bundlephobia/minzip/react-timing-hooks)](https://bundlephobia.com/result?p=react-timing-hooks)
 ![types](https://flat.badgen.net/npm/types/react-timing-hooks)
 [![checks](https://flat.badgen.net/github/checks/EricLambrecht/react-timing-hooks)](https://github.com/EricLambrecht/react-timing-hooks)
 
-## Features
+## Wow! What's this?!
 
-* Several React hooks wrapping 
-    * `requestAnimationFrame`
-    * `setTimeout`
-    * `setInterval`
-    * `requestIdleCallback`
-* Including "effect" versions and utility hooks like `useTimer`, `useAnimationFrameLoop`
-* Full Typescript support  
-* [Lightweight](https://bundlephobia.com/result?p=react-timing-hooks) (less than 1KB minzipped, no external dependencies)
-* Tree-shakable
+This is a very little package with **React hooks wrapping time-related Vanilla JS functions**, so you can use them with minimal effort in your React apps without having to worry about manual clean up, testing, or typing (if you use Typescript).
+
+### Feature Overview
+
+* Several React hooks **wrapping Vanilla JS functions** like:
+  * `requestAnimationFrame()`
+  * `setTimeout()`
+  * `setInterval()`
+  * `requestIdleCallback()`
+* **Versatile API**, often including "callback" _and_ "effect" versions
+* Additional **utility hooks** like `useTimer`, `useAnimationFrameLoop` or `useClock`
+* Full **Typescript** support
+* **[Lightweight](https://bundlephobia.com/result?p=react-timing-hooks)** (less than 1KB minzipped, no transitive dependencies!)
+* **Tree-shakable** — You only bundle what you use!
+* ... and it **saves a lot of code**
+  * **Automatic clean-ups** of pending timers, intervals etc. (e.g. if your component un-mounts before a timer triggers)
+  * callbacks are automatically **memoized**
+  * All hooks are already **tested**
+
 
 ## Installation
 
@@ -27,8 +37,39 @@ npm i react-timing-hooks
 yarn add react-timing-hooks
 ```
 
-## Usage
-   
+## Examples
+
+#### Delay a button click action
+```jsx harmony
+import { useState } from 'react'
+import { useTimeout } from 'react-timing-hooks'
+
+const TimeoutRenderer = () => {
+  const [output, setOutput] = useState(null)
+  const onButtonClick = useTimeout(() => setOutput('Hello World'), 1000)
+
+  return <div>
+    <button onClick={onButtonClick}>Start timeout!</button>
+    <p>{output}</p>
+  </div>
+}
+```
+
+#### Display the current time, in real-time
+```jsx harmony
+import { useState } from 'react'
+import { useTimeout } from 'react-timing-hooks'
+
+const ClockRenderer = () => {
+  // This will show a time like 1:13:56 PM (supports localized formats as well).
+  // The displayed time will update every second
+  const currentTime = useClock()
+  return <span>{currentTime}</span>
+}
+```
+
+#### Create an animation frame loop
+
 ```jsx harmony
 import { useState } from 'react'
 import { useAnimationFrameLoop } from 'react-timing-hooks'
@@ -55,13 +96,61 @@ const AnimationFrameCounter = ({ depA, depB }) => {
 ## Documentation
 
 [https://ericlambrecht.github.io/react-timing-hooks/](https://ericlambrecht.github.io/react-timing-hooks/)
-   
-## Why bother?
 
-Writing a timeout or anything similar requires a lot of boilerplate (if you don't do it quick and dirty).
-This library is supposed to give you easy access to those functionalities while keeping your code clean.
+## Why does this exist?
 
-For example: You might have a timeout that runs under a certain condition. In this case a cleanup
+Writing a timeout or anything similar requires a lot of **boilerplate** (if you don't do it quick and dirty).
+This library is supposed to give you easy access to those functionalities while keeping your code clean and concise. 
+You will **not** have to manually clean up timers or intervals (but you still can!).
+Additionally, many frequent use cases have their own utility hook, like `useClock` or `useAnimationFrameLoop`.
+Needless to say, every hook is already tested and typed (so you don't have to).
+
+### Some "Before-/After-Code"
+
+A simple timeout triggered by a button click for example would usually be written like so:
+
+```jsx harmony
+import { useEffect } from 'react'
+
+const TimeoutRenderer = () => {
+  const [isHidden, setIsHidden] = useState(false)
+  const [id, setId] = useRef(null)
+  const onButtonClick = () => {
+    id.current = setTimeout(() => setOutput('Hello World'), 1000)
+  }
+  
+  // clean up the timeout on unmount
+  useEffect(() => {
+    return () => {
+      clearTimeout(id.current)
+    }
+  }, [id])
+    
+  return <div>
+    <button onClick={onButtonClick}>Start timeout!</button>
+    {isHidden && <p>Hide this message!</p>}
+  </div>
+}
+```
+
+With `react-timing-hooks` it would look like this:
+
+```jsx harmony
+import { useState } from 'react'
+import { useTimeout } from 'react-timing-hooks'
+
+const TimeoutRenderer = () => {
+  const [isHidden, setIsHidden] = useState(false)
+  const onButtonClick = useTimeout(() => setOutput('Hello World'), 1000)
+
+  return <div>
+    <button onClick={onButtonClick}>Start timeout!</button>
+    {isHidden && <p>Hide this message!</p>}
+  </div>
+}
+```
+
+**Another example:** You might have a timeout that runs under a certain condition. In this case a cleanup
 has to be done in a separate `useEffect` call that cleans everything up (but only on unmount).
 
 Your code could look like this:
@@ -72,13 +161,13 @@ import { useEffect } from 'react'
 const TimeoutRenderer = ({ depA, depB }) => {
   const [output, setOutput] = useState(null)
   const timeoutId = useRef(null)
-  
+
   useEffect(() => {
     if (depA && depB) {
       timeoutId.current = setTimeout(() => setOutput('Hello World'), 1000)
     }
   }, [depA, depB])
-  
+
   useEffect(() => {
     return function onUnmount() {
       if (timeoutId.current !== null) {
@@ -86,7 +175,7 @@ const TimeoutRenderer = ({ depA, depB }) => {
       }
     }
   }, [timeoutId])
-    
+
   return output ? (
     <div>{output}</div>
   ) : null
@@ -102,12 +191,13 @@ import { useTimeoutEffect } from 'react-timing-hooks'
 const TimeoutRenderer = ({ depA, depB }) => {
   const [output, setOutput] = useState(null)
 
-  useTimeoutEffect((timeout) => {
+  useTimeoutEffect((timeout, clearAll) => {
     if (depA && depB) {
       timeout(() => setOutput('Hello World'), 1000)
     }
+    // you could even add more timeouts in this effect without any more boilerplate
   }, [depA, depB])
-    
+
   return output ? (
     <div>{output}</div>
   ) : null
@@ -126,12 +216,19 @@ This means something like this is safe to do:
 const [foo, setFoo] = useState(null)
 const onFooChange = useTimeout(() => console.log('foo changed one second ago!'), 1000)
 
-// the following effect will run only when "foo" changes, just as expected. "onFooChange" is memoized and safe to use in a dependency array.
+// the following effect will run only when "foo" changes, just as expected.
+// "onFooChange" is memoized and safe to use in a dependency array.
 useEffect(() => {
   onFooChange()
 }, [foo, onFooChange])
 ```
-  
+
+### Bundle Size
+
+The whole lib is tree-shakable, i.e. only hooks you actually use end up in your bundle.
+So far, we also do not use any transitive dependencies. So don't worry about the bundle size.
+
+But check for yourself: https://bundlephobia.com/result?p=react-timing-hooks
 
 ## Contributing
 
