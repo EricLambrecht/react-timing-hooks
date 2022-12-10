@@ -13,12 +13,12 @@ In case you wonder where to find them.
 ## Pure Vanilla JS wrappers
 - [useTimeout](/react-timing-hooks/timeouts-api/useTimeout.html)
 - [useTimeoutEffect](/react-timing-hooks/timeouts-api/useTimeoutEffect.html)
-- [useInterval](/react-timing-hooks/timeouts-api/useInterval.html)
-- [useIdleCallback](/react-timing-hooks/timeouts-api/useIdleCallback.html)
-- [useIdleCallbackEffect](/react-timing-hooks/timeouts-api/useIdleCallbackEffect.html)
-- [useAnimationFrame](/react-timing-hooks/timeouts-api/useAnimationFrame.html)
+- [useInterval](/react-timing-hooks/intervals-api/useInterval.html)
+- [useIdleCallback](/react-timing-hooks/idle-callback-api/useIdleCallback.html)
+- [useIdleCallbackEffect](/react-timing-hooks/idle-callback-api/useIdleCallbackEffect.html)
+- [useAnimationFrame](/react-timing-hooks/animation-api/useAnimationFrame.html)
 
 ## Utility / Quality of Life
-- [useClock](/react-timing-hooks/timeouts-api/useClock.html) - displays a real-time digital clock
-- [useTimer](/react-timing-hooks/timeouts-api/useTimer.html) - a timer / countdown
-- [useAnimationFrameLoop](/react-timing-hooks/timeouts-api/useAnimationFrameLoop.html) - for animations, rendering etc.
+- [useClock](/react-timing-hooks/intervals-api/useClock.html) - displays a real-time digital clock
+- [useTimer](/react-timing-hooks/intervals-api/useTimer.html) - a timer / countdown
+- [useAnimationFrameLoop](/react-timing-hooks/animation-api/useAnimationFrameLoop.html) - for animations, rendering etc.
