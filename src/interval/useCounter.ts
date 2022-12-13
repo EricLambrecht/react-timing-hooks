@@ -2,8 +2,8 @@ import { useState } from 'react'
 import useInterval from './useInterval'
 
 type CounterSettings = {
-  start: number,
-  interval: number,
+  start: number
+  interval: number
   stepSize: number
 }
 

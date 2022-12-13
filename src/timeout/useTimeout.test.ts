@@ -1,4 +1,4 @@
-import {act, renderHook} from '@testing-library/react'
+import { act, renderHook } from '@testing-library/react'
 import useTimeout from './useTimeout'
 import { useEffect } from 'react'
 
@@ -46,9 +46,7 @@ describe('useTimeout', () => {
   it('returns the timeout id for manual clearance', async () => {
     const timeoutHandler = jest.fn()
 
-    const { result } = renderHook(() =>
-      useTimeout(timeoutHandler, 500)
-    )
+    const { result } = renderHook(() => useTimeout(timeoutHandler, 500))
     expect(result.current).toBeInstanceOf(Function)
 
     let timeoutId
@@ -67,9 +65,7 @@ describe('useTimeout', () => {
   it('timeout can be manually cleared', () => {
     const timeoutHandler = jest.fn()
 
-    const { result } = renderHook(() =>
-      useTimeout(timeoutHandler, 500)
-    )
+    const { result } = renderHook(() => useTimeout(timeoutHandler, 500))
     let timeoutId
     act(() => {
       timeoutId = result.current()
