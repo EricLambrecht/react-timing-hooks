@@ -20,5 +20,7 @@ In case you wonder where to find them.
 
 ## Utility / Quality of Life
 - [useClock](/react-timing-hooks/intervals-api/useClock.html) - displays a real-time digital clock
-- [useTimer](/react-timing-hooks/intervals-api/useTimer.html) - a timer / countdown
+- [useCounter](/react-timing-hooks/intervals-api/useCounter.html) - a reactive, customizable counter
+- [useTimer](/react-timing-hooks/intervals-api/useTimer.html) - a timer
+- [useCountdown](/react-timing-hooks/intervals-api/useCountdown.html) - a countdown
 - [useAnimationFrameLoop](/react-timing-hooks/animation-api/useAnimationFrameLoop.html) - for animations, rendering etc.
