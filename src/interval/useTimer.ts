@@ -1,10 +1,7 @@
-import { useState } from 'react'
-import useInterval from './useInterval'
+import useCounter from './useCounter'
 
-const useTimer = (start = 0): number => {
-  const [val, setVal] = useState<number>(start)
-  useInterval(() => setVal(val + 1), 1000)
-  return val
-}
+const useTimer = (start = 0): number =>
+  useCounter({ start, interval: 1000, stepSize: 1})
+
 
 export default useTimer

@@ -60,7 +60,7 @@ const TimeoutRenderer = () => {
 }
 ```
 
-#### `useTimeout()`: Delay a button click action
+#### `useCountdown()`: Countdown to 0
 ```jsx harmony
 import { useState } from 'react'
 import { useTimeout } from 'react-timing-hooks'

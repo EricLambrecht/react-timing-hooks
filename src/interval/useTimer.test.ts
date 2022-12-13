@@ -7,28 +7,30 @@ describe('useTimer', () => {
     jest.useFakeTimers()
   })
 
-  it('counts up every second', async () => {
-    const { result } = renderHook(() => useTimer())
-    expect(result.current).toBe(0)
+  describe('by default', () => {
+    it('counts up every second', async () => {
+      const { result } = renderHook(() => useTimer())
+      expect(result.current).toBe(0)
 
-    await advanceTimersUsingAct(1)
-    expect(result.current).toBe(1)
+      await advanceTimersUsingAct(1)
+      expect(result.current).toBe(1)
 
-    await advanceTimersUsingAct(1)
-    expect(result.current).toBe(2)
+      await advanceTimersUsingAct(1)
+      expect(result.current).toBe(2)
 
-    await advanceTimersUsingAct(2)
-    expect(result.current).toBe(4)
-  })
+      await advanceTimersUsingAct(2)
+      expect(result.current).toBe(4)
+    })
 
-  it('accepts start value', async () => {
-    const { result } = renderHook(() => useTimer(900))
-    expect(result.current).toBe(900)
+    it('accepts start value', async () => {
+      const { result } = renderHook(() => useTimer(900))
+      expect(result.current).toBe(900)
 
-    await advanceTimersUsingAct(1)
-    expect(result.current).toBe(901)
+      await advanceTimersUsingAct(1)
+      expect(result.current).toBe(901)
 
-    await advanceTimersUsingAct(5)
-    expect(result.current).toBe(906)
+      await advanceTimersUsingAct(5)
+      expect(result.current).toBe(906)
+    })
   })
 })
