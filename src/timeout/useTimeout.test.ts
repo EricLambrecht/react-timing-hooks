@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react'
+import {act, renderHook} from '@testing-library/react'
 import useTimeout from './useTimeout'
 import { useEffect } from 'react'
 
@@ -17,12 +17,14 @@ describe('useTimeout', () => {
       }, [func])
     })
 
-    jest.advanceTimersByTime(500)
+    act(() => {
+      jest.advanceTimersByTime(500)
+    })
 
     expect(timeoutHandler).toHaveBeenCalledTimes(1)
   })
 
-  it('properly cleans up timeout after unmount', () => {
+  it('properly cleans up timeout after unmount', async () => {
     const timeoutHandler = jest.fn()
 
     const { unmount } = renderHook(() => {
@@ -33,22 +35,31 @@ describe('useTimeout', () => {
     })
 
     unmount()
-    jest.runAllTimers()
+
+    await act(() => {
+      jest.runAllTimers()
+    })
 
     expect(timeoutHandler).toHaveBeenCalledTimes(0)
   })
 
-  it('returns the timeout id for manual clearance', () => {
+  it('returns the timeout id for manual clearance', async () => {
     const timeoutHandler = jest.fn()
 
-    const { unmount, result } = renderHook(() =>
+    const { result } = renderHook(() =>
       useTimeout(timeoutHandler, 500)
     )
     expect(result.current).toBeInstanceOf(Function)
-    expect(result.current()).toEqual(expect.any(Number))
 
-    unmount()
-    jest.runAllTimers()
+    let timeoutId
+    await act(() => {
+      timeoutId = result.current()
+    })
+    expect(timeoutId).toEqual(expect.any(Number))
+
+    await act(() => {
+      jest.runAllTimers()
+    })
 
     expect(timeoutHandler).toHaveBeenCalledTimes(1)
   })
@@ -56,15 +67,19 @@ describe('useTimeout', () => {
   it('timeout can be manually cleared', () => {
     const timeoutHandler = jest.fn()
 
-    const { unmount, result } = renderHook(() =>
+    const { result } = renderHook(() =>
       useTimeout(timeoutHandler, 500)
     )
-    const timeoutId = result.current()
+    let timeoutId
+    act(() => {
+      timeoutId = result.current()
+    })
     expect(timeoutId).toEqual(expect.any(Number))
     clearTimeout(timeoutId)
 
-    unmount()
-    jest.runAllTimers()
+    act(() => {
+      jest.runAllTimers()
+    })
 
     expect(timeoutHandler).toHaveBeenCalledTimes(0)
   })
