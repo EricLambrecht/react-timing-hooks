@@ -11,6 +11,8 @@ A start value (`settings.start`) can also be defined.
 
 If you want a counter that counts up by 1 every second, you can use the [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) hook.
 
+If you want a counter that counts down every second, use [useCountdown()](/react-timing-hooks/intervals-api/useCountdown.html).
+
 ## Example
 
 ### A regular timer that counts up every second (default)

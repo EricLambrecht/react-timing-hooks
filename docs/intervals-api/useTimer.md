@@ -6,7 +6,10 @@ nav_order: 2
 
 # useTimer
 
-Use this hook if you want to create a simple timer, i.e. a reactive number that is incremented every second.
+Use this hook if you want to create a timer, i.e. a reactive number that is incremented every second.
+
+For a more versatile hook, look at [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
+For a "reverse timer", see [useCountdown()](/react-timing-hooks/intervals-api/useCountdown.html).
 
 ## Example
 
@@ -24,9 +27,9 @@ return <span>{timerValue}</span>
 
 `useTimer(start = 0)`
 
-| Name             | Default | Description                     |
-|:-----------------|:--------|:--------------------------------|
-| start            | `0`     | The initial value of the timer  |
+| Name     | Default | Description                                    |
+|:---------|:--------|:-----------------------------------------------|
+| start    | `0`     | The initial value of the timer                 |
 
 
 ### Return value
@@ -35,4 +38,5 @@ The current value. This will change every second.
 
 ## Note
 
-Things like "step", or "delay" might be added in the future to customize this hook further. Contact me via GitHub-Issue if you need this.
+This is essentially a counter ([useCounter()](/react-timing-hooks/intervals-api/useCounter.html)) with `settings.stepSize` set to `1` and `interval` set to `1000`.
+Use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html) if you want a more customized timer.
