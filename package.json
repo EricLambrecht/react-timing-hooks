@@ -46,6 +46,7 @@
   "homepage": "https://ericlambrecht.github.io/react-timing-hooks/",
   "devDependencies": {
     "@shopify/jest-dom-mocks": "^4.0.0",
+    "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^14.3.0",
     "@types/jest": "^29.2.4",

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useInterval from './useInterval'
+import useInterval, { IntervalControls } from './useInterval'
 
 type CounterSettings = {
   start: number
@@ -7,11 +7,11 @@ type CounterSettings = {
   stepSize: number
 }
 
-const useCounter = (settings: CounterSettings): number => {
+const useCounter = (settings: CounterSettings): [number, IntervalControls] => {
   const { start = 0, interval = 1000, stepSize = 1 } = settings
   const [val, setVal] = useState<number>(start)
-  useInterval(() => setVal(val + stepSize), interval)
-  return val
+  const intervalControls = useInterval(() => setVal(val + stepSize), interval)
+  return [val, intervalControls]
 }
 
 export default useCounter

@@ -8,20 +8,25 @@ nav_order: 2
 
 Use this hook if you want to create a countdown, i.e. a reactive number that is decremented every second.
 
-It's the opposite of [useTimer()](/react-timing-hooks/intervals-api/useTimer.html). For a more versatile hook, you can
-also use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html)
+This hook is basically the opposite of [useTimer()](/react-timing-hooks/intervals-api/useTimer.html). For a more versatile hook, you can
+also use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
 
 ## Example
 
 ```javascript
 import { useCountdown } from 'react-timing-hooks'
 
-// this will count downwards every second
-const countdownValue = useCountdown(0)
-return <span>{countdownValue}</span>
-```
+// this will count from 10 to 0 and stop there
+const [counter, { stop }] = useCountdown(10)
 
-### A timer that increases by 3 every
+useEffect(() => {
+  if (counter === 0) {
+    stop()
+  }
+}, [counter])
+
+return <span>{counter}</span>
+```
 
 ## API
 
@@ -29,14 +34,16 @@ return <span>{countdownValue}</span>
 
 `useCountdown(start = 0, stop)`
 
-| Name  | Default     | Description                        |
-|:------|:------------|:-----------------------------------|
-| start | `0`         | The initial value of the countdown |
+| Name  | Default       | Description                        |
+|:------|:--------------|:-----------------------------------|
+| start | _is required_ | The initial value of the countdown |
 
 
 ### Return value
 
-The current value. This will change every second.
+An array of format `[countdownValue, intervalControls]`, the first value is the current countdown value.
+
+The second value is an object of interval controls, see [useInterval()](/react-timing-hooks/intervals-api/useInterval.html#return-value).
 
 ## Note
 

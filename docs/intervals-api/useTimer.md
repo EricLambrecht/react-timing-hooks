@@ -38,5 +38,5 @@ The current value. This will change every second.
 
 ## Note
 
-This is essentially a counter ([useCounter()](/react-timing-hooks/intervals-api/useCounter.html)) with `settings.stepSize` set to `1` and `interval` set to `1000`.
-Use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html) if you want a more customized timer.
+The return value format might be changed in a future version of `react-timing-hooks` to
+align the API with useCounter() and useCountdown().

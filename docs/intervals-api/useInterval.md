@@ -16,6 +16,8 @@ If you want to loop very fast, maybe because you want to animate something, you 
 
 ## Example
 
+### Regular Interval
+
 ```javascript
 import { useInterval } from 'react-timing-hooks'
 
@@ -24,20 +26,45 @@ const [count, setCount] = useState(0)
 useInterval(() => setCount(count + 1), 200)
 ```
 
+### Controllable Interval
+
+```javascript
+import { useInterval } from 'react-timing-hooks'
+
+const [count, setCount] = useState(0)
+const { pause, resume, isPaused } = useInterval(() => setCount(count + 1), 200)
+
+return <div>
+  <button onClick={isPaused ? resume : pause}>
+    {isPaused ? "Pause" : "Resume"}
+  </button>
+</div>
+```
+
 ## API
 
 ### Params
 
-> useInterval(callback, delay)
+> useInterval(callback, delay, controls = {})
 
-| Name         | Description                                                          |
-|:-------------|:---------------------------------------------------------------------|
-| callback     | a function that will be invoked as soon as the timeout expires       |
-| delay        | the delay between executions of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). 
+| Name     | Default       | Description                                                                                                                         |
+|:---------|---------------|:------------------------------------------------------------------------------------------------------------------------------------|
+| callback | _is required_ | A function that will be invoked as soon as the timeout expires                                                                      |
+| delay    | _is required_ | The delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). |
 
 ### Return value
 
-This hook has no return value.
+An object of interval controls:
+
+| Name       | Description                                                                                                                         |
+|:-----------|:------------------------------------------------------------------------------------------------------------------------------------|
+| isPaused   | A boolean that indicates whether the interval is currently paused                                                                   |
+| isStoppped | A boolean that indicates whether the interval is currently stopped. Meaning it cannot be resumed, but only restarted via `start()`. |
+| pause      | A function that will temporarily pause the interval without destroying it                                                           |
+| resume     | A function that resumes a paused interval                                                                                           |
+| stop       | A function that stops and destroys(!) the interval.                                                                                 |
+| start      | A function that restarts a stopped interval                                                                                         |
+
 
 ## Notes
 

@@ -11,16 +11,31 @@ describe('useCounter', () => {
     const timerSettings = { start: 2, interval: 600, stepSize: 3 }
     it('uses settings correctly', async () => {
       const { result } = renderHook(() => useCounter(timerSettings))
-      expect(result.current).toBe(2)
+      let [value] = result.current
+      expect(value).toBe(2)
 
       await advanceTimersUsingAct(1, 600)
-      expect(result.current).toBe(5)
+      ;[value] = result.current
+      expect(value).toBe(5)
 
       await advanceTimersUsingAct(1, 600)
-      expect(result.current).toBe(8)
+      ;[value] = result.current
+      expect(value).toBe(8)
 
       await advanceTimersUsingAct(2, 600)
-      expect(result.current).toBe(14)
+      ;[value] = result.current
+      expect(value).toBe(14)
+    })
+
+    it('it returns the intervals underlying controls', async () => {
+      const { result } = renderHook(() => useCounter(timerSettings))
+      const [, controls] = result.current
+      expect(controls).toHaveProperty('isPaused')
+      expect(controls).toHaveProperty('isStopped')
+      expect(controls).toHaveProperty('pause')
+      expect(controls).toHaveProperty('resume')
+      expect(controls).toHaveProperty('start')
+      expect(controls).toHaveProperty('stop')
     })
   })
 })

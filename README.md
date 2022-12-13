@@ -16,15 +16,13 @@ This is a very little package with **React hooks wrapping time-related Vanilla J
   * `setTimeout()`
   * `setInterval()`
   * `requestIdleCallback()`
-* **Versatile API**, often including "callback" _and_ "effect" versions
-* Additional **utility hooks** like `useTimer`, `useAnimationFrameLoop` or `useClock`
+* Ability to **pause and resume intervals**
+* Additional **utility hooks** for timers, countdowns, display of time, or rendering (e.g. `useAnimationFrameLoop`)
+* A **versatile API**, sometimes offering "useCallback"- and "useEffect"-style versions of the same hook. Callbacks are automatically **memoized**
 * Full **Typescript** support
 * **[Lightweight](https://bundlephobia.com/result?p=react-timing-hooks)** (less than 1KB minzipped, no transitive dependencies!)
 * **Tree-shakable** — You only bundle what you use!
-* ... and it **saves a lot of code**
-  * **Automatic clean-ups** of pending timers, intervals etc. (e.g. if your component un-mounts before a timer triggers)
-  * callbacks are automatically **memoized**
-  * All hooks are already **tested**
+* **Automatic clean-ups** of pending timers, intervals etc. (e.g. if your component un-mounts before a timer triggers)
 
 
 ## Installation
@@ -44,12 +42,12 @@ yarn add react-timing-hooks
 
 ## Examples
 
-#### `useTimeout()`: Delay a button click action
+#### Debouncing with `useTimeout()`
 ```jsx harmony
 import { useState } from 'react'
 import { useTimeout } from 'react-timing-hooks'
 
-const TimeoutRenderer = () => {
+const HelloWorld = () => {
   const [output, setOutput] = useState(null)
   const onButtonClick = useTimeout(() => setOutput('Hello World'), 1000)
 
@@ -60,23 +58,21 @@ const TimeoutRenderer = () => {
 }
 ```
 
-#### `useCountdown()`: Countdown to 0
+#### A resumable interval with `useInterval()`
 ```jsx harmony
 import { useState } from 'react'
-import { useTimeout } from 'react-timing-hooks'
+import { useInterval } from 'react-timing-hooks'
 
-const TimeoutRenderer = () => {
-  const [output, setOutput] = useState(null)
-  const onButtonClick = useTimeout(() => setOutput('Hello World'), 1000)
+const StatusLogger = () => {
+  const { isPaused, pause, resume } = useInterval(() => console.log('status update'), 1000)
 
   return <div>
-    <button onClick={onButtonClick}>Start timeout!</button>
-    <p>{output}</p>
+    <button onClick={isPaused ? resume : pause}>Toggle Status Update</button>
   </div>
 }
 ```
 
-#### `useTimer`: Display how long the user has been browsing
+#### Display how long the user has been browsing using `useTimer()` 
 ```jsx harmony
 import { useState } from 'react'
 import { useTimer } from 'react-timing-hooks'
@@ -87,7 +83,7 @@ const BrowsingTime = () => {
 }
 ```
 
-#### `useClock`: Display the current time, in real-time
+#### Display the current time with `useClock()`
 ```jsx harmony
 import { useState } from 'react'
 import { useTimeout } from 'react-timing-hooks'
@@ -100,30 +96,37 @@ const Clock = () => {
 }
 ```
 
-#### `useAnimationFrameLoop`: Create an animation frame loop
+#### Create canvas renderer using the animation frame loop hook
 
 ```jsx harmony
 import { useState } from 'react'
 import { useAnimationFrameLoop } from 'react-timing-hooks'
 
-const AnimationFrameCounter = ({ depA, depB }) => {
-  const [count, setCount] = useState(0)
+const Renderer = () => {
   const [stop, setStop] = useState(false)
+  const delta = useRef(0)
+  const canvasRef = useRef(null)
+  const canvas = canvasRef.current
+  const context = canvas.getContext('2d')
+
+  const updateCanvas = (d) => {
+    context.fillStyle = '#000000'
+    context.fillRect(d, d, context.canvas.width, context.canvas.height)
+  }
 
   useAnimationFrameLoop(() => {
-    setCount(count + 1)
+    delta.current += 1
+    updateCanvas(delta.current)
   }, stop)
   
-  return (
-     <div>
-      <p>{count}</p>
-      <button onClick={() => setStop(!stop)}>
-        Stop counting
-      </button>
-    </div>
-  )
+  return <>
+    <canvas ref={canvasRef} {...props}/>
+    <button onClick={() => setStop(!stop)}>
+      Stop rendering
+    </button>
+  </>
 }
-```   
+```
 
 ## Why does this exist?
 

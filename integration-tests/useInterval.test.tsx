@@ -1,4 +1,5 @@
-import { act, fireEvent, render } from '@testing-library/react'
+import { act, fireEvent, render, screen } from '@testing-library/react'
+import '@testing-library/jest-dom'
 import { useInterval } from '../.tmp/index'
 import React, { useState } from 'react'
 import { removeFlushTimers } from './helpers'
@@ -6,20 +7,26 @@ import { advanceTimersUsingAct } from '../src/testing/advanceTimersUsingAct'
 
 jest.useFakeTimers()
 
-const TestComponent: React.FC = () => {
+const TestComponent: React.FC<{ startDelay?: number }> = ({ startDelay }) => {
   const [count, setCount] = useState(0)
   const [invokeInterval, setInvokeInterval] = useState(false)
 
-  useInterval(
+  const { isPaused, isStopped, pause, resume, stop, start } = useInterval(
     () => {
       setCount(count + 1)
     },
-    invokeInterval ? 500 : null
+    startDelay || (invokeInterval ? 500 : null)
   )
 
   return (
     <div>
       <p data-testid="output">{count}</p>
+      <p data-testid="isPaused">{isPaused ? 'Yes' : 'No'}</p>
+      <p data-testid="isStopped">{isStopped ? 'Yes' : 'No'}</p>
+      <button data-testid="pause" onClick={pause}></button>
+      <button data-testid="resume" onClick={resume}></button>
+      <button data-testid="stop" onClick={stop}></button>
+      <button data-testid="start" onClick={start}></button>
       <button
         data-testid="button"
         onClick={() => setInvokeInterval(true)}
@@ -30,31 +37,31 @@ const TestComponent: React.FC = () => {
 
 describe('useInterval() Integration Test', () => {
   it('runs the handler function every time the delay has passed', async () => {
-    const { getByTestId, unmount } = render(<TestComponent />)
+    const { unmount } = render(<TestComponent />)
 
     act(() => {
       jest.runAllTimers()
     })
-    expect(getByTestId('output').textContent).toBe('0')
+    expect(screen.getByTestId('output')).toHaveTextContent('0')
 
-    const button = getByTestId('button')
+    const button = screen.getByTestId('button')
     fireEvent.click(button)
 
     await advanceTimersUsingAct(1, 500)
-    expect(getByTestId('output').textContent).toBe('1')
+    expect(screen.getByTestId('output')).toHaveTextContent('1')
     await advanceTimersUsingAct(4, 500)
-    expect(getByTestId('output').textContent).toBe('5')
+    expect(screen.getByTestId('output')).toHaveTextContent('5')
     unmount()
     removeFlushTimers()
   })
 
   it('will only create one interval and clean it up on unmount', async () => {
-    const { unmount, getByTestId } = render(<TestComponent />)
+    const { unmount } = render(<TestComponent />)
 
     removeFlushTimers()
     expect(jest.getTimerCount()).toBe(0)
 
-    const button = getByTestId('button')
+    const button = screen.getByTestId('button')
     fireEvent.click(button)
 
     removeFlushTimers()
@@ -63,5 +70,73 @@ describe('useInterval() Integration Test', () => {
     unmount()
     removeFlushTimers()
     expect(jest.getTimerCount()).toBe(0)
+  })
+
+  it('can be paused and resumed', async () => {
+    const { unmount } = render(<TestComponent startDelay={500} />)
+
+    expect(screen.getByTestId('output')).toHaveTextContent('0')
+    expect(screen.getByTestId('isPaused')).toHaveTextContent('No')
+
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('1')
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('2')
+
+    const pauseButton = screen.getByTestId('pause')
+    fireEvent.click(pauseButton)
+    expect(screen.getByTestId('isPaused')).toHaveTextContent('Yes')
+    expect(screen.getByTestId('output')).toHaveTextContent('2')
+
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('2')
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('2')
+
+    const resumeButton = screen.getByTestId('resume')
+    fireEvent.click(resumeButton)
+    expect(screen.getByTestId('isPaused')).toHaveTextContent('No')
+    expect(screen.getByTestId('output')).toHaveTextContent('2')
+
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('3')
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('4')
+
+    unmount()
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.queryByTestId('output')).not.toBeInTheDocument()
+    expect(jest.getTimerCount()).toBe(0)
+  })
+
+  it('can be stopped and (re)started', async () => {
+    render(<TestComponent startDelay={500} />)
+
+    expect(screen.getByTestId('isStopped')).toHaveTextContent('No')
+
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('1')
+    expect(jest.getTimerCount()).toBe(1)
+
+    const stopButton = screen.getByTestId('stop')
+    fireEvent.click(stopButton)
+    expect(jest.getTimerCount()).toBe(0)
+    expect(screen.getByTestId('isStopped')).toHaveTextContent('Yes')
+    expect(screen.getByTestId('output')).toHaveTextContent('1')
+
+    await advanceTimersUsingAct(1, 500)
+    expect(jest.getTimerCount()).toBe(0)
+    expect(screen.getByTestId('isStopped')).toHaveTextContent('Yes')
+    expect(screen.getByTestId('output')).toHaveTextContent('1')
+
+    const startButton = screen.getByTestId('start')
+    fireEvent.click(startButton)
+    expect(screen.getByTestId('isStopped')).toHaveTextContent('No')
+    expect(screen.getByTestId('output')).toHaveTextContent('1')
+
+    await advanceTimersUsingAct(1, 500)
+    expect(jest.getTimerCount()).toBe(1)
+    expect(screen.getByTestId('isStopped')).toHaveTextContent('No')
+    expect(screen.getByTestId('output')).toHaveTextContent('2')
   })
 })

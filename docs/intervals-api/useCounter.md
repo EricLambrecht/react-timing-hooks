@@ -21,8 +21,13 @@ If you want a counter that counts down every second, use [useCountdown()](/react
 import { useCounter } from 'react-timing-hooks'
 
 // this will count upwards every second
-const timerValue = useCounter(0)
-return <span>{timerValue}</span>
+const [counter] = useCounter({ 
+  start: 0, 
+  interval: 1000, 
+  stepSize: 1 
+})
+
+return <span>{counter}</span>
 ```
 
 ## API
@@ -40,4 +45,8 @@ return <span>{timerValue}</span>
 
 ### Return value
 
-The current counter value (starting at `settings.start`). This will change every `settings.interval` ms by `settings.stepSize`.
+An Array of `[counterValue, intervalControls]`.
+
+The first array item is the current counter value (starting at `settings.start`). This will change every `settings.interval` ms by `settings.stepSize`.
+
+The second value is an object of interval controls, see [useInterval()](/react-timing-hooks/intervals-api/useInterval.html#return-value).
