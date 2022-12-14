@@ -14,6 +14,8 @@ It is a react-wrapper for the native javascript function `setInterval`.
 
 In addition to the standard Javascript API, the returned callbacks allow you to **pause, resume, stop and start** the interval, too.
 
+You can also stop the interval or start the interval in a stopped state by setting a delay value of `null`.
+
 If you want to loop very fast – maybe because you want to animate something – 
 you might want to use [useAnimationFrameLoop()](/react-timing-hooks/animation-api/useAnimationFrameLoop.html) instead which yields better performance in these cases.
 
@@ -54,10 +56,10 @@ return <div>
 
 > useInterval(callback, delay, controls = {})
 
-| Name     | Default       | Description                                                                                                                         |
-|:---------|---------------|:------------------------------------------------------------------------------------------------------------------------------------|
-| callback | _is required_ | A function that will be invoked as soon as the timeout expires                                                                      |
-| delay    | _is required_ | The delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). |
+| Name     | Default       | Description                                                                                                                                                                                                      |
+|:---------|---------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callback | _is required_ | A function that will be invoked as soon as the timeout expires                                                                                                                                                   |
+| delay    | _is required_ | A number or null. If numeric, it is the delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). If set to `null`, the interval will stop. |
 
 ### Return value
 
