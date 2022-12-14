@@ -19,7 +19,7 @@ export interface ClockOptions<T> {
 const useClock = <T = string>(options?: ClockOptions<T>) => {
   const startTimeInSeconds =
     (options?.startTimeInMilliseconds || Date.now()) / 1000
-  const currentTimeInSeconds = useTimer(startTimeInSeconds, {
+  const [currentTimeInSeconds] = useTimer(startTimeInSeconds, {
     startOnMount: true,
   })
   const date = new Date(currentTimeInSeconds * 1000)

@@ -50,7 +50,7 @@ return <span>{counter}</span>
 
 An array of format `[countdownValue, intervalControls]`, the first value is the current countdown value.
 
-The second value is an object of interval controls, see [useInterval()](/react-timing-hooks/intervals-api/useInterval.html#return-value).
+The second value is an object of interval controls (start, stop, pause, etc.), see [useInterval()](/react-timing-hooks/intervals-api/useInterval.html#return-value).
 
 ## Note
 

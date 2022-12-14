@@ -19,7 +19,7 @@ For a "reverse timer", see [useCountdown()](/react-timing-hooks/intervals-api/us
 import { useTimer } from 'react-timing-hooks'
 
 // this will count upwards every second
-const timerValue = useTimer(0, { startOnMount: true })
+const [timerValue] = useTimer(0, { startOnMount: true })
 return <span>{timerValue}</span>
 ```
 
@@ -37,9 +37,8 @@ return <span>{timerValue}</span>
 
 ### Return value
 
-The current value. This will change every second.
+An array of format `[timerValue, intervalControls]`, the first value is the current countdown value. This will be incremented by 1, every second.
 
-## Note
+The second value is an object of interval controls (start, stop, pause, etc.), see [useInterval()](/react-timing-hooks/intervals-api/useInterval.html#return-value).
 
-The return value format might be changed in a future version of `react-timing-hooks` to
-align the API with useCounter() and useCountdown().
+

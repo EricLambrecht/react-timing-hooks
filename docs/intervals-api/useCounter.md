@@ -6,7 +6,7 @@ nav_order: 2
 
 # useCounter
 
-Use this hook if you want to have a customizable counter that changes a value by `settings.stepSize` every `settings.interval` milliseconds.
+Use this hook if you want to have a customizable counter that changes a value by a certain amount (`settings.stepSize`) every x  milliseconds (`settings.interval`).
 A start value (`settings.start`) can also be defined.
 
 **Note**: By default, the counter is _stopped_ on mount and has to be started manually. If you want the counter to start immediately on mount, use `options.startOnMount`.
@@ -54,4 +54,4 @@ An Array of `[counterValue, intervalControls]`.
 
 The first array item is the current counter value (starting at `settings.start`). This will change every `settings.interval` ms by `settings.stepSize`.
 
-The second value is an object of interval controls, see [useInterval()](/react-timing-hooks/intervals-api/useInterval.html#return-value).
+The second value is an object of interval controls (start, stop, pause, etc.), see [useInterval()](/react-timing-hooks/intervals-api/useInterval.html#return-value).

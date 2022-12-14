@@ -69,10 +69,13 @@ import { useState } from 'react'
 import { useInterval } from 'react-timing-hooks'
 
 const StatusLogger = () => {
-  const { isPaused, pause, resume } = useInterval(() => console.log('status update'), 1000)
+  const logUpdates = () => console.log('status update')
+  // could also be intialized with { startOnMount: true } to immediately start the interval
+  const { start, pause, resume, isPaused } = useInterval(logUpdates, 1000)
 
   return <div>
-    <button onClick={isPaused ? resume : pause}>Toggle Status Update</button>
+    <button onClick={start}>Do stuff</button>
+    <button onClick={isPaused ? resume : pause}>Toggle Status Updates</button>
   </div>
 }
 ```
@@ -83,7 +86,7 @@ import { useState } from 'react'
 import { useTimer } from 'react-timing-hooks'
 
 const BrowsingTime = () => {
-  const elapsedSeconds = useTimer()
+  const elapsedSeconds = useTimer(0, { startOnMount: true })
   return <span>You've been browsing this page for {elapsedSeconds} seconds.</span>
 }
 ```
