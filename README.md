@@ -42,7 +42,7 @@ yarn add react-timing-hooks
 
 ## Examples
 
-#### Debouncing with `useTimeout()`
+#### Debouncing a button click with `useTimeout()`
 ```jsx harmony
 import { useState } from 'react'
 import { useTimeout } from 'react-timing-hooks'
