@@ -10,4 +10,4 @@ has_children: true
 React hooks that wrap [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) or build on top of it.
 {: .fs-6 .fw-300 }
 
-All of these hooks will automatically take care of clearing any intervals that you set if the component unmounts for example.
+The intervals that these hooks create can be **paused, resumed, stopped and re-started**. Additionally, they will automatically take care of clearing any intervals that you set if the component unmounts for example.
