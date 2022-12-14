@@ -17,6 +17,7 @@ In case you wonder where to find them.
 - [useIdleCallback](/react-timing-hooks/idle-callback-api/useIdleCallback.html)
 - [useIdleCallbackEffect](/react-timing-hooks/idle-callback-api/useIdleCallbackEffect.html)
 - [useAnimationFrame](/react-timing-hooks/animation-api/useAnimationFrame.html)
+- [useAnimationFrameLoop](/react-timing-hooks/animation-api/useAnimationFrameLoop.html)
 
 ## Utility / Quality of Life
 - [useClock](/react-timing-hooks/intervals-api/useClock.html) - displays a real-time digital clock

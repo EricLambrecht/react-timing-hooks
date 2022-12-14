@@ -63,14 +63,14 @@ return <div>
 
 An object of interval controls:
 
-| Name       | Description                                                                                                                         |
-|:-----------|:------------------------------------------------------------------------------------------------------------------------------------|
-| isPaused   | A boolean that indicates whether the interval is currently paused                                                                   |
-| isStoppped | A boolean that indicates whether the interval is currently stopped. Meaning it cannot be resumed, but only restarted via `start()`. |
-| pause      | A function that will temporarily pause the interval without destroying it                                                           |
-| resume     | A function that resumes a paused interval                                                                                           |
-| stop       | A function that stops and destroys(!) the interval.                                                                                 |
-| start      | A function that restarts a stopped interval                                                                                         |
+| Name      | Description                                                                                                                         |
+|:----------|:------------------------------------------------------------------------------------------------------------------------------------|
+| isPaused  | A boolean that indicates whether the interval is currently paused                                                                   |
+| isStopped | A boolean that indicates whether the interval is currently stopped. Meaning it cannot be resumed, but only restarted via `start()`. |
+| pause     | A function that will temporarily pause the interval without destroying it                                                           |
+| resume    | A function that resumes a paused interval                                                                                           |
+| stop      | A function that stops and destroys(!) the interval.                                                                                 |
+| start     | A function that restarts a stopped interval                                                                                         |
 
 
 ## Notes
