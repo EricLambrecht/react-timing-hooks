@@ -9,7 +9,7 @@ describe('useInterval', () => {
   it('calls interval handler every [n] milliseconds', () => {
     const intervalHandler = jest.fn()
 
-    renderHook(() => useInterval(intervalHandler, 100))
+    renderHook(() => useInterval(intervalHandler, 100, { startOnMount: true }))
 
     jest.advanceTimersByTime(100)
     expect(intervalHandler).toHaveBeenCalledTimes(1)
@@ -22,7 +22,16 @@ describe('useInterval', () => {
   it("doesn't set interval if delay is null", () => {
     const intervalHandler = jest.fn()
 
-    renderHook(() => useInterval(intervalHandler, null))
+    renderHook(() => useInterval(intervalHandler, null, { startOnMount: true }))
+
+    jest.runAllTimers()
+    expect(intervalHandler).toHaveBeenCalledTimes(0)
+  })
+
+  it("doesn't set interval if start on mount is false (the default)", () => {
+    const intervalHandler = jest.fn()
+
+    renderHook(() => useInterval(intervalHandler, 1000))
 
     jest.runAllTimers()
     expect(intervalHandler).toHaveBeenCalledTimes(0)
@@ -31,7 +40,9 @@ describe('useInterval', () => {
   it('properly cleans up interval after unmount', () => {
     const intervalHandler = jest.fn()
 
-    const { unmount } = renderHook(() => useInterval(intervalHandler, 500))
+    const { unmount } = renderHook(() =>
+      useInterval(intervalHandler, 500, { startOnMount: true })
+    )
 
     unmount()
     jest.runAllTimers()

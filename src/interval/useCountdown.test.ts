@@ -9,7 +9,9 @@ describe('useCountdown', () => {
 
   describe('by default', () => {
     it('counts down every second', async () => {
-      const { result } = renderHook(() => useCountdown(0))
+      const { result } = renderHook(() =>
+        useCountdown(0, { startOnMount: true })
+      )
       let [value] = result.current
       expect(value).toBe(0)
 
@@ -27,7 +29,9 @@ describe('useCountdown', () => {
     })
 
     it('accepts start value', async () => {
-      const { result } = renderHook(() => useCountdown(900))
+      const { result } = renderHook(() =>
+        useCountdown(900, { startOnMount: true })
+      )
       let [value] = result.current
       expect(value).toBe(900)
 

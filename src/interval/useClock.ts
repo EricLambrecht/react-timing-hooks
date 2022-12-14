@@ -14,12 +14,14 @@ export interface ClockOptions<T> {
  *
  * @template [T=string]
  * @param options options.locales and options.dateTimeFormatOptions will be directly forwarded to date.toLocaleTimeString(). You can also use options.customFormatter to override the output of the hook. The output must match the generic type of the hook.
- * @returns {T} The current (formatted) time
+ * @returns The current (formatted) time
  */
 const useClock = <T = string>(options?: ClockOptions<T>) => {
   const startTimeInSeconds =
     (options?.startTimeInMilliseconds || Date.now()) / 1000
-  const currentTimeInSeconds = useTimer(startTimeInSeconds)
+  const currentTimeInSeconds = useTimer(startTimeInSeconds, {
+    startOnMount: true,
+  })
   const date = new Date(currentTimeInSeconds * 1000)
   if (options?.customFormatter) {
     return options?.customFormatter(date)

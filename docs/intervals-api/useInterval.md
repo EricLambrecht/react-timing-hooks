@@ -14,6 +14,8 @@ It is a react-wrapper for the native javascript function `setInterval`.
 
 In addition to the standard Javascript API, the returned callbacks allow you to **pause, resume, stop and start** the interval, too.
 
+**Note**: By default, the interval is _stopped_ on mount and has to be started manually. If you want the interval to start immediately on mount, use `options.startOnMount`.
+
 You can also stop the interval or start the interval in a stopped state by setting a delay value of `null`.
 
 If you want to loop very fast – maybe because you want to animate something – 
@@ -32,7 +34,8 @@ import { useInterval } from 'react-timing-hooks'
 
 // Increase count every 200 milliseconds
 const [count, setCount] = useState(0)
-useInterval(() => setCount(count + 1), 200)
+const increaseCount = () => setCount(count + 1)
+useInterval(increaseCount, 200, { startOnMount: true })
 ```
 
 ### Pausing and resuming an interval
@@ -41,9 +44,16 @@ useInterval(() => setCount(count + 1), 200)
 import { useInterval } from 'react-timing-hooks'
 
 const [count, setCount] = useState(0)
-const { pause, resume, isPaused } = useInterval(() => setCount(count + 1), 200)
+const increaseCount = () => setCount(count + 1)
+const {
+  start,
+  pause,
+  resume,
+  isPaused
+} = useInterval(increaseCount, 200)
 
 return <div>
+  <button onClick={start}>Start!</button>
   <button onClick={isPaused ? resume : pause}>
     {isPaused ? "Resume" : "Pause"}
   </button>
@@ -56,10 +66,11 @@ return <div>
 
 > useInterval(callback, delay, controls = {})
 
-| Name     | Default       | Description                                                                                                                                                                                                      |
-|:---------|---------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| callback | _is required_ | A function that will be invoked as soon as the timeout expires                                                                                                                                                   |
-| delay    | _is required_ | A number or null. If numeric, it is the delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). If set to `null`, the interval will stop. |
+| Name                 | Default       | Description                                                                                                                        |
+|:---------------------|---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callback             | _is required_ | A function that will be invoked as soon as the timeout expires                                                                     |
+| delay                | _is required_ | A number or null. If numeric, it is the delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). If set to `null`, the interval will stop.|
+| options.startOnMount | `false`       | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`.                       |
 
 ### Return value
 

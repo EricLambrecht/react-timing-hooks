@@ -9,7 +9,9 @@ describe('useTimer', () => {
 
   describe('by default', () => {
     it('counts up every second', async () => {
-      const { result } = renderHook(() => useTimer())
+      const { result } = renderHook(() =>
+        useTimer(undefined, { startOnMount: true })
+      )
       expect(result.current).toBe(0)
 
       await advanceTimersUsingAct(1)
@@ -23,7 +25,7 @@ describe('useTimer', () => {
     })
 
     it('accepts start value', async () => {
-      const { result } = renderHook(() => useTimer(900))
+      const { result } = renderHook(() => useTimer(900, { startOnMount: true }))
       expect(result.current).toBe(900)
 
       await advanceTimersUsingAct(1)

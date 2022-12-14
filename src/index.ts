@@ -1,7 +1,10 @@
 import useTimeoutEffect from './timeout/useTimeoutEffect'
 import { TimeoutEffectCallback } from './timeout/types'
 import useTimeout from './timeout/useTimeout'
-import useInterval, { IntervalControls } from './interval/useInterval'
+import useInterval, {
+  IntervalControls,
+  IntervalOptions,
+} from './interval/useInterval'
 import useTimer from './interval/useTimer'
 import useIdleCallbackEffect from './idle-callback/useIdleCallbackEffect'
 import { IdleCallbackEffectCallback } from './idle-callback/types'
@@ -17,16 +20,17 @@ export {
   useAnimationFrame,
   useAnimationFrameLoop,
   useClock,
+  useCountdown,
+  useCounter,
   useIdleCallback,
   useIdleCallbackEffect,
   useInterval,
   useTimer,
   useTimeout,
   useTimeoutEffect,
-  useCounter,
-  useCountdown,
-  IntervalControls,
-  IdleCallbackEffectCallback,
-  TimeoutEffectCallback,
   ClockOptions,
+  IdleCallbackEffectCallback,
+  IntervalControls,
+  IntervalOptions,
+  TimeoutEffectCallback,
 }

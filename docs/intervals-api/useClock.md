@@ -10,6 +10,8 @@ This hook creates a sort of clock, i.e. a reactive time-based value that updates
 
 The output of useClock is easily customizable via the `options` argument, see [below](#params).
 
+
+
 `useClock` is also generic (by default `useClock<string>` is used). The generic type has to be specified if a 
 custom formatter (see `options.customFormatter`) is used that returns something else than a string.
 
@@ -34,13 +36,13 @@ return <span>{currentTime}</span>
 
 Alternatively, a completely custom formatter can also be used (see `options.customFormatter`).
 
-| Name                        | Type | Default                                     | Description                                                          |
-|:----------------------------|:-----|:--------------------------------------------|:---------------------------------------------------------------------|
-| `options`                   |`object`| `undefined`                                 | An object of options, see below                                      |
-| `options.locales`           |`string or string[]`      | `undefined` | Locales forwarded to `Date.toLocaleTimeString()`, ignored if custom formatter is used. |
-| `options.dateTimeFormatOptions` |`Intl.DateTimeFormatOptions`| `undefined` | Options forwarded to `Date.toLocaleTimeString()`, ignored if custom formatter is used. |
-| `options.customFormatter`    |`(date: Date) => T` | `undefined` | Alters the return value of `useClock`. Must return `T`. |
-| `options.startTimeInMilliseconds` |`number`| `Date.now()`                                | A number in milliseconds, marking the start time of the clock.                    |
+| Name                              | Type                         | Default      | Description                                                                                                  |
+|:----------------------------------|:-----------------------------|:-------------|:-------------------------------------------------------------------------------------------------------------|
+| `options`                         | `object`                     | `undefined`  | An object of options, see below                                                                              |
+| `options.locales`                 | `string or string[]`         | `undefined`  | Locales forwarded to `Date.toLocaleTimeString()`, ignored if custom formatter is used.                       |
+| `options.dateTimeFormatOptions`   | `Intl.DateTimeFormatOptions` | `undefined`  | Options forwarded to `Date.toLocaleTimeString()`, ignored if custom formatter is used.                       |
+| `options.customFormatter`         | `(date: Date) => T`          | `undefined`  | Alters the return value of `useClock`. Must return `T`.                                                      |
+| `options.startTimeInMilliseconds` | `number`                     | `Date.now()` | A number in milliseconds, marking the start time of the clock.                                               |
 
 ### Generic type
 

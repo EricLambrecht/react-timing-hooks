@@ -11,6 +11,8 @@ nav_order: 2
 
 Use this hook if you want to create a countdown, i.e. a reactive number that is decremented every second.
 
+**Note**: By default, the countdown is _stopped_ on mount and has to be started manually. If you want the countdown to start immediately on mount, use `options.startOnMount`.
+
 This hook is basically the opposite of [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) which counts _up_ every second. For a more versatile hook, you can
 also use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
 
@@ -37,9 +39,11 @@ return <span>{counter}</span>
 
 `useCountdown(start = 0, stop)`
 
-| Name  | Default       | Description                        |
-|:------|:--------------|:-----------------------------------|
-| start | _is required_ | The initial value of the countdown |
+| Name                 | Default       | Description                                                                                                  |
+|:---------------------|:--------------|:-------------------------------------------------------------------------------------------------------------|
+| start                | _is required_ | The initial value of the countdown                                                                           |
+| options.startOnMount | `false`       | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`. |
+
 
 
 ### Return value

@@ -8,9 +8,14 @@ describe('useCounter', () => {
   })
 
   describe('settings.start', () => {
-    const timerSettings = { start: 2, interval: 600, stepSize: 3 }
+    const counterSettings = {
+      start: 2,
+      interval: 600,
+      stepSize: 3,
+      startOnMount: true,
+    }
     it('uses settings correctly', async () => {
-      const { result } = renderHook(() => useCounter(timerSettings))
+      const { result } = renderHook(() => useCounter(counterSettings))
       let [value] = result.current
       expect(value).toBe(2)
 
@@ -28,7 +33,7 @@ describe('useCounter', () => {
     })
 
     it('it returns the intervals underlying controls', async () => {
-      const { result } = renderHook(() => useCounter(timerSettings))
+      const { result } = renderHook(() => useCounter(counterSettings))
       const [, controls] = result.current
       expect(controls).toHaveProperty('isPaused')
       expect(controls).toHaveProperty('isStopped')

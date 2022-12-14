@@ -9,6 +9,8 @@ nav_order: 2
 Use this hook if you want to have a customizable counter that changes a value by `settings.stepSize` every `settings.interval` milliseconds.
 A start value (`settings.start`) can also be defined.
 
+**Note**: By default, the counter is _stopped_ on mount and has to be started manually. If you want the counter to start immediately on mount, use `options.startOnMount`.
+
 If you want a counter that counts up by 1 every second, you can use the [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) hook.
 
 If you want a counter that counts down every second, use [useCountdown()](/react-timing-hooks/intervals-api/useCountdown.html).
@@ -24,7 +26,8 @@ import { useCounter } from 'react-timing-hooks'
 const [counter] = useCounter({ 
   start: 0, 
   interval: 1000, 
-  stepSize: 1 
+  stepSize: 1,
+  startOnMount: true
 })
 
 return <span>{counter}</span>
@@ -36,11 +39,13 @@ return <span>{counter}</span>
 
 `useCounter(settings)`
 
-| Name              | Default | Description                                      |
-|:------------------|:--------|:-------------------------------------------------|
-| settings.start    | `0`     | The initial value of the counter                 |
-| settings.interval | `1000`  | The duration between each counter step           |
-| settings.stepSize | `1`     | The amount that is added after each counter step |
+| Name                  | Default | Description                                                                                                  |
+|:----------------------|:--------|:-------------------------------------------------------------------------------------------------------------|
+| settings.start        | `0`     | The initial value of the counter                                                                             |
+| settings.interval     | `1000`  | The duration between each counter step                                                                       |
+| settings.stepSize     | `1`     | The amount that is added after each counter step                                                             |
+| settings.startOnMount | `false` | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`. |
+
 
 
 ### Return value

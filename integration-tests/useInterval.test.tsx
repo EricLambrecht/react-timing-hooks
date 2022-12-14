@@ -1,13 +1,16 @@
 import { act, fireEvent, render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { useInterval } from '../.tmp/index'
+import { IntervalOptions, useInterval } from '../.tmp/index'
 import React, { useState } from 'react'
 import { removeFlushTimers } from './helpers'
 import { advanceTimersUsingAct } from '../src/testing/advanceTimersUsingAct'
 
 jest.useFakeTimers()
 
-const TestComponent: React.FC<{ startDelay?: number }> = ({ startDelay }) => {
+const TestComponent: React.FC<{
+  startDelay?: number
+  options?: IntervalOptions
+}> = ({ startDelay, options }) => {
   const [count, setCount] = useState(0)
   const [invokeInterval, setInvokeInterval] = useState(false)
 
@@ -15,7 +18,8 @@ const TestComponent: React.FC<{ startDelay?: number }> = ({ startDelay }) => {
     () => {
       setCount(count + 1)
     },
-    startDelay || (invokeInterval ? 500 : null)
+    startDelay || (invokeInterval ? 500 : null),
+    options
   )
 
   return (
@@ -36,8 +40,36 @@ const TestComponent: React.FC<{ startDelay?: number }> = ({ startDelay }) => {
 }
 
 describe('useInterval() Integration Test', () => {
-  it('runs the handler function every time the delay has passed', async () => {
+  it('will not start on mount if that is not enabled', async () => {
     const { unmount } = render(<TestComponent />)
+
+    act(() => {
+      jest.runAllTimers()
+    })
+    expect(screen.getByTestId('output')).toHaveTextContent('0')
+
+    const button = screen.getByTestId('button')
+    fireEvent.click(button)
+
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('0')
+    await advanceTimersUsingAct(4, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('0')
+
+    const start = screen.getByTestId('start')
+    fireEvent.click(start)
+
+    await advanceTimersUsingAct(1, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('1')
+
+    unmount()
+    removeFlushTimers()
+  })
+
+  it('runs the handler function every time the delay has passed', async () => {
+    const { unmount } = render(
+      <TestComponent options={{ startOnMount: true }} />
+    )
 
     act(() => {
       jest.runAllTimers()
@@ -56,7 +88,9 @@ describe('useInterval() Integration Test', () => {
   })
 
   it('will only create one interval and clean it up on unmount', async () => {
-    const { unmount } = render(<TestComponent />)
+    const { unmount } = render(
+      <TestComponent options={{ startOnMount: true }} />
+    )
 
     removeFlushTimers()
     expect(jest.getTimerCount()).toBe(0)
@@ -73,7 +107,9 @@ describe('useInterval() Integration Test', () => {
   })
 
   it('can be paused and resumed', async () => {
-    const { unmount } = render(<TestComponent startDelay={500} />)
+    const { unmount } = render(
+      <TestComponent startDelay={500} options={{ startOnMount: true }} />
+    )
 
     expect(screen.getByTestId('output')).toHaveTextContent('0')
     expect(screen.getByTestId('isPaused')).toHaveTextContent('No')
@@ -110,7 +146,7 @@ describe('useInterval() Integration Test', () => {
   })
 
   it('can be stopped and (re)started', async () => {
-    render(<TestComponent startDelay={500} />)
+    render(<TestComponent startDelay={500} options={{ startOnMount: true }} />)
 
     expect(screen.getByTestId('isStopped')).toHaveTextContent('No')
 
