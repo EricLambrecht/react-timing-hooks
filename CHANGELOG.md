@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.1.5...v3.2.0) (2022-12-14)
+
+
+### Features
+
+* **countdown:** Add new countdown hook. ([fc4283b](https://github.com/EricLambrecht/react-timing-hooks/commit/fc4283b9aae02471001696ec6aca0a988390ee61))
+* **counter:** Add counter hook. A more customizable version of useTimer(). ([77ccea5](https://github.com/EricLambrecht/react-timing-hooks/commit/77ccea5f9d00f5a2bf6f6d996dcae6bd68fadb85))
+* **interval:** Allow pausing, resuming, stopping of intervals ([a0e0c3f](https://github.com/EricLambrecht/react-timing-hooks/commit/a0e0c3f3dd50bb8eae3e27e5120317044cc9ef0e))
+
 ## [3.1.5](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.1.0...v3.1.5) (2022-12-10)
 
 NPM Readme update.
