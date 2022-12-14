@@ -23,7 +23,7 @@ take a look at [useCounter()](/react-timing-hooks/intervals-api/useCounter.html)
 
 ## Example
 
-### Regular Interval
+### Regular interval
 
 ```javascript
 import { useInterval } from 'react-timing-hooks'
@@ -33,7 +33,7 @@ const [count, setCount] = useState(0)
 useInterval(() => setCount(count + 1), 200)
 ```
 
-### Controllable Interval
+### Pausing and resuming an interval
 
 ```javascript
 import { useInterval } from 'react-timing-hooks'
@@ -43,7 +43,7 @@ const { pause, resume, isPaused } = useInterval(() => setCount(count + 1), 200)
 
 return <div>
   <button onClick={isPaused ? resume : pause}>
-    {isPaused ? "Pause" : "Resume"}
+    {isPaused ? "Resume" : "Pause"}
   </button>
 </div>
 ```
