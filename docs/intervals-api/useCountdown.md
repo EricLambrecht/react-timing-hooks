@@ -11,7 +11,7 @@ nav_order: 2
 
 Use this hook if you want to create a countdown, i.e. a reactive number that is decremented every second.
 
-This hook is basically the opposite of [useTimer()](/react-timing-hooks/intervals-api/useTimer.html). For a more versatile hook, you can
+This hook is basically the opposite of [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) which counts _up_ every second. For a more versatile hook, you can
 also use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
 
 ## Example
@@ -19,7 +19,7 @@ also use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
 ```javascript
 import { useCountdown } from 'react-timing-hooks'
 
-// this will count from 10 to 0 and stop there
+// this will count from 10 to 0 (updated every second) and stop there
 const [counter, { stop }] = useCountdown(10)
 
 useEffect(() => {
