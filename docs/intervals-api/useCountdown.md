@@ -6,6 +6,9 @@ nav_order: 2
 
 # useCountdown
 
+10…, 9…, 8…, 7…
+{: .fs-6 .fw-300 }
+
 Use this hook if you want to create a countdown, i.e. a reactive number that is decremented every second.
 
 This hook is basically the opposite of [useTimer()](/react-timing-hooks/intervals-api/useTimer.html). For a more versatile hook, you can
