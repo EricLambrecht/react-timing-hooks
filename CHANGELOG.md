@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.2.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.2.0...v3.2.1) (2022-12-14)
+
+
+### Bug Fixes
+
+* Add missing exports for useCounter and useCountdown ([5e4b3c0](https://github.com/EricLambrecht/react-timing-hooks/commit/5e4b3c03837459a69c26fb8a68d6b1213f7e622d))
+
 ## [3.2.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.1.5...v3.2.0) (2022-12-14)
 
 
