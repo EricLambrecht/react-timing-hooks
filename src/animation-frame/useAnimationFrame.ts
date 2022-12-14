@@ -2,6 +2,10 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { AnimationFrameHandle } from './types'
 
 /**
+ * Returns a function that can be used to run the given callback via `window.requestAnimationFrame()`.
+ *
+ * Pending callbacks will be cleared in case the component unmounts.
+ *
  * @param callback The callback that is invoked in the next animation frame
  */
 const useAnimationFrame = <T extends (...args: never[]) => unknown>(

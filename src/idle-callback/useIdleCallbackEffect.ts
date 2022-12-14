@@ -6,6 +6,12 @@ import {
   RequestIdleCallbackOptions,
 } from './types'
 
+/**
+ * Behaves like a regular use effect except that its callback receives a function-argument that allows
+ * to run callbacks via `window.requestIdleCallback` inside the effect. Pending idle callbacks will be cleared on unmount.
+ * @param effect
+ * @param deps
+ */
 const useIdleCallbackEffect = (
   effect: IdleCallbackEffectCallback,
   deps: DependencyList

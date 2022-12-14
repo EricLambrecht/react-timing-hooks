@@ -2,8 +2,14 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { TimeoutId } from './types'
 
 /**
+ * This hook will return a function that executes the provided callback after the specified amount of time.
+ *
+ * Pending callbacks will be cleared in case the component unmounts.
+ *
  * @param callback The callback that is invoked after the timeout expired
  * @param timeout A timeout in milliseconds
+ *
+ * @returns a function that executes the provided callback after the specified amount of time
  */
 function useTimeout<T extends (...args: never[]) => unknown>(
   callback: T,

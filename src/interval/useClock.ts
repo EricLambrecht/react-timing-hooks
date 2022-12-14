@@ -14,7 +14,7 @@ export interface ClockOptions<T> {
  *
  * @template [T=string]
  * @param options options.locales and options.dateTimeFormatOptions will be directly forwarded to date.toLocaleTimeString(). You can also use options.customFormatter to override the output of the hook. The output must match the generic type of the hook.
- * @returns {T}
+ * @returns {T} The current (formatted) time
  */
 const useClock = <T = string>(options?: ClockOptions<T>) => {
   const startTimeInSeconds =

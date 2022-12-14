@@ -1,3 +1,7 @@
+/*
+ * This hook was inspired by Dan Abramov's blogpost:
+ * https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+ */
 import { useCallback, useEffect, useRef, useState } from 'react'
 
 export type IntervalControls = {
@@ -10,11 +14,15 @@ export type IntervalControls = {
 }
 
 /**
- * This hook was inspired by Dan Abramov's blogpost:
- * https://overreacted.io/making-setinterval-declarative-with-react-hooks/
+ * Calls the given function at a regular interval.
  *
- * @param callback
- * @param delay
+ * The interval can be paused, resumed, stopped etc. via the returned callbacks.
+ *
+ * Active intervals will be cleared in case the component unmounts.
+ *
+ * @param callback A function that will be called at the specified interval
+ * @param delay time in milliseconds between each invocation of callback
+ * @returns An object of properties to control the interval or see it's status
  */
 const useInterval = <T extends (...args: never[]) => unknown>(
   callback: T,
