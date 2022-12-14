@@ -12,7 +12,12 @@ A react wrapper for [setInterval](https://developer.mozilla.org/en-US/docs/Web/A
 This hook allows you to do certain actions at a regular interval, i.e. **loops**. 
 It is a react-wrapper for the native javascript function `setInterval`.
 
-If you want to loop very fast, maybe because you want to animate something, you might want to use `useAnimationFrameLoop` instead, which yields better performance in these cases.
+If you want to loop very fast, maybe because you want to animate something, 
+you might want to use [useAnimationFrameLoop()](/react-timing-hooks/animation-api/useAnimationFrameLoop.html) instead which yields better performance in these cases.
+
+If you only want to increase or decrease a numeric value in a regular interval,
+take a look at [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
+
 
 ## Example
 
