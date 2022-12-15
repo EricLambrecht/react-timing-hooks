@@ -6,7 +6,8 @@ nav_order: 1
 
 # useAnimationFrameLoop
 
-Use this hook if you want to execute something (like css updates, or Web GL rendering) in an animation frame loop in your React component.
+Use this hook if you want to execute something (like css updates, or Web GL rendering) in an animation frame 
+loop in your React component.
 
 The browser will call your function approximately 60 times a second (60 FPS) if the performance of your app allows it.
 See [requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) to learn 
