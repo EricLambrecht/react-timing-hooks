@@ -20,7 +20,7 @@ clean up, or writing code to pause/resume intervals etc.
   * [`useIdleCallback()`][idle-cb-api], [`useIdleCallbackEffect()`][idle-cb-api]
 * …and **additional [utility hooks][all-hooks]** for things like
   * rendering: `useAnimationFrameLoop()`
-  * numerical manipulation: `useCounter()`, `useCountdown()`, `useTimer()`
+  * counters: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`
 * Ability to **pause, resume, start or stop intervals**
 * A **versatile API**: customizable settings, many hook "flavors" depending on the use-case.
