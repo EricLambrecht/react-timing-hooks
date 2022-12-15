@@ -23,8 +23,8 @@ clean up, or writing code to pause/resume intervals etc.
   * numerical manipulation: `useCounter()`, `useCountdown()`,`useTimer()`
   * time: `useClock()`
 * Ability to **pause and resume intervals**
-* A **versatile API**: customizable settings, different versions of the same hook (e.g. "useEffect" and "useCallback" versions).
-* Quality of Life: **Automatic clean-ups** of pending timers, intervals etc. (e.g. if your component un-mounts before a timer triggers), callbacks are **automatically memoized**
+* A **versatile API**: customizable settings, many hook "flavors" depending on the use-case.
+* **Automatic clean-ups** of pending timers, intervals etc., callbacks are **automatically memoized**
 * Full **Typescript** support
 * **[Lightweight](https://bundlephobia.com/result?p=react-timing-hooks)** (ca. 1KB minzipped, no transitive dependencies!)
 * **Tree-shakable** — You only bundle what you use!
