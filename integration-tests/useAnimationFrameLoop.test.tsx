@@ -1,6 +1,6 @@
 import { render, act, fireEvent, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useAnimationFrameLoop } from '../.tmp/index'
 // @ts-ignore
 import { animationFrame } from '@shopify/jest-dom-mocks'
@@ -11,16 +11,25 @@ const TestComponent: React.FC = () => {
   const [count, setCount] = useState(0)
   const [stop, setStop] = useState(false)
 
-  useAnimationFrameLoop(() => {
-    setCount(count + 1)
-  }, stop)
+  const { pause, resume } = useAnimationFrameLoop(
+    () => {
+      setCount(count + 1)
+    },
+    { startOnMount: true }
+  )
+
+  useEffect(() => {
+    if (stop) {
+      pause()
+    } else {
+      resume()
+    }
+  }, [pause, resume, stop])
 
   return (
     <div>
       <p data-testid="output">{count}</p>
-      <button data-testid="button" onClick={() => setStop(!stop)}>
-        Toggle Stop
-      </button>
+      <button onClick={() => setStop(!stop)}>Toggle Stop</button>
     </div>
   )
 }
@@ -56,7 +65,7 @@ describe('useAnimationFrameLoop() Integration Test', () => {
         expect(getByTestId('output').textContent).toBe(i.toString())
       }
 
-      fireEvent.click(getByTestId('button')) // stop
+      fireEvent.click(screen.getByRole('button', { name: 'Toggle Stop' })) // stop
 
       for (let i = 11; i <= 20; i++) {
         act(() => {
@@ -65,7 +74,7 @@ describe('useAnimationFrameLoop() Integration Test', () => {
         expect(getByTestId('output').textContent).toBe('10')
       }
 
-      fireEvent.click(getByTestId('button')) // resume
+      fireEvent.click(screen.getByRole('button', { name: 'Toggle Stop' })) // resume
 
       for (let i = 11; i <= 20; i++) {
         act(() => {
@@ -82,18 +91,21 @@ describe('useAnimationFrameLoop() Integration Test', () => {
       pausedOnStartup: boolean
     }> = ({ onRender, pausedOnStartup }) => {
       const [count, setCount] = useState(0)
-      const [paused, setPaused] = useState(pausedOnStartup)
-
-      useAnimationFrameLoop(() => {
+      const incrementCount = useCallback(() => {
         setCount(count + 1)
-      }, paused)
+      }, [setCount])
 
-      onRender(paused)
+      const { pause, resume, isPaused } = useAnimationFrameLoop(
+        incrementCount,
+        { startOnMount: pausedOnStartup }
+      )
+
+      onRender(isPaused)
 
       return (
         <>
           <p data-testid="output">{count}</p>
-          <button data-testid="button" onClick={() => setPaused(!paused)}>
+          <button data-testid="button" onClick={isPaused ? resume : pause}>
             Toggle Pause
           </button>
         </>
@@ -103,9 +115,10 @@ describe('useAnimationFrameLoop() Integration Test', () => {
     it('does not cause an infinite render loop when paused on startup', async () => {
       const renderMock = jest.fn()
       render(<UnnecessaryRerenderTest onRender={renderMock} pausedOnStartup />)
-      const promise = new Promise<void>((r) => setTimeout(r, 250))
+      const promise = new Promise<void>((r) => setTimeout(r, 500))
       await act(() => promise)
-      expect(renderMock).toBeCalledTimes(1)
+      const maxNumberOfCalls = 3
+      expect(renderMock.mock.calls.length).toBeLessThan(maxNumberOfCalls) // 1 for the hook and 1 for the act()
     })
 
     it('does not cause an infinite render loop when paused is activated later on', async () => {
@@ -118,7 +131,7 @@ describe('useAnimationFrameLoop() Integration Test', () => {
       )
       const pauseButton = screen.getByRole('button', { name: 'Toggle Pause' })
       await userEvent.click(pauseButton)
-      const promise = new Promise<void>((r) => setTimeout(r, 250))
+      const promise = new Promise<void>((r) => setTimeout(r, 500))
       await act(() => promise)
       /**
        * Since the update to React 18, this number is sometimes 1, sometimes 2. Since the intent of this test

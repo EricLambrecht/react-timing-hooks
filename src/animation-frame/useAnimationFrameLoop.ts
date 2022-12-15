@@ -1,32 +1,47 @@
 import useAnimationFrame from './useAnimationFrame'
 import { useCallback, useEffect, useRef } from 'react'
+import useControls, { Controls } from '../controls/useControls'
+
+type AnimationFrameLoopControls = Omit<Controls, 'isPausedRef'>
+
+type AnimationFrameLoopOptions = {
+  startOnMount?: boolean
+}
 
 const useAnimationFrameLoop = <T extends (...args: never[]) => unknown>(
   callback: T,
-  pause = false
-): void => {
+  options: AnimationFrameLoopOptions = {}
+): AnimationFrameLoopControls => {
+  const { startOnMount = false } = options
   const rafCallback = useRef<T>(callback)
-  const pauseValue = useRef<boolean>(false)
+  const { isPausedRef, ...controls } = useControls(false, !startOnMount)
+  const { isStopped } = controls
 
   useEffect(() => {
     rafCallback.current = callback
-    pauseValue.current = pause
-  }, [callback, pause])
+  }, [callback])
 
   const nextCallback = useCallback(() => {
-    if (!pauseValue.current) {
-      rafCallback.current()
+    if (!isStopped) {
+      if (!isPausedRef.current) {
+        rafCallback.current()
+      }
       runInLoop()
     }
-  }, [])
+  }, [isStopped])
 
   const runInLoop = useAnimationFrame(nextCallback)
 
   useEffect(() => {
-    if (!pause) {
-      runInLoop()
+    if (!isStopped) {
+      const h = runInLoop()
+      return () => {
+        cancelAnimationFrame(h)
+      }
     }
-  }, [runInLoop, pause])
+  }, [runInLoop, isStopped])
+
+  return controls
 }
 
 export default useAnimationFrameLoop

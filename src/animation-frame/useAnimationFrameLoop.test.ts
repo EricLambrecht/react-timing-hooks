@@ -2,6 +2,7 @@
 import { animationFrame, ensureMocksReset } from '@shopify/jest-dom-mocks'
 import { renderHook, act } from '@testing-library/react'
 import useAnimationFrameLoop from './useAnimationFrameLoop'
+import { useEffect } from 'react'
 
 describe('useAnimationFrameLoop', () => {
   beforeAll(() => {
@@ -17,7 +18,7 @@ describe('useAnimationFrameLoop', () => {
     const testCallback = jest.fn()
 
     renderHook(() => {
-      useAnimationFrameLoop(testCallback)
+      useAnimationFrameLoop(testCallback, { startOnMount: true })
     })
 
     expect(testCallback).toHaveBeenCalledTimes(0)
@@ -34,7 +35,7 @@ describe('useAnimationFrameLoop', () => {
     const testCallback = jest.fn()
 
     const { unmount } = renderHook(() => {
-      useAnimationFrameLoop(testCallback)
+      useAnimationFrameLoop(testCallback, { startOnMount: true })
     })
 
     expect(testCallback).toHaveBeenCalledTimes(0)
@@ -56,12 +57,21 @@ describe('useAnimationFrameLoop', () => {
     }
   })
 
-  it('can be paused and resumed with second parameter', () => {
+  it('can be paused and resumed via the returned controls', () => {
     const testCallback = jest.fn()
 
     const { rerender } = renderHook(
-      (stop: boolean) => {
-        useAnimationFrameLoop(testCallback, stop)
+      (shouldPause: boolean) => {
+        const { pause, resume } = useAnimationFrameLoop(testCallback, {
+          startOnMount: true,
+        })
+        useEffect(() => {
+          if (shouldPause) {
+            pause()
+          } else {
+            resume()
+          }
+        }, [pause, resume, shouldPause])
       },
       { initialProps: false }
     )
@@ -84,9 +94,9 @@ describe('useAnimationFrameLoop', () => {
       if (i < pauseOn) {
         expect(testCallback).toHaveBeenCalledTimes(i)
       } else if (i < resumeOn) {
-        expect(testCallback).toHaveBeenCalledTimes(pauseOn)
+        expect(testCallback).toHaveBeenCalledTimes(pauseOn) // if this value is higher, the loop did not pause!
       } else {
-        expect(testCallback).toHaveBeenCalledTimes(i - pauseOn)
+        expect(testCallback).toHaveBeenCalledTimes(i - pauseOn) // if this value is lower, it did not resume
       }
     }
   })

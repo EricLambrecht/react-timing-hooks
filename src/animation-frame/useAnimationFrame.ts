@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { AnimationFrameHandle } from './types'
 
 /**
@@ -10,9 +10,9 @@ import { AnimationFrameHandle } from './types'
  */
 const useAnimationFrame = <T extends (...args: never[]) => unknown>(
   callback: T
-): ((...args: Parameters<T>) => void) => {
+): ((...args: Parameters<T>) => number) => {
   const rafCallback = useRef<T>(callback)
-  const [handle, setHandle] = useState<AnimationFrameHandle | null>(null)
+  const handleRef = useRef<AnimationFrameHandle | null>(null)
 
   useEffect(() => {
     rafCallback.current = callback
@@ -20,16 +20,18 @@ const useAnimationFrame = <T extends (...args: never[]) => unknown>(
 
   useEffect(() => {
     return () => {
-      if (handle) {
-        cancelAnimationFrame(handle)
+      if (handleRef.current) {
+        cancelAnimationFrame(handleRef.current)
       }
     }
-  }, [handle])
+  }, [])
 
-  return useCallback<(...args: Parameters<T>) => void>(
+  return useCallback<(...args: Parameters<T>) => number>(
     (...args: Parameters<T>) => {
-      const h = requestAnimationFrame(() => rafCallback.current(...args))
-      setHandle(h)
+      handleRef.current = requestAnimationFrame(() =>
+        rafCallback.current(...args)
+      )
+      return handleRef.current
     },
     []
   )

@@ -9,11 +9,11 @@
   "scripts": {
     "test": "npm run test:unit && npm run test:integration",
     "test:unit": "jest src",
-    "test:integration": "rimraf \"./tmp\" && npm run build && jest integration-tests",
+    "test:integration": "npm run build && jest integration-tests",
     "commit": "git-cz",
     "prettier:check": "prettier --list-different \"{src,integration-tests}/**/*.{ts,tsx}\"",
     "prettier:write": "prettier --write \"{src,integration-tests}/**/*.{ts,tsx}\"",
-    "build": "rollup -c",
+    "build": "rimraf \"./tmp\" && rollup -c",
     "build:watch": "npm run build -- --watch",
     "build:prod": "rimraf \"./dist\" && rollup -c rollup.config.prod.js",
     "release": "standard-version --dry-run && cli-confirm \"Do you really want to create a new release? (Y/N)\" && standard-version",
