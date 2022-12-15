@@ -15,13 +15,14 @@ clean up, or writing code to pause/resume intervals etc.
 
 * Several React hooks **wrapping Vanilla JS functions** like:
   * [`useInterval()`][interval-api]
-  * [`useTimeout()`][timeout-api], [`useTimeoutEffect()`][timeout-api]
+  * [`useTimeout()`][timeout-api]
   * [`useAnimationFrame()`][raf-api]
-  * [`useIdleCallback()`][idle-cb-api], [`useIdleCallbackEffect()`][idle-cb-api]
+  * [`useIdleCallback()`][idle-cb-api], 
 * …and **additional [utility hooks][all-hooks]** for things like
   * rendering: `useAnimationFrameLoop()`
   * counters: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`
+  * effect versions: `useTimeoutEffect()`, `useIdleCallbackEffect()`
 * Ability to **pause, resume, start or stop intervals**
 * A **versatile API**: customizable settings, many hook "flavors" depending on the use-case.
 * **Automatic clean-ups** of pending timers, intervals etc.
