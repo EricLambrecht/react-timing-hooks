@@ -271,4 +271,4 @@ But check for yourself: https://bundlephobia.com/result?p=react-timing-hooks
 
 ## Contributing
 
-see [CONTRIBUTING.md](https://github.com/EricLambrecht/react-timing-hooks/blob/master/CONTRIBUTING.md)
+see [CONTRIBUTING.md](https://github.com/EricLambrecht/react-timing-hooks/blob/main/CONTRIBUTING.md)
