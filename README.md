@@ -7,17 +7,22 @@
 
 ## Wow! What's this?!
 
-This is a very little package with **React hooks wrapping time-related Vanilla JS functions**, so you can use them with minimal effort in your React apps without having to worry about manual clean up, testing, or typing (if you use Typescript).
+This is a very little package with **React hooks wrapping time-related Vanilla JS functions**, 
+so you can use them with minimal effort in your React apps without having to worry about manual 
+clean up, or writing code to pause/resume intervals etc.
 
 ### Feature Overview
 
 * Several React hooks **wrapping Vanilla JS functions** like:
-  * `requestAnimationFrame()`
-  * `setTimeout()`
-  * `setInterval()`
-  * `requestIdleCallback()`
+  * `useTimeout()`/`useTimeoutEffect()`
+  * `useInterval()`
+  * `useAnimationFrame()`
+  * `useIdleCallback()`/`useIdleCallbackEffect()`
+* …and additional **utility hooks** for things like
+  * rendering: `useAnimationFrameLoop()`
+  * numerical manipulation: `useCounter()`, `useCountdown()`,`useTimer()`
+  * time: `useClock()`
 * Ability to **pause and resume intervals**
-* Additional **utility hooks** for timers, countdowns, display of time, or rendering (e.g. `useAnimationFrameLoop`)
 * A **versatile API**: customizable settings, different versions of the same hook (e.g. "useEffect" and "useCallback" versions).
 * Quality of Life: **Automatic clean-ups** of pending timers, intervals etc. (e.g. if your component un-mounts before a timer triggers), callbacks are **automatically memoized**
 * Full **Typescript** support
