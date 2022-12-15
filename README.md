@@ -18,7 +18,7 @@ clean up, or writing code to pause/resume intervals etc.
   * [`useInterval()`][interval-api]
   * [`useAnimationFrame()`][raf-api]
   * [`useIdleCallback()`][idle-cb-api], [`useIdleCallbackEffect()`][idle-cb-api]
-* …and additional **utility hooks** for things like
+* …and **additional [utility hooks][all-hooks]** for things like
   * rendering: `useAnimationFrameLoop()`
   * numerical manipulation: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`
@@ -285,3 +285,4 @@ see [CONTRIBUTING.md](https://github.com/EricLambrecht/react-timing-hooks/blob/m
 [interval-api]: https://ericlambrecht.github.io/react-timing-hooks/intervals-api/
 [raf-api]: https://ericlambrecht.github.io/react-timing-hooks/animation-api/
 [idle-cb-api]: https://ericlambrecht.github.io/react-timing-hooks/idle-callback-api/
+[all-hooks]: https://ericlambrecht.github.io/react-timing-hooks/list-of-all-hooks/
