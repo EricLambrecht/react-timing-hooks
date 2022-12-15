@@ -22,7 +22,7 @@ clean up, or writing code to pause/resume intervals etc.
   * rendering: `useAnimationFrameLoop()`
   * counters: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`
-  * effect versions: `useTimeoutEffect()`, `useIdleCallbackEffect()`
+  * effects: `useTimeoutEffect()`, `useIdleCallbackEffect()`
 * Ability to **pause, resume, start or stop intervals**
 * A **versatile API**: customizable settings, many hook "flavors" depending on the use-case.
 * **Automatic clean-ups** of pending timers, intervals etc.
