@@ -14,13 +14,13 @@ clean up, or writing code to pause/resume intervals etc.
 ### Feature Overview
 
 * Several React hooks **wrapping Vanilla JS functions** like:
-  * `useTimeout()`/`useTimeoutEffect()`
-  * `useInterval()`
-  * `useAnimationFrame()`
-  * `useIdleCallback()`/`useIdleCallbackEffect()`
+  * [setTimeout][timeout-mdn]: `useTimeout()`, `useTimeoutEffect()`
+  * [setInterval][interval-mdn]: `useInterval()`
+  * [requestAnimationFrame][raf-mdn]: `useAnimationFrame()`
+  * [requestIdleCallback][idle-cb-mdn]: `useIdleCallback()`, `useIdleCallbackEffect()`
 * …and additional **utility hooks** for things like
   * rendering: `useAnimationFrameLoop()`
-  * numerical manipulation: `useCounter()`, `useCountdown()`,`useTimer()`
+  * numerical manipulation: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`
 * Ability to **pause, resume, start or stop intervals**
 * A **versatile API**: customizable settings, many hook "flavors" depending on the use-case.
@@ -276,3 +276,8 @@ But check for yourself: https://bundlephobia.com/result?p=react-timing-hooks
 ## Contributing
 
 see [CONTRIBUTING.md](https://github.com/EricLambrecht/react-timing-hooks/blob/main/CONTRIBUTING.md)
+
+[timeout-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
+[interval-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/setInterval
+[raf-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+[idle-cb-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
