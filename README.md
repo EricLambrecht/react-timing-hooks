@@ -14,8 +14,8 @@ clean up, or writing code to pause/resume intervals etc.
 ### Feature Overview
 
 * Several React hooks **wrapping Vanilla JS functions** like:
-  * [`useTimeout()`][timeout-api], [`useTimeoutEffect()`][timeout-api]
   * [`useInterval()`][interval-api]
+  * [`useTimeout()`][timeout-api], [`useTimeoutEffect()`][timeout-api]
   * [`useAnimationFrame()`][raf-api]
   * [`useIdleCallback()`][idle-cb-api], [`useIdleCallbackEffect()`][idle-cb-api]
 * …and **additional [utility hooks][all-hooks]** for things like
