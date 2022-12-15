@@ -5,7 +5,7 @@ nav_order: 1
 has_children: false
 ---
 
-<img alt="logo" src="https://github.com/EricLambrecht/react-timing-hooks/raw/master/logo.png" width="680" />
+<img alt="logo" src="https://github.com/EricLambrecht/react-timing-hooks/raw/main/logo.png" width="680" />
 
 # Quick Start
 
