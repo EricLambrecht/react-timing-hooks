@@ -2,16 +2,10 @@
  * This hook was inspired by Dan Abramov's blogpost:
  * https://overreacted.io/making-setinterval-declarative-with-react-hooks/
  */
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
+import useControls, { Controls } from '../controls/useControls'
 
-export type IntervalControls = {
-  isPaused: boolean
-  isStopped: boolean
-  pause: () => void
-  resume: () => void
-  stop: () => void
-  start: () => void
-}
+export type IntervalControls = Omit<Controls, 'isPausedRef'>
 
 export type IntervalOptions = {
   startOnMount?: boolean
@@ -36,41 +30,20 @@ const useInterval = <T extends Function>(
   options: IntervalOptions = {}
 ): IntervalControls => {
   const { startOnMount = false } = options
-  const [isPaused, setIsPaused] = useState(false)
-  const [isStopped, setIsStopped] = useState(!startOnMount)
-  const intervalActive = useRef(true)
+  const { isPausedRef, ...controls } = useControls(false, !startOnMount)
+  const { isStopped } = controls
   const intervalCallback = useRef<T>(callback)
   const intervalId = useRef<number | NodeJS.Timeout | null>(null)
-
-  const pause = useCallback(() => {
-    intervalActive.current = false
-    setIsPaused(true) // notify interval owner
-  }, [setIsPaused])
-
-  const resume = useCallback(() => {
-    intervalActive.current = true
-    setIsPaused(false) // notify interval owner
-  }, [setIsPaused])
-
-  const stop = useCallback(() => {
-    setIsStopped(true)
-  }, [setIsStopped])
-
-  const start = useCallback(() => {
-    intervalActive.current = true
-    setIsPaused(false)
-    setIsStopped(false)
-  }, [setIsStopped])
 
   useEffect(() => {
     intervalCallback.current = callback
   }, [callback])
 
   const onIntervalStep = useCallback(() => {
-    if (intervalActive.current === true) {
+    if (isPausedRef.current === false) {
       intervalCallback.current()
     }
-  }, [intervalCallback, intervalActive])
+  }, [intervalCallback, isPausedRef])
 
   useEffect(() => {
     if (delay !== null && !isStopped) {
@@ -79,14 +52,7 @@ const useInterval = <T extends Function>(
     }
   }, [delay, isStopped])
 
-  return {
-    isPaused,
-    isStopped,
-    pause,
-    resume,
-    stop,
-    start,
-  }
+  return { ...controls }
 }
 
 export default useInterval
