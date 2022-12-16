@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { RequestIdleCallbackHandle, RequestIdleCallbackOptions } from './types'
+import { logWarning } from '../util/logging'
 
 /**
  * Returns a function that can be used to invoke the given callback via `window.requestIdleCallback()`.
@@ -14,7 +15,7 @@ const useIdleCallback = <T extends (...args: never[]) => unknown>(
   options?: RequestIdleCallbackOptions
 ): ((...args: Parameters<T>) => void) => {
   if (!window.requestIdleCallback) {
-    console.warn('This browser does not support "requestIdleCallback"')
+    logWarning('This browser does not support "requestIdleCallback"')
     return callback
   }
 

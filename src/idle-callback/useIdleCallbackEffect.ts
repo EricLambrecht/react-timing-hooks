@@ -5,6 +5,7 @@ import {
   RequestIdleCallbackDeadline,
   RequestIdleCallbackOptions,
 } from './types'
+import { logWarning } from '../util/logging'
 
 /**
  * Behaves like a regular use effect except that its callback receives a function-argument that allows
@@ -17,7 +18,7 @@ const useIdleCallbackEffect = (
   deps: DependencyList
 ) => {
   if (!window.requestIdleCallback) {
-    console.warn('This browser does not support "requestIdleCallback"')
+    logWarning('This browser does not support "requestIdleCallback"')
     return
   }
 
