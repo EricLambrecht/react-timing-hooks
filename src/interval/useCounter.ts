@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import useInterval, { IntervalControls, IntervalOptions } from './useInterval'
 
-type CounterSettings = {
+export type CounterSettings = {
   start: number
   interval: number
   stepSize: number

@@ -13,8 +13,8 @@ import useAnimationFrame from './animation-frame/useAnimationFrame'
 import useAnimationFrameLoop from './animation-frame/useAnimationFrameLoop'
 import useClock from './interval/useClock'
 import { ClockOptions } from './interval/useClock'
-import useCounter from './interval/useCounter'
-import useCountdown from './interval/useCountdown'
+import useCounter, { CounterSettings } from './interval/useCounter'
+import useCountdown, { CountdownOptions } from './interval/useCountdown'
 
 export {
   useAnimationFrame,
@@ -29,6 +29,8 @@ export {
   useTimeout,
   useTimeoutEffect,
   ClockOptions,
+  CountdownOptions,
+  CounterSettings,
   IdleCallbackEffectCallback,
   IntervalControls,
   IntervalOptions,

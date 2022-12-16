@@ -10,11 +10,17 @@ nav_order: 2
 {: .fs-6 .fw-300 }
 
 Use this hook if you want to create a countdown, i.e. a reactive number that is decremented every second.
+It will start and end at the specified arguments.
 
-**Note**: By default, the countdown is _stopped_ on mount and has to be started manually. If you want the countdown to start immediately on mount, use `options.startOnMount`.
+The event callback `options.onEnd()` will be called as soon as the end value is reached.
 
-This hook is basically the opposite of [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) which counts _up_ every second. For a more versatile hook, you can
-also use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
+**Note**: By default, the countdown is _stopped_ on mount and has to be started manually. 
+If you want the countdown to start immediately on mount, use `options.startOnMount`.
+
+This hook is similar to [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) which counts _up_ every second and does not have an end value.
+If you need a countdown that count's upwards, you can use `options.stepSize` and change it to `1` or higher.
+
+For a more freedom/versatility, you can use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
 
 ## Example
 
@@ -22,13 +28,7 @@ also use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
 import { useCountdown } from 'react-timing-hooks'
 
 // this will count from 10 to 0 (updated every second) and stop there
-const [counter, { stop }] = useCountdown(10)
-
-useEffect(() => {
-  if (counter === 0) {
-    stop()
-  }
-}, [counter])
+const [counter, { stop }] = useCountdown(10, 0, { onEnd: () => console.log('BOOM!')})
 
 return <span>{counter}</span>
 ```

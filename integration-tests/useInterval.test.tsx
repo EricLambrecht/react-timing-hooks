@@ -59,8 +59,8 @@ describe('useInterval() Integration Test', () => {
     const start = screen.getByTestId('start')
     fireEvent.click(start)
 
-    await advanceTimersUsingAct(1, 500)
-    expect(screen.getByTestId('output')).toHaveTextContent('1')
+    await advanceTimersUsingAct(3, 500)
+    expect(screen.getByTestId('output')).toHaveTextContent('3')
 
     unmount()
     removeFlushTimers()

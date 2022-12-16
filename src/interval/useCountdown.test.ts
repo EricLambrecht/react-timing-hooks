@@ -10,38 +10,36 @@ describe('useCountdown', () => {
   describe('by default', () => {
     it('counts down every second', async () => {
       const { result } = renderHook(() =>
-        useCountdown(0, { startOnMount: true })
+        useCountdown(0, -10, { startOnMount: true })
       )
-      let [value] = result.current
-      expect(value).toBe(0)
+      expect(result.current[0]).toBe(0)
 
       await advanceTimersUsingAct(1)
-      ;[value] = result.current
-      expect(value).toBe(-1)
+      expect(result.current[0]).toBe(-1)
 
       await advanceTimersUsingAct(1)
-      ;[value] = result.current
-      expect(value).toBe(-2)
+      expect(result.current[0]).toBe(-2)
 
       await advanceTimersUsingAct(2)
-      ;[value] = result.current
-      expect(value).toBe(-4)
+      expect(result.current[0]).toBe(-4)
     })
 
-    it('accepts start value', async () => {
+    it('call onEnd() event callback', async () => {
+      const onEnd = jest.fn()
       const { result } = renderHook(() =>
-        useCountdown(900, { startOnMount: true })
+        useCountdown(900, 897, { startOnMount: true, onEnd })
       )
-      let [value] = result.current
-      expect(value).toBe(900)
+      expect(result.current[0]).toBe(900)
 
       await advanceTimersUsingAct(1)
-      ;[value] = result.current
-      expect(value).toBe(899)
+      expect(result.current[0]).toBe(899)
+
+      expect(onEnd).toHaveBeenCalledTimes(0)
 
       await advanceTimersUsingAct(5)
-      ;[value] = result.current
-      expect(value).toBe(894)
+      expect(result.current[0]).toBe(897) // will not go further, because that's the end
+
+      expect(onEnd).toHaveBeenCalledTimes(1)
     })
   })
 })
