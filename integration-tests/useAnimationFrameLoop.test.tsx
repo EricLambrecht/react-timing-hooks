@@ -117,7 +117,7 @@ describe('useAnimationFrameLoop() Integration Test', () => {
       render(<UnnecessaryRerenderTest onRender={renderMock} pausedOnStartup />)
       const promise = new Promise<void>((r) => setTimeout(r, 500))
       await act(() => promise)
-      const maxNumberOfCalls = 3
+      const maxNumberOfCalls = 4
       expect(renderMock.mock.calls.length).toBeLessThan(maxNumberOfCalls) // 1 for the hook and 1 for the act()
     })
 
