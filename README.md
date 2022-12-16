@@ -65,7 +65,7 @@ const HelloWorld = () => {
 }
 ```
 
-#### A resumable interval with `useInterval()`
+#### A "status logger" with `useInterval()`
 ```jsx harmony
 import { useState } from 'react'
 import { useInterval } from 'react-timing-hooks'
@@ -82,7 +82,7 @@ const StatusLogger = () => {
 }
 ```
 
-#### Display how long the user has been browsing using `useTimer()` 
+#### Display the user's browsing time using `useTimer()` 
 ```jsx harmony
 import { useState } from 'react'
 import { useTimer } from 'react-timing-hooks'
@@ -106,7 +106,7 @@ const Clock = () => {
 }
 ```
 
-#### Create canvas renderer using the animation frame loop hook
+#### A canvas renderer using `useAnimationFrameLoop()`
 
 ```jsx harmony
 import { useRef } from 'react'
