@@ -1,4 +1,5 @@
 import useTimer from './useTimer'
+import { IntervalControls } from './useInterval'
 
 export interface ClockOptions<T> {
   locales?: string | string[]
@@ -17,19 +18,19 @@ export interface ClockOptions<T> {
  * @returns The current (formatted) time
  */
 const useClock = <T = string>(options?: ClockOptions<T>) => {
-  const startTimeInSeconds =
-    (options?.startTimeInMilliseconds || Date.now()) / 1000
-  const [currentTimeInSeconds] = useTimer(startTimeInSeconds, {
+  const startTimeMs = options?.startTimeInMilliseconds || Date.now()
+  const startTimeInSeconds = startTimeMs / 1000
+
+  const [currentTimeInSeconds, controls] = useTimer(startTimeInSeconds, {
     startOnMount: true,
   })
   const date = new Date(currentTimeInSeconds * 1000)
-  if (options?.customFormatter) {
-    return options?.customFormatter(date)
-  }
-  return date.toLocaleTimeString(
-    options?.locales,
-    options?.dateTimeFormatOptions
-  )
+
+  const formattedTime = options?.customFormatter
+    ? options?.customFormatter(date)
+    : date.toLocaleTimeString(options?.locales, options?.dateTimeFormatOptions)
+
+  return [formattedTime, controls] as [T, IntervalControls]
 }
 
 export default useClock

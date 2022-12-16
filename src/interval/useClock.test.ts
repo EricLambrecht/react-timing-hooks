@@ -12,16 +12,16 @@ describe('useClock', () => {
     const { result } = renderHook(() =>
       useClock({ startTimeInMilliseconds: testTimeInMilliseconds })
     )
-    expect(result.current).toContain(':59:14')
+    expect(result.current[0]).toContain(':59:14')
 
     await advanceTimersUsingAct(1)
-    expect(result.current).toContain(':59:15')
+    expect(result.current[0]).toContain(':59:15')
 
     await advanceTimersUsingAct(1)
-    expect(result.current).toContain(':59:16')
+    expect(result.current[0]).toContain(':59:16')
 
     await advanceTimersUsingAct(2)
-    expect(result.current).toContain(':59:18')
+    expect(result.current[0]).toContain(':59:18')
   })
 
   it('supports changing locale', async () => {
@@ -33,16 +33,16 @@ describe('useClock', () => {
         locales: 'fr-FR',
       })
     )
-    expect(result.current).toBe('12:59:14')
+    expect(result.current[0]).toBe('12:59:14')
 
     await advanceTimersUsingAct(1)
-    expect(result.current).toBe('12:59:15')
+    expect(result.current[0]).toBe('12:59:15')
 
     await advanceTimersUsingAct(1)
-    expect(result.current).toBe('12:59:16')
+    expect(result.current[0]).toBe('12:59:16')
 
     await advanceTimersUsingAct(2)
-    expect(result.current).toBe('12:59:18')
+    expect(result.current[0]).toBe('12:59:18')
   })
 
   it('supports custom dateTimeFormat options', async () => {
@@ -54,16 +54,16 @@ describe('useClock', () => {
         dateTimeFormatOptions: { timeZone: 'Asia/Tokyo' },
       })
     )
-    expect(result.current).toBe('9:59:14 PM')
+    expect(result.current[0]).toBe('9:59:14 PM')
 
     await advanceTimersUsingAct(1)
-    expect(result.current).toBe('9:59:15 PM')
+    expect(result.current[0]).toBe('9:59:15 PM')
 
     await advanceTimersUsingAct(1)
-    expect(result.current).toBe('9:59:16 PM')
+    expect(result.current[0]).toBe('9:59:16 PM')
 
     await advanceTimersUsingAct(2)
-    expect(result.current).toBe('9:59:18 PM')
+    expect(result.current[0]).toBe('9:59:18 PM')
   })
 
   it('supports custom formatting', async () => {
@@ -76,15 +76,15 @@ describe('useClock', () => {
         customFormatter: testFormatter,
       })
     )
-    expect(result.current).toBe('13:59:14foobar')
+    expect(result.current[0]).toBe('13:59:14foobar')
 
     await advanceTimersUsingAct(1)
-    expect(result.current).toBe('13:59:15foobar')
+    expect(result.current[0]).toBe('13:59:15foobar')
 
     await advanceTimersUsingAct(1)
-    expect(result.current).toBe('13:59:16foobar')
+    expect(result.current[0]).toBe('13:59:16foobar')
 
     await advanceTimersUsingAct(2)
-    expect(result.current).toBe('13:59:18foobar')
+    expect(result.current[0]).toBe('13:59:18foobar')
   })
 })

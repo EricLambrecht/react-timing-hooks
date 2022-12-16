@@ -7,7 +7,7 @@ import { advanceTimersUsingAct } from '../src/testing/advanceTimersUsingAct'
 jest.useFakeTimers()
 
 const TestComponent: React.FC = () => {
-  const time = useClock()
+  const [time] = useClock()
 
   return (
     <div>

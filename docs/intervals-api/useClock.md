@@ -27,7 +27,7 @@ return <span>{currentTime}</span>
 
 ## API
 
-`useClock<T>(options: ClockOptions)`
+`useClock<T=string>(options: ClockOptions): [T, IntervalControls]`
 {: .fs-5 .fw-300 }
 
 ### Params
@@ -50,4 +50,7 @@ Defaults to `string`. Does have to be set only when a custom formatter is used.
 
 ### Return value
 
-A formatted time string (by default) or the output of `options.customFormatter` (if set) – updated every second.
+An Array with two elements:
+ - `0`: A formatted time string (by default) or the output of `options.customFormatter` (if set) – updated every second.
+ - `1`: Interval controls to pause, resume, start and stop the clock.
+
