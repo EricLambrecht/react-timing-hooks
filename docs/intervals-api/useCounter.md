@@ -6,14 +6,18 @@ nav_order: 2
 
 # useCounter
 
-Use this hook if you want to have a customizable counter that changes a value by a certain amount (`settings.stepSize`) every x  milliseconds (`settings.interval`).
+Use this hook if you want to have a **customizable counter** that changes a value by a 
+certain amount (`settings.stepSize`) every x  milliseconds (`settings.interval`).
 A start value (`settings.start`) can also be defined.
 
-**Note**: By default, the counter is _stopped_ on mount and has to be started manually. If you want the counter to start immediately on mount, use `options.startOnMount`.
+**Note**: By default, the counter is _stopped_ on mount and has to be started manually. 
+If you want the counter to start immediately on mount, use `options.startOnMount`.
 
-If you want a counter that counts up by 1 every second, you can use the [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) hook.
+If you want a counter that counts up by 1 every second, you can use the 
+[useTimer()](/react-timing-hooks/intervals-api/useTimer.html) hook.
 
-If you want a counter that counts down every second, use [useCountdown()](/react-timing-hooks/intervals-api/useCountdown.html).
+If you want a counter that starts at a certain number and stops at another, use 
+[useCountdown()](/react-timing-hooks/intervals-api/useCountdown.html).
 
 ## Example
 

@@ -27,7 +27,7 @@ take a look at [useCounter()](/react-timing-hooks/intervals-api/useCounter.html)
 
 ## Example
 
-### Regular interval
+### Simple interval that starts immediately on mount
 
 ```javascript
 import { useInterval } from 'react-timing-hooks'
@@ -66,11 +66,11 @@ return <div>
 
 > useInterval(callback, delay, options = {})
 
-| Name                 | Default       | Description                                                                                                                        |
-|:---------------------|---------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| callback             | _is required_ | A function that will be invoked as soon as the timeout expires                                                                     |
-| delay                | _is required_ | A number or null. If numeric, it is the delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). If set to `null`, the interval will stop.|
-| options.startOnMount | `false`       | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`.                       |
+| Name                 | Default       | Description                                                                                                                                                                                                      |
+|:---------------------|---------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callback             | _is required_ | A function that will be invoked as soon as the timeout expires                                                                                                                                                   |
+| delay                | _is required_ | A number or null. If numeric, it is the delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). If set to `null`, the interval will stop. |
+| options.startOnMount | `false`       | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`.                                                                                                     |
 
 ### Return value
 

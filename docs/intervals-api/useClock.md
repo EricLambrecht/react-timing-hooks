@@ -6,11 +6,9 @@ nav_order: 3
 
 # useClock
 
-This hook creates a sort of clock, i.e. a reactive time-based value that updates every second.
+This hook creates a sort of clock, i.e. a reactive time-based value that updates **every second**.
 
 The output of useClock is easily customizable via the `options` argument, see [below](#params).
-
-
 
 `useClock` is also generic (by default `useClock<string>` is used). The generic type has to be specified if a 
 custom formatter (see `options.customFormatter`) is used that returns something else than a string.
@@ -21,7 +19,7 @@ custom formatter (see `options.customFormatter`) is used that returns something 
 import { useClock } from 'react-timing-hooks'
 
 // this will show a time like 1:13:56 PM that is updated every second. Like a clock.
-const currentTime = useClock()
+const [currentTime, { start, stop, ...rest }] = useClock()
 return <span>{currentTime}</span>
 ```
 

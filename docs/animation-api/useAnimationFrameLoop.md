@@ -17,7 +17,7 @@ If **performance** is important to you, you should stop the loop instead of paus
 **Note**: By default, the loop is _stopped_ on mount and has to be started manually. If you want the loop to start immediately on mount, use `options.startOnMount`.
 
 The browser will call your function approximately 60 times a second (60 FPS) if the performance of your app allows it.
-See [requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) to learn 
+See [window.requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) to learn 
 more about the inner workings of "animation frames".
 
 ## Example

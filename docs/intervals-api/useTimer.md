@@ -6,7 +6,7 @@ nav_order: 2
 
 # useTimer
 
-Use this hook if you want to create a timer, i.e. a reactive number that is incremented every second.
+Use this hook if you want to create a timer, i.e. a reactive number that is **incremented every second**.
 
 **Note**: By default, the timer is _stopped_ on mount and has to be started manually. If you want the timer to start immediately on mount, use `options.startOnMount`.
 

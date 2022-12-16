@@ -9,8 +9,8 @@ nav_order: 2
 10…, 9…, 8…, 7…
 {: .fs-6 .fw-300 }
 
-Use this hook if you want to create a countdown, i.e. a reactive number that is decremented every second.
-It will start and end at the specified arguments.
+Use this hook if you want to create a **countdown**, i.e. a reactive number that is **decremented every second**.
+The hook will stop its interval automatically when it reaches the end.
 
 The event callback `options.onEnd()` will be called as soon as the end value is reached.
 
@@ -28,7 +28,9 @@ For a more freedom/versatility, you can use [useCounter()](/react-timing-hooks/i
 import { useCountdown } from 'react-timing-hooks'
 
 // this will count from 10 to 0 (updated every second) and stop there
-const [counter, { stop }] = useCountdown(10, 0, { onEnd: () => console.log('BOOM!')})
+const [counter] = useCountdown(10, 0, { 
+  onEnd: () => console.log('BOOM!')
+})
 
 return <span>{counter}</span>
 ```

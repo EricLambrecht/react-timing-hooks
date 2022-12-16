@@ -30,10 +30,10 @@ return <button onClick={trackClickWhenIdle}>Track me!</button>
 
 `useIdleCallback(callback, options)`
 
-| Name             | Default value | Description                                                          |
-|:-----------------|:--------|:---------------------------------------------------------------------|
-| callback         | _This is required._ | Callback that will be invoked when the browser is idle.                          |
-| options          | `undefined` | options for `requestIdleCallback`.  |
+| Name             | Default value       | Description                                             |
+|:-----------------|:--------------------|:--------------------------------------------------------|
+| callback         | _This is required._ | Callback that will be invoked when the browser is idle. |
+| options          | `undefined`         | options for `requestIdleCallback`.                      |
 
 ### Return value
 
