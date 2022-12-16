@@ -88,7 +88,7 @@ import { useState } from 'react'
 import { useTimer } from 'react-timing-hooks'
 
 const BrowsingTime = () => {
-  const elapsedSeconds = useTimer(0, { startOnMount: true })
+  const [elapsedSeconds] = useTimer(0, { startOnMount: true })
   return <span>You've been browsing this page for {elapsedSeconds} seconds.</span>
 }
 ```
@@ -101,7 +101,7 @@ import { useTimeout } from 'react-timing-hooks'
 const Clock = () => {
   // This will show a time like 1:13:56 PM (supports localized formats as well).
   // The displayed time will update every second
-  const currentTime = useClock()
+  const [currentTime] = useClock()
   return <span>{currentTime}</span>
 }
 ```
