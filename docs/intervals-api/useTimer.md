@@ -27,7 +27,7 @@ return <span>{timerValue}</span>
 
 ### Params
 
-`useTimer(start = 0)`
+`useTimer(start = 0, options = {})`
 
 | Name                 | Default    | Description                                                                                                  |
 |:---------------------|:-----------|:-------------------------------------------------------------------------------------------------------------|

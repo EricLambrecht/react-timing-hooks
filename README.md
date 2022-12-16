@@ -109,11 +109,10 @@ const Clock = () => {
 #### Create canvas renderer using the animation frame loop hook
 
 ```jsx harmony
-import { useState } from 'react'
+import { useRef } from 'react'
 import { useAnimationFrameLoop } from 'react-timing-hooks'
 
 const Renderer = () => {
-  const [stop, setStop] = useState(false)
   const delta = useRef(0)
   const canvasRef = useRef(null)
   const canvas = canvasRef.current
@@ -124,15 +123,15 @@ const Renderer = () => {
     context.fillRect(d, d, context.canvas.width, context.canvas.height)
   }
 
-  useAnimationFrameLoop(() => {
+  const { start, stop, isStopped } = useAnimationFrameLoop(() => {
     delta.current += 1
     updateCanvas(delta.current)
-  }, stop)
+  })
   
   return <>
     <canvas ref={canvasRef} {...props}/>
-    <button onClick={() => setStop(!stop)}>
-      Stop rendering
+    <button onClick={isStopped ? start : stop}>
+      {isStopped ? "Start rendering" : "Stop rendering"}
     </button>
   </>
 }

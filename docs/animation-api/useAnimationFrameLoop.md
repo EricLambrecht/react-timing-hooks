@@ -6,8 +6,15 @@ nav_order: 1
 
 # useAnimationFrameLoop
 
-Use this hook if you want to execute something (like css updates, or Web GL rendering) in an animation frame 
-loop in your React component.
+Use this hook if you want to execute something (like css updates, or Web GL rendering) in an **animation frame
+loop** at **roughly 60FPS** in your React component.
+
+You can **pause** or **stop** the loop via the returned control callbacks.
+Pausing will make the hook still running on an animation frame loop, but without executing your callback. 
+Stopping will completely halt it and cancel any open animation frame requests, just as if you would unmount it.
+If **performance** is important to you, you should stop the loop instead of pausing it whenever possible.
+
+**Note**: By default, the loop is _stopped_ on mount and has to be started manually. If you want the loop to start immediately on mount, use `options.startOnMount`.
 
 The browser will call your function approximately 60 times a second (60 FPS) if the performance of your app allows it.
 See [requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) to learn 
@@ -15,54 +22,45 @@ more about the inner workings of "animation frames".
 
 ## Example
 
-```javascript
+```typescript jsx
+import { useRef } from 'react'
 import { useAnimationFrameLoop } from 'react-timing-hooks'
 
-// Update canvas on every frame
-const [stop, setStop] = useState(false)
-const updateCanvas = () => { 
-    // ... 
+const Renderer = () => {
+  const delta = useRef(0)
+  const canvasRef = useRef(null)
+  const canvas = canvasRef.current
+  const context = canvas.getContext('2d')
+
+  const updateCanvas = (d) => {
+    context.fillStyle = '#000000'
+    context.fillRect(d, d, context.canvas.width, context.canvas.height)
+  }
+
+  const { start, stop, isStopped } = useAnimationFrameLoop(() => {
+    delta.current += 1
+    updateCanvas(delta.current)
+  })
+  
+  return <>
+    <canvas ref={canvasRef} {...props}/>
+    <button onClick={isStopped ? start : stop}>
+      {isStopped ? "Start rendering" : "Stop rendering"}
+    </button>
+  </>
 }
-useAnimationFrameLoop(updateCanvas, stop)
-```
-
-### Another example
-
-In a vanilla javascript WebGL application you might have code like this:
-
-```javascript
-/* Vanilla JS */
-const draw = () => {
-    // ...
-    gl.drawArrays(...)
-
-    window.requestAnimationFrame(draw);
-}
-```
-
-In a React component this would need additional logic to cancel the animation frame request if the parent component unmounts.
-
-With `useAnimationFrameLoop` you don't have to worry about that and can implement it like this instead:
-
-```javascript
-/* React */
-const draw = useCallback(() => {
-  // ...
-  gl.drawArrays(...)
-})
-useAnimationFrameLoop(draw)
 ```
 
 ## API
 
 ### Params
 
-`useAnimationFrameLoop(cb, pause)`
+`useAnimationFrameLoop(cb, options = {})`
 
-| Name             | Default                     | Description                     |
-|:-----------------|:----------------------------|:--------------------------------|
-| callback         | _This argument is required_ | Function that will be called on every (available) animation frame |
-| pause             | `false`                    | A boolean that pauses the loop  |
+| Name                 | Default                      | Description                                                                                                |
+|:---------------------|:-----------------------------|:-----------------------------------------------------------------------------------------------------------|
+| callback             | _This argument is required_  | Function that will be called on every (available) animation frame                                          |
+| options.startOnMount | `false`                      | If true, the counter will immediately start on mount. If false, it has to be started manually via start(). |
 
 ### Return value
 

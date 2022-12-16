@@ -37,7 +37,7 @@ return <span>{counter}</span>
 
 ### Params
 
-`useCountdown(start = 0, stop)`
+`useCountdown(start = 0, options = {})`
 
 | Name                 | Default       | Description                                                                                                  |
 |:---------------------|:--------------|:-------------------------------------------------------------------------------------------------------------|
