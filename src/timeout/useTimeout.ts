@@ -1,10 +1,13 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 import { TimeoutId } from './types'
 
 /**
  * This hook will return a function that executes the provided callback after the specified amount of time.
  *
- * Pending callbacks will be cleared in case the component unmounts.
+ * This **will not debounce** the callbacks, i.e. consecutive calls of this function will all spawn new timeouts even
+ * if some are still pending. If you want a debouncing version, take a look at `useDebounce()`.
+ *
+ * Pending callbacks will only(!) be cleared in case the component unmounts.
  *
  * @param callback The callback that is invoked after the timeout expired
  * @param timeout A timeout in milliseconds
@@ -16,7 +19,7 @@ function useTimeout<T extends (...args: never[]) => unknown>(
   timeout: number
 ): (...args: Parameters<T>) => NodeJS.Timeout | number {
   const timeoutCallback = useRef<T>(callback)
-  const [timeoutId, setTimeoutId] = useState<TimeoutId | null>(null)
+  const timeoutIds = useRef<TimeoutId[]>([])
 
   useEffect(() => {
     timeoutCallback.current = callback
@@ -24,16 +27,14 @@ function useTimeout<T extends (...args: never[]) => unknown>(
 
   useEffect(() => {
     return () => {
-      if (timeoutId) {
-        clearTimeout(timeoutId)
-      }
+      timeoutIds.current.forEach((id) => clearTimeout(id))
     }
-  }, [timeoutId])
+  }, [timeoutIds])
 
   return useCallback<(...args: Parameters<T>) => NodeJS.Timeout | number>(
     (...args: Parameters<T>) => {
       const id = setTimeout(() => timeoutCallback.current(...args), timeout)
-      setTimeoutId(id)
+      timeoutIds.current.push(id)
       return id
     },
     [timeout]

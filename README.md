@@ -19,6 +19,7 @@ clean up, or writing code to pause/resume intervals etc.
   * [`useAnimationFrame()`][raf-api]
   * [`useIdleCallback()`][idle-cb-api], 
 * …and **additional [utility hooks][all-hooks]** for things like
+  * debouncing: `useDebounce()` 
   * rendering: `useAnimationFrameLoop()`
   * counters: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`
@@ -49,14 +50,14 @@ yarn add react-timing-hooks
 
 ## Examples
 
-#### Debouncing a button click with `useTimeout()`
+#### Debounce a button click with `useDebounce()`
 ```jsx harmony
 import { useState } from 'react'
 import { useTimeout } from 'react-timing-hooks'
 
 const HelloWorld = () => {
   const [output, setOutput] = useState(null)
-  const onButtonClick = useTimeout(() => setOutput('Hello World'), 1000)
+  const onButtonClick = useDebounce(() => setOutput('Hello World'), 1000)
 
   return <div>
     <button onClick={onButtonClick}>Start timeout!</button>

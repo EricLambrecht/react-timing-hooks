@@ -8,8 +8,12 @@ parent: Timeouts
 A react wrapper for [setTimeout](https://developer.mozilla.org/en-US/docs/Web/API/setTimeout) – no leaks on unmount!
 {: .fs-6 .fw-300 }
 
-Use this hook if you want to create a function/handler that executes once after a specific amount of time.
-This can be used to debounce certain event handlers for example.
+Use this hook if you want a function that executes the provided callback after the specified amount of time.
+
+This **will not debounce** the callbacks, i.e. consecutive calls of this function will all spawn new timeouts even
+if some are still pending. If you want a debouncing version, take a look at `useDebounce()`.
+
+Pending timeouts will only(!) be cleared in case the component unmounts.
 
 If you want to execute a timeout every time a certain value changes, `useTimeoutEffect` might be better suited.
 

@@ -15,6 +15,7 @@ import useClock from './interval/useClock'
 import { ClockOptions } from './interval/useClock'
 import useCounter, { CounterSettings } from './interval/useCounter'
 import useCountdown, { CountdownOptions } from './interval/useCountdown'
+import { DebounceOptions, useDebounce } from './timeout/useDebounce'
 
 export {
   useAnimationFrame,
@@ -22,6 +23,7 @@ export {
   useClock,
   useCountdown,
   useCounter,
+  useDebounce,
   useIdleCallback,
   useIdleCallbackEffect,
   useInterval,
@@ -31,6 +33,7 @@ export {
   ClockOptions,
   CountdownOptions,
   CounterSettings,
+  DebounceOptions,
   IdleCallbackEffectCallback,
   IntervalControls,
   IntervalOptions,

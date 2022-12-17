@@ -1,6 +1,6 @@
 import { screen, render, act, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { useTimeout } from '../.tmp/index'
+import { useDebounce } from '../.tmp'
 import React, { useState } from 'react'
 import { removeFlushTimers } from './helpers'
 import { advanceTimersUsingAct } from '../src/testing/advanceTimersUsingAct'
@@ -8,7 +8,7 @@ import { advanceTimersUsingAct } from '../src/testing/advanceTimersUsingAct'
 const TestComponent: React.FC<{ delay: number }> = ({ delay }) => {
   const [count, setCount] = useState(0)
 
-  const incrementCountAfter500Ms = useTimeout(
+  const incrementCountAfter500Ms = useDebounce(
     () => setCount((c) => c + 1),
     delay
   )
@@ -23,12 +23,12 @@ const TestComponent: React.FC<{ delay: number }> = ({ delay }) => {
   )
 }
 
-describe('useTimeout() Integration Test', () => {
+describe('useDebounce() Integration Test', () => {
   beforeAll(() => {
     jest.useFakeTimers()
   })
 
-  it('executes the callback after the delay without debouncing', async () => {
+  it('executes the callback after the delay with debouncing', async () => {
     render(<TestComponent delay={500} />)
 
     // Timer is not invoked yet
@@ -46,13 +46,13 @@ describe('useTimeout() Integration Test', () => {
     // Click again after 300ms
     fireEvent.click(button)
 
-    // Advance by 200ms (making a total of 500ms! First click should arrive)
+    // Advance by 200ms (making a total of 500ms! Timer was reset, though)
     await advanceTimersUsingAct(1, 200)
-    expect(screen.getByTestId('count')).toHaveTextContent(/^1$/)
+    expect(screen.getByTestId('count')).toHaveTextContent(/^0$/)
 
-    // Advance by 300ms (making a total of 800ms! Second click should arrive)
+    // Advance by 300ms (making a total of 800ms! 500ms after the last click!)
     await advanceTimersUsingAct(1, 300)
-    expect(screen.getByTestId('count')).toHaveTextContent(/^2$/)
+    expect(screen.getByTestId('count')).toHaveTextContent(/^1$/)
   })
 
   it('will only create one timer and clean it up on unmount', async () => {
