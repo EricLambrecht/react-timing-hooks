@@ -34,10 +34,10 @@ return <button onClick={hideDelayed}>Hide!</button>
 
 `useTimeout(callback, timeout)`
 
-| name         | description                                                          |
-|:-------------|:---------------------------------------------------------------------|
-| callback     | a function that will be invoked as soon as the timeout expires       |
-| timeout      | the timeout in milliseconds                                          |
+| Name     | Description                                                    |
+|:---------|:---------------------------------------------------------------|
+| callback | a function that will be invoked as soon as the timeout expires |
+| timeout  | the timeout in milliseconds                                    |
 
 ### Return value
 

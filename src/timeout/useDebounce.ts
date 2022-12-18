@@ -10,26 +10,28 @@ export type DebounceOptions = {
  * Debounces a callback.
  *
  * By default, `options.trailing = true`, meaning that the callback will only be invoked as soon as a certain time
- * has passed since the last call (defined by the timeout).
+ * has passed since the last call (defined by `waitMs`).
  *
  * Alternatively, the function can also be called immediately and then be blocked on consecutive calls until the timeout
  * is over (when `options.leading` is true). You can also set both `options.leading` and `options.trailing` to `true`.
  *
  * @param callback
- * @param timeout
+ * @param waitMs The minimum time until an invocation can happen.
  * @param options
+ * @param [options.leading = false] If true, invoke before the timeout
+ * @param [options.trailing = true] If true, invoke after the timeout
  */
 export function useDebounce<T extends (...args: never[]) => unknown>(
   callback: T,
-  timeout: number,
+  waitMs: number,
   options: DebounceOptions = {}
 ): (...args: Parameters<T>) => NodeJS.Timeout | number {
   const { leading = false, trailing = true } = options
-  const timeoutCallback = useRef<T>(callback)
+  const debouncedCallback = useRef<T>(callback)
   const timeoutId = useRef<TimeoutId | null>(null)
 
   useEffect(() => {
-    timeoutCallback.current = callback
+    debouncedCallback.current = callback
   }, [callback])
 
   useEffect(() => {
@@ -45,18 +47,18 @@ export function useDebounce<T extends (...args: never[]) => unknown>(
       if (timeoutId.current) {
         clearTimeout(timeoutId.current)
       } else if (leading) {
-        timeoutCallback.current(...args)
+        debouncedCallback.current(...args)
       }
 
       timeoutId.current = setTimeout(() => {
         if (trailing) {
-          timeoutCallback.current(...args)
+          debouncedCallback.current(...args)
         }
         timeoutId.current = null
-      }, timeout)
+      }, waitMs)
 
       return timeoutId.current
     },
-    [timeout]
+    [waitMs]
   )
 }

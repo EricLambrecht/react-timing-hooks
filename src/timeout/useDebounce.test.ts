@@ -29,9 +29,7 @@ describe('useDebounce', () => {
 
     expect(timeoutHandler).toHaveBeenCalledTimes(1)
 
-    act(() => {
-      jest.advanceTimersByTime(500)
-    })
+    advanceTimersUsingAct(1, 500)
 
     expect(timeoutHandler).toHaveBeenCalledTimes(1)
   })
@@ -48,14 +46,12 @@ describe('useDebounce', () => {
 
     expect(timeoutHandler).toHaveBeenCalledTimes(1)
 
-    act(() => {
-      jest.advanceTimersByTime(500)
-    })
+    advanceTimersUsingAct(1, 500)
 
     expect(timeoutHandler).toHaveBeenCalledTimes(2)
   })
 
-  it('calls timeout handler after [n] milliseconds if options.fireAfterTimeout is set', () => {
+  it('Default: calls timeout handler after [n] milliseconds if options.trailing is set', () => {
     const timeoutHandler = jest.fn()
 
     renderHook(() => {
@@ -67,9 +63,7 @@ describe('useDebounce', () => {
 
     expect(timeoutHandler).toHaveBeenCalledTimes(0) // do not fire immediately
 
-    act(() => {
-      jest.advanceTimersByTime(500)
-    })
+    advanceTimersUsingAct(1, 500)
 
     expect(timeoutHandler).toHaveBeenCalledTimes(1)
   })
