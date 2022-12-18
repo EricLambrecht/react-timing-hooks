@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* **debounce:** `useTimeout()` will not implicitly debounce its callbacks anymore. `useDebounce()` was added to explicitly use this feature properly.
+* **timeout:** `useTimeout()` will not implicitly debounce its callbacks anymore. `useDebounce()` was added to explicitly use this feature properly.
 * **countdown:** `useCountdown()` will now have a mandatory end param and notify the user via an event when it reaches the end
 * **clock:** The return value of `useClock()` is now an array. The first element is the time, the second element are controls (like pause, resume, etc.).
 * **animation-frame:** Second argument (pause/stop) was removed from useAnimationFrameLoop. The returned control callbacks can now be used instead. By default, the hook won't start to loop on mount anymore as well. Can be enabled by setting `startOnMount` to `true`, though.
