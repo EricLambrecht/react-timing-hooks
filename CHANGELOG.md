@@ -7,12 +7,12 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### ⚠ BREAKING CHANGES
 
-* **timeout:** `useTimeout()` will not implicitly debounce its callbacks anymore. `useDebounce()` was added to explicitly use this feature properly.
-* **countdown:** `useCountdown()` will now have a mandatory end param and notify the user via an event when it reaches the end
-* **clock:** The return value of `useClock()` is now an array. The first element is the time, the second element are controls (like pause, resume, etc.).
-* **animation-frame:** Second argument (pause/stop) was removed from useAnimationFrameLoop. The returned control callbacks can now be used instead. By default, the hook won't start to loop on mount anymore as well. Can be enabled by setting `startOnMount` to `true`, though.
-* **timer:** The return value of `useTimer()` is now an array. The first element is the timer value, the second element are interval controls (like pause, resume, etc.).
-* **interval:** Intervals won't start immediately on mount anymore. They will have to be started manually or explicitly be allowed to start on mount via `options.startOnMount`. This change affects `useInterval`, `useCounter`, `useTimer` and `useCountdown`
+* **timeout:** `useTimeout()` will not implicitly debounce its callbacks anymore. A new hook `useDebounce()` was added to explicitly use this feature properly.
+* **countdown:** `useCountdown()` will now have a mandatory end param and will automatically stop and fire an event when this value is reached.
+* **clock:** The return value of `useClock()` is now an array: `[time, controls]` (controls being pause/resume, start/stop etc.).
+* **timer:** The return value of `useTimer()` is now an array: `[timerValue, controls]` (controls being pause/resume, start/stop etc.)
+* **interval:** Intervals won't start immediately on mount anymore. They will have to be started manually or explicitly be allowed to start on mount via `options.startOnMount`. This change affects `useInterval`, `useCounter`, `useTimer` and `useCountdown`.
+* **animation-frame:** The second argument (pause/stop) was removed from `useAnimationFrameLoop()` in favor of controls like they are used in `useInterval()`, `useCounter()` etc. By default, the hook also won't start to loop on mount anymore (though this is still available as an option).
 
 ### Features
 
