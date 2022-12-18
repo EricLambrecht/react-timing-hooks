@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.2.2...v4.0.0) (2022-12-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **debounce:** `useTimeout()` will not implicitly debounce it's callbacks anymore. `useDebounce()` was added to explicitly use this feature properly.
+* **countdown:** `useCountdown()` will now have a mandatory end param and notify the user via an event when it reaches the end
+* **clock:** The return value of `useClock()` is now an array. The first element is the time, the second element are controls (like pause, resume, etc.).
+* **animation-frame:** Second argument (pause/stop) was removed from useAnimationFrameLoop. The returned control callbacks can now be used instead. By default, the hook won't start to loop on mount anymore as well. Can be enabled by setting `startOnMount` to `true`, though.
+* **timer:** The return value of `useTimer()` is now an array. The first element is the timer value, the second element are interval controls (like pause, resume, etc.).
+* **interval:** Intervals won't start immediately on mount anymore. They will have to be started manually or explicitly be allowed to start on mount via `options.startOnMount`. This change affects `useInterval`, `useCounter`, `useTimer` and `useCountdown`
+
+### Features
+
+* **animation-frame:** useAFL can now be controlled like useInterval(), also fixed unnecessary re-renders ([24789a9](https://github.com/EricLambrecht/react-timing-hooks/commit/24789a9179e86151996d84b872607964ca48ad96)), closes [#33](https://github.com/EricLambrecht/react-timing-hooks/issues/33)
+* **clock:** Add ability to "stop the clock". ([1c10837](https://github.com/EricLambrecht/react-timing-hooks/commit/1c10837804d209e1037a96ef0a06531b23c07c3c))
+* **countdown:** Add `end` to `useCountdown()` and an event to listen to ([2e5b6c9](https://github.com/EricLambrecht/react-timing-hooks/commit/2e5b6c9475cf60eee2a65a223334cf1a2ac2ee7a))
+* **debounce:** Add new hook `useDebounce()` ([15aca52](https://github.com/EricLambrecht/react-timing-hooks/commit/15aca5270328ca5a0401dd78a5db6dcb7e196f31))
+* **interval:** Add option to start interval on mount ([d791a94](https://github.com/EricLambrecht/react-timing-hooks/commit/d791a94fa7726a4a6dfb189502ad2c6f66801219)), closes [#32](https://github.com/EricLambrecht/react-timing-hooks/issues/32)
+* **throttle:** Add new hook `useThrottle()` for rate-limiting ([224c15b](https://github.com/EricLambrecht/react-timing-hooks/commit/224c15b801cb8cc1466bca7400d4a1c02aa06956))
+* **timer:** Add ability to control timer state (pause etc.) ([b4ab3be](https://github.com/EricLambrecht/react-timing-hooks/commit/b4ab3beb08c4746e0e1f185c77c9e2100f319b28)), closes [#34](https://github.com/EricLambrecht/react-timing-hooks/issues/34)
+
 ### [3.2.2](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.2.1...v3.2.2) (2022-12-15)
 
 * Fix logo url in README
