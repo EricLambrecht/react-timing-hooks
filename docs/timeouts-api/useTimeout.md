@@ -10,8 +10,9 @@ A react wrapper for [setTimeout](https://developer.mozilla.org/en-US/docs/Web/AP
 
 Use this hook if you want a function that executes the provided callback after the specified amount of time.
 
-This **will not debounce** the callbacks, i.e. consecutive calls of this function will all spawn new timeouts even
-if some are still pending. If you want a debouncing version, take a look at `useDebounce()`.
+This **will not debounce or throttle** the callbacks, i.e. consecutive calls of this function will all spawn
+new timeouts even if some are still pending. If you want a debouncing version, take a look at `useDebounce()`.
+If you want a throttling version, see `useThrottle()`.
 
 Pending timeouts will only(!) be cleared in case the component unmounts.
 
