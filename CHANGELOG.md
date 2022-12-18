@@ -31,9 +31,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **throttle:** Add new hook `useThrottle()` for rate-limiting ([224c15b](https://github.com/EricLambrecht/react-timing-hooks/commit/224c15b801cb8cc1466bca7400d4a1c02aa06956))
 * **timer:** Add ability to control timer state (pause etc.) ([b4ab3be](https://github.com/EricLambrecht/react-timing-hooks/commit/b4ab3beb08c4746e0e1f185c77c9e2100f319b28)), closes [#34](https://github.com/EricLambrecht/react-timing-hooks/issues/34)
 
-### [3.2.2](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.2.1...v3.2.2) (2022-12-15)
-
-* Fix logo url in README
 
 ### [3.2.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.2.0...v3.2.1) (2022-12-14)
 
@@ -51,17 +48,6 @@ All notable changes to this project will be documented in this file. See [standa
 * **counter:** Add counter hook. A more customizable version of useTimer(). ([77ccea5](https://github.com/EricLambrecht/react-timing-hooks/commit/77ccea5f9d00f5a2bf6f6d996dcae6bd68fadb85))
 * **interval:** Allow pausing, resuming, stopping of intervals ([a0e0c3f](https://github.com/EricLambrecht/react-timing-hooks/commit/a0e0c3f3dd50bb8eae3e27e5120317044cc9ef0e))
 
-## [3.1.5](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.1.0...v3.1.5) (2022-12-10)
-
-NPM Readme update.
-
-## 3.1.4 (2022-12-09)
-
-Decreased npm package size.
-
-## 3.1.2 (2022-12-09)
-
-This version is just an NPM readme update.
 
 ## [3.1.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.0.0...v3.1.0) (2022-12-09)
 
