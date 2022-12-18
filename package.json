@@ -35,8 +35,12 @@
     "frame",
     "requestAnimationFrame",
     "requestIdleCallback",
+    "rate-limiting",
     "clock",
-    "timer"
+    "timer",
+    "throttle",
+    "debounce",
+    "time"
   ],
   "author": "Eric Lambrecht",
   "license": "MIT",
