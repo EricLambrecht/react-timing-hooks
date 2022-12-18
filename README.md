@@ -19,7 +19,7 @@ clean up, or writing code to pause/resume intervals etc.
   * [`useAnimationFrame()`][raf-api]
   * [`useIdleCallback()`][idle-cb-api], 
 * …and **additional [utility hooks][all-hooks]** for things like
-  * debouncing: `useDebounce()` 
+  * rate-limiting: `useDebounce()`, `useThrottle()`
   * rendering: `useAnimationFrameLoop()`
   * counters: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`
@@ -50,22 +50,6 @@ yarn add react-timing-hooks
 
 ## Examples
 
-#### Debounce a button click with `useDebounce()`
-```jsx harmony
-import { useState } from 'react'
-import { useTimeout } from 'react-timing-hooks'
-
-const HelloWorld = () => {
-  const [output, setOutput] = useState(null)
-  const onButtonClick = useDebounce(() => setOutput('Hello World'), 1000)
-
-  return <div>
-    <button onClick={onButtonClick}>Start timeout!</button>
-    <p>{output}</p>
-  </div>
-}
-```
-
 #### A "status logger" with `useInterval()`
 ```jsx harmony
 import { useState } from 'react'
@@ -79,6 +63,24 @@ const StatusLogger = () => {
   return <div>
     <button onClick={start}>Do stuff</button>
     <button onClick={isPaused ? resume : pause}>Toggle Status Updates</button>
+  </div>
+}
+```
+
+#### Throttle a button click with `useThrottle()`
+
+```jsx harmony
+import { useState } from 'react'
+import { useThrottle } from 'react-timing-hooks'
+
+const HelloWorld = () => {
+  const [result, setResult] = useState(null)
+  const printResult = () => setOutput(extremeMegaCalculation())
+  const onButtonClick = useThrottle(printResult, 1000)
+
+  return <div>
+    <button onClick={onButtonClick}>Spam me!</button>
+    <p>Result: {result}</p>
   </div>
 }
 ```
