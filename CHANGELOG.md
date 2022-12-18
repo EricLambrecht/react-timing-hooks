@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v4.0.0...v4.0.1) (2022-12-18)
+
+
+### Bug Fixes
+
+* Add missing export for `useThrottle()` ([609bc76](https://github.com/EricLambrecht/react-timing-hooks/commit/609bc76f7479e699334aa94f6568323af9e1948f))
+
 ## [4.0.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v3.2.2...v4.0.0) (2022-12-18)
 
 
