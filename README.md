@@ -29,7 +29,7 @@ clean up, or writing code to pause/resume intervals etc.
 * **Automatic clean-ups** of pending timers, intervals etc.
 * Callbacks are **automatically memoized**
 * Full **Typescript** support
-* **[Lightweight](https://bundlephobia.com/result?p=react-timing-hooks)** (ca. 1KB minzipped, no transitive dependencies!)
+* **[Lightweight](https://bundlephobia.com/result?p=react-timing-hooks)** (less than 2KB minzipped, no transitive dependencies!)
 * **Tree-shakable** — You only bundle what you use!
 
 
