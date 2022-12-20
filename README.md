@@ -4,6 +4,7 @@
 [![minified](https://flat.badgen.net/bundlephobia/minzip/react-timing-hooks)](https://bundlephobia.com/result?p=react-timing-hooks)
 ![types](https://flat.badgen.net/npm/types/react-timing-hooks)
 [![checks](https://flat.badgen.net/github/checks/EricLambrecht/react-timing-hooks)](https://github.com/EricLambrecht/react-timing-hooks)
+[![Coverage Status](https://coveralls.io/repos/github/EricLambrecht/react-timing-hooks/badge.svg?branch=main)](https://coveralls.io/github/EricLambrecht/react-timing-hooks?branch=main)
 
 ## What's this?!
 
