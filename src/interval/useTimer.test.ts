@@ -8,9 +8,7 @@ describe('useTimer', () => {
   })
 
   it('is stopped on mount by default', async () => {
-    const { result } = renderHook(() =>
-      useTimer(0)
-    )
+    const { result } = renderHook(() => useTimer(0))
     expect(result.current[0]).toBe(0)
     await advanceTimersUsingAct(1)
     expect(result.current[0]).toBe(0)

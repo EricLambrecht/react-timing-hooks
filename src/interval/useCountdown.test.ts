@@ -19,7 +19,9 @@ describe('useCountdown', () => {
   })
 
   it('stops if args are invalid', async () => {
-    const { result } = renderHook(() => useCountdown(-10, 0, { startOnMount: true }))
+    const { result } = renderHook(() =>
+      useCountdown(-10, 0, { startOnMount: true })
+    )
     expect(result.current[0]).toBe(-10)
     await advanceTimersUsingAct(1)
     expect(result.current[0]).toBe(-10)

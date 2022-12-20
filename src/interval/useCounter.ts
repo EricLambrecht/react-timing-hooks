@@ -19,12 +19,7 @@ export type CounterSettings = {
  * @param [settings.startOnMount = false] If true, the interval will immediately start on mount. If false, it has to be started manually via `start()`.
  */
 const useCounter = (settings: CounterSettings): [number, IntervalControls] => {
-  const {
-    start,
-    interval,
-    stepSize,
-    ...intervalOptions
-  } = settings
+  const { start, interval, stepSize, ...intervalOptions } = settings
   const [val, setVal] = useState<number>(start)
   const intervalControls = useInterval(
     () => setVal(val + stepSize),

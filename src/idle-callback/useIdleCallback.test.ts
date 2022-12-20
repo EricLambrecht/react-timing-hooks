@@ -3,7 +3,7 @@ import useIdleCallback from './useIdleCallback'
 // @ts-ignore
 import { ensureMocksReset, requestIdleCallback } from '@shopify/jest-dom-mocks'
 import { useEffect } from 'react'
-import * as logging from "../util/logging";
+import * as logging from '../util/logging'
 
 describe('useIdleCallback', () => {
   beforeEach(() => {
