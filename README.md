@@ -14,10 +14,10 @@ clean up, or writing code to pause/resume intervals etc.
 ### Feature Overview
 
 * Several React hooks **wrapping Vanilla JS functions** like:
-  * [`useInterval()`][interval-api]
-  * [`useTimeout()`][timeout-api]
-  * [`useAnimationFrame()`][raf-api]
-  * [`useIdleCallback()`][idle-cb-api], 
+  * setInterval() – [All Hooks][interval-api] | [MDN][interval-mdn]
+  * setTimeout() – [All Hooks][timeout-api] | [MDN][timeout-mdn]
+  * window.requestAnimationFrame() – [All Hooks][raf-api] | [MDN][raf-mdn]
+  * window.requestIdleCallback() – [All Hooks][idle-cb-api] | [MDN][idle-cb-mdn]
 * …and **additional [utility hooks][all-hooks]** for things like
   * rate-limiting: `useDebounce()`, `useThrottle()`
   * rendering: `useAnimationFrameLoop()`
