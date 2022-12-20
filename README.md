@@ -55,7 +55,6 @@ https://ericlambrecht.github.io/react-timing-hooks/migrations/v3v4.html
 
 #### A "status logger" with `useInterval()`
 ```jsx harmony
-import { useState } from 'react'
 import { useInterval } from 'react-timing-hooks'
 
 const StatusLogger = () => {
@@ -73,13 +72,13 @@ const StatusLogger = () => {
 #### Throttle a button click with `useThrottle()`
 
 ```jsx harmony
-import { useState } from 'react'
 import { useThrottle } from 'react-timing-hooks'
 
 const HelloWorld = () => {
   const [result, setResult] = useState(null)
-  const printResult = () => setOutput(extremeMegaCalculation())
-  const onButtonClick = useThrottle(printResult, 1000)
+  const updateResult = () => setResult(extremeMegaCalculation())
+  
+  const onButtonClick = useThrottle(updateResult, 1000)
 
   return <div>
     <button onClick={onButtonClick}>Spam me!</button>
@@ -90,18 +89,18 @@ const HelloWorld = () => {
 
 #### Display the user's browsing time using `useTimer()` 
 ```jsx harmony
-import { useState } from 'react'
 import { useTimer } from 'react-timing-hooks'
 
 const BrowsingTime = () => {
   const [elapsedSeconds] = useTimer(0, { startOnMount: true })
-  return <span>You've been browsing this page for {elapsedSeconds} seconds.</span>
+  return <span>
+    You've been browsing this page for {elapsedSeconds} seconds.
+  </span>
 }
 ```
 
 #### Display the current time with `useClock()`
 ```jsx harmony
-import { useState } from 'react'
 import { useTimeout } from 'react-timing-hooks'
 
 const Clock = () => {
@@ -115,7 +114,6 @@ const Clock = () => {
 #### A canvas renderer using `useAnimationFrameLoop()`
 
 ```jsx harmony
-import { useRef } from 'react'
 import { useAnimationFrameLoop } from 'react-timing-hooks'
 
 const Renderer = () => {
