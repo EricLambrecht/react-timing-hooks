@@ -68,6 +68,7 @@ const StatusLogger = () => {
   </div>
 }
 ```
+----
 
 #### Throttle a button click with `useThrottle()`
 
@@ -86,6 +87,7 @@ const HelloWorld = () => {
   </div>
 }
 ```
+----
 
 #### Display the user's browsing time using `useTimer()` 
 ```jsx harmony
@@ -98,6 +100,7 @@ const BrowsingTime = () => {
   </span>
 }
 ```
+----
 
 #### Display the current time with `useClock()`
 ```jsx harmony
@@ -110,6 +113,7 @@ const Clock = () => {
   return <span>{currentTime}</span>
 }
 ```
+----
 
 #### A canvas renderer using `useAnimationFrameLoop()`
 
@@ -227,6 +231,7 @@ const Counter = () => {
   </>
 }
 ```
+----
 
 **Another example:** You might have a timeout that runs under a certain condition. In this case a cleanup
 has to be done in a separate `useEffect` call that cleans everything up (but only on unmount).
