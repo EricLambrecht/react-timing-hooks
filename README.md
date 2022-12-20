@@ -5,11 +5,11 @@
 ![types](https://flat.badgen.net/npm/types/react-timing-hooks)
 [![checks](https://flat.badgen.net/github/checks/EricLambrecht/react-timing-hooks)](https://github.com/EricLambrecht/react-timing-hooks)
 
-## Wow! What's this?!
+## What's this?!
 
 This is a very little package with **React hooks wrapping time-related Vanilla JS functions**, 
 so you can use them with minimal effort in your React apps without having to worry about manual 
-clean up, or writing code to pause/resume intervals etc.
+clean up, or writing boilerplate to pause/resume intervals etc.
 
 ### Feature Overview
 
