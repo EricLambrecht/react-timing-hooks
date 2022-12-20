@@ -2,6 +2,7 @@ import { renderHook } from '@testing-library/react'
 import useIdleCallbackEffect from './useIdleCallbackEffect'
 // @ts-ignore
 import { ensureMocksReset, requestIdleCallback } from '@shopify/jest-dom-mocks'
+import * as logging from '../util/logging'
 
 describe('useIdleCallbackEffect', () => {
   beforeEach(() => {
@@ -63,7 +64,7 @@ describe('useIdleCallbackEffect', () => {
   })
 
   describe('if requestIdleCallback is unsupported', () => {
-    let realWarn: (message?: any, ...optionalParams: any[]) => void
+    let logWarningSpy: jest.SpyInstance
 
     beforeEach(() => {
       if (requestIdleCallback.isMocked()) {
@@ -71,12 +72,11 @@ describe('useIdleCallbackEffect', () => {
       }
       requestIdleCallback.mockAsUnsupported()
 
-      realWarn = console.warn
-      console.warn = jest.fn()
+      logWarningSpy = jest.spyOn(logging, 'logWarning')
     })
 
     afterEach(() => {
-      console.warn = realWarn
+      logWarningSpy.mockRestore()
     })
 
     it('a warning is printed', () => {
@@ -88,7 +88,7 @@ describe('useIdleCallbackEffect', () => {
         }, [])
       )
 
-      expect(console.warn).toHaveBeenCalledTimes(1)
+      expect(logWarningSpy).toHaveBeenCalledTimes(1)
     })
   })
 })

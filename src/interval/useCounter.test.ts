@@ -7,14 +7,25 @@ describe('useCounter', () => {
     jest.useFakeTimers()
   })
 
-  describe('settings.start', () => {
+  it('is stopped on mount by default', async () => {
+    const { result } = renderHook(() =>
+      useCounter({ start: 1, interval: 500, stepSize: 2 })
+    )
+    expect(result.current[0]).toBe(1)
+    await advanceTimersUsingAct(1, 500)
+    expect(result.current[0]).toBe(1)
+    await advanceTimersUsingAct(1, 500)
+    expect(result.current[0]).toBe(1)
+  })
+
+  describe('if the counter is active', () => {
     const counterSettings = {
       start: 2,
       interval: 600,
       stepSize: 3,
       startOnMount: true,
     }
-    it('uses settings correctly', async () => {
+    it('it uses settings correctly', async () => {
       const { result } = renderHook(() => useCounter(counterSettings))
       let [value] = result.current
       expect(value).toBe(2)

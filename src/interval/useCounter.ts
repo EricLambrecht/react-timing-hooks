@@ -20,9 +20,9 @@ export type CounterSettings = {
  */
 const useCounter = (settings: CounterSettings): [number, IntervalControls] => {
   const {
-    start = 0,
-    interval = 1000,
-    stepSize = 1,
+    start,
+    interval,
+    stepSize,
     ...intervalOptions
   } = settings
   const [val, setVal] = useState<number>(start)

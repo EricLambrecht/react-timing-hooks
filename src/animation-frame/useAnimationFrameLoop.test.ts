@@ -31,6 +31,23 @@ describe('useAnimationFrameLoop', () => {
     }
   })
 
+  it('is stopped on mount by default', () => {
+    const testCallback = jest.fn()
+
+    renderHook(() => {
+      useAnimationFrameLoop(testCallback)
+    })
+
+    expect(testCallback).toHaveBeenCalledTimes(0)
+
+    for (let i = 1; i < 10; i++) {
+      act(() => {
+        animationFrame.runFrame()
+      })
+      expect(testCallback).toHaveBeenCalledTimes(0)
+    }
+  })
+
   it('stops running when unmounted', () => {
     const testCallback = jest.fn()
 

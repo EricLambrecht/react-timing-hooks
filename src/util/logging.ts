@@ -5,6 +5,9 @@ const buildMessage = (message: string) => {
 }
 
 export const log = (logFunction: 'log' | 'warn' | 'error', message: string) => {
+  if (process.env?.NODE_ENV === 'test') {
+    return
+  }
   console[logFunction](buildMessage(message))
 }
 

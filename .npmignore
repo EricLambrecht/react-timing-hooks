@@ -12,6 +12,7 @@ CONTRIBUTING.md
 CHANGELOG.md
 
 .tmp
+coverage
 node_modules
 docs
 src

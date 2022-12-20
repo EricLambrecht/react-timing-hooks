@@ -8,7 +8,7 @@
   "sideEffects": false,
   "scripts": {
     "test": "npm run test:unit && npm run test:integration",
-    "test:unit": "jest src",
+    "test:unit": "jest src --coverage",
     "test:integration": "npm run build && jest integration-tests",
     "commit": "git-cz",
     "prettier:check": "prettier --list-different \"{src,integration-tests}/**/*.{ts,tsx}\"",

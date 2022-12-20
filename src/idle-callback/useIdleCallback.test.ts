@@ -3,6 +3,7 @@ import useIdleCallback from './useIdleCallback'
 // @ts-ignore
 import { ensureMocksReset, requestIdleCallback } from '@shopify/jest-dom-mocks'
 import { useEffect } from 'react'
+import * as logging from "../util/logging";
 
 describe('useIdleCallback', () => {
   beforeEach(() => {
@@ -49,7 +50,7 @@ describe('useIdleCallback', () => {
   })
 
   describe('if requestIdleCallback is unsupported', () => {
-    let realWarn: (message?: any, ...optionalParams: any[]) => void
+    let logWarningSpy: jest.SpyInstance
 
     beforeEach(() => {
       if (requestIdleCallback.isMocked()) {
@@ -57,12 +58,11 @@ describe('useIdleCallback', () => {
       }
       requestIdleCallback.mockAsUnsupported()
 
-      realWarn = console.warn
-      console.warn = jest.fn()
+      logWarningSpy = jest.spyOn(logging, 'logWarning')
     })
 
     afterEach(() => {
-      console.warn = realWarn
+      logWarningSpy.mockRestore()
     })
 
     it('a warning is printed', () => {
@@ -75,7 +75,7 @@ describe('useIdleCallback', () => {
         }, [func])
       })
 
-      expect(console.warn).toHaveBeenCalledTimes(1)
+      expect(logWarningSpy).toHaveBeenCalledTimes(1)
     })
 
     it('the callback is run regardless (but immediately)', () => {
