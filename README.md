@@ -148,59 +148,90 @@ writing a timeout or anything similar requires a lot of **boilerplate** (if you 
 Dan Abramov showcased this in [one of his blogposts](https://overreacted.io/making-setinterval-declarative-with-react-hooks/) a while a go.
 
 This library is supposed to give you easy access to those time-related functionalities while keeping your code clean and concise. 
-You will **not** have to manually clean up timers or intervals (but you still can!).
-Additionally, many frequent use cases have their own utility hook, like `useClock` or `useAnimationFrameLoop`.
+You will **not** have to manually clean up timers or intervals.
+
+Another common use-case is pausing/resuming or starting/stopping intervals (or loops). This lib offers
+callbacks for that. So pausing is really just a matter of calling a `pause()` function for example.
+
+Many frequent use cases also have their own utility hook, like `useThrottle`, `useCountdown` or `useAnimationFrameLoop`
+to make things even easier.
+
 Needless to say, every hook is already tested and typed (so you don't have to).
 
 ### Some "Before-/After-Code"
 
-A simple timeout triggered by a button click for example would usually be written like so:
+A simple interval that increments a counter on every second and can be manually started upon user input:
+
+#### Before
 
 ```jsx harmony
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
-const TimeoutRenderer = () => {
-  const [isHidden, setIsHidden] = useState(false)
-  const [id, setId] = useRef(null)
-  const onButtonClick = () => {
-    id.current = setTimeout(() => setOutput('Hello World'), 1000)
-  }
-  
-  // clean up the timeout on unmount
+const Counter = () => {
+  const [counter, setCounter] = useState(0)
+  const [startInterval, setStartInterval] = useState(false)
+  const intervalId = useRef(null)
+
   useEffect(() => {
-    return () => {
-      clearTimeout(id.current)
+    if (startInterval) {
+      intervalId.current = setInterval(() => setCounter(c => c + 1), 1000)
     }
-  }, [id])
-    
-  return <div>
-    <button onClick={onButtonClick}>Start timeout!</button>
-    {isHidden && <p>Hide this message!</p>}
-  </div>
+  }, [startInterval])
+
+  useEffect(() => {
+    return function onUnmount() {
+      if (intervalId.current !== null) {
+        clearInterval(intervalId.current)
+      }
+    }
+  }, [intervalId])
+
+  return <>
+    <button onClick={() => setStartInterval(true)}>Start counting</button>
+    <p>{counter}</p>
+  </>   
 }
 ```
 
-With `react-timing-hooks` it would look like this:
+#### After
 
 ```jsx harmony
 import { useState } from 'react'
-import { useTimeout } from 'react-timing-hooks'
+import { useInterval } from 'react-timing-hooks'
 
-const TimeoutRenderer = () => {
-  const [isHidden, setIsHidden] = useState(false)
-  const onButtonClick = useTimeout(() => setOutput('Hello World'), 1000)
+const Counter = () => {
+  const [counter, setCounter] = useState(0)
+  
+  const { start } = useInterval(() => setCounter(c => c + 1), 1000)
 
-  return <div>
-    <button onClick={onButtonClick}>Start timeout!</button>
-    {isHidden && <p>Hide this message!</p>}
-  </div>
+  return <>
+    <button onClick={start}>Start counting</button>
+    <p>{counter}</p>
+  </>
+}
+```
+
+Well,… actually, there is even a shorter way using the utility hook `useTimer()` 🙈
+
+#### After After
+
+```jsx harmony
+import { useCounter } from 'react-timing-hooks'
+
+const Counter = () => {
+  const [counter, { start }] = useTimer(0)
+
+  return <>
+    <button onClick={start}>Start counting</button>
+    <p>{counter}</p>
+  </>
 }
 ```
 
 **Another example:** You might have a timeout that runs under a certain condition. In this case a cleanup
 has to be done in a separate `useEffect` call that cleans everything up (but only on unmount).
 
-Your code could look like this:
+#### Before
 
 ```jsx harmony
 import { useEffect } from 'react'
@@ -229,7 +260,7 @@ const TimeoutRenderer = ({ depA, depB }) => {
 }
 ```
 
-With `react-timing-hooks` you can just write:
+#### After
 
 ```jsx harmony
 import { useState } from 'react'
@@ -242,7 +273,8 @@ const TimeoutRenderer = ({ depA, depB }) => {
     if (depA && depB) {
       timeout(() => setOutput('Hello World'), 1000)
     }
-    // you could even add more timeouts in this effect without any more boilerplate
+    // you could even add more timeouts in this effect 
+    // without any more boilerplate
   }, [depA, depB])
 
   return output ? (
