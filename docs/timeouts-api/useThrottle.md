@@ -1,6 +1,7 @@
 ---
 title: useThrottle
 parent: Timeouts
+nav_order: 3
 ---
 
 # useThrottle

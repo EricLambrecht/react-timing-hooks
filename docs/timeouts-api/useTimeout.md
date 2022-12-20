@@ -1,6 +1,7 @@
 ---
 title: useTimeout
 parent: Timeouts
+nav_order: 2
 ---
 
 # useTimeout
