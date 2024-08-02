@@ -41,6 +41,7 @@ Alternatively, a completely custom formatter can also be used (see `options.cust
 | `options.dateTimeFormatOptions`   | `Intl.DateTimeFormatOptions` | `undefined`  | Options forwarded to `Date.toLocaleTimeString()`, ignored if custom formatter is used.                       |
 | `options.customFormatter`         | `(date: Date) => T`          | `undefined`  | Alters the return value of `useClock`. Must return `T`.                                                      |
 | `options.startTimeInMilliseconds` | `number`                     | `Date.now()` | A number in milliseconds, marking the start time of the clock.                                               |
+| `options.keepPausedClockRunningInBackground` | `boolean` | `true` | If true, pausing will only stop the output-update but not the underlying clock, so that it resumes at the correct time if resumed. |
 
 ### Generic type
 
@@ -50,5 +51,5 @@ Defaults to `string`. Does have to be set only when a custom formatter is used.
 
 An Array with two elements:
  - `0`: A formatted time string (by default) or the output of `options.customFormatter` (if set) – updated every second.
- - `1`: Interval controls to pause, resume, start and stop the clock.
+ - `1`: Controls to pause, resume, start and stop the clock. Use `pause()` if you want the clock to resume at the correct time.
 

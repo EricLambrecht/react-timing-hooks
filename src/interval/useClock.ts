@@ -1,11 +1,13 @@
 import useTimer from './useTimer'
-import { IntervalControls } from './useInterval'
+import { useCallback, useState } from 'react'
+import { CounterControls } from './useCounter'
 
 export interface ClockOptions<T> {
   locales?: string | string[]
   dateTimeFormatOptions?: Intl.DateTimeFormatOptions
   customFormatter?: (date: Date) => T
   startTimeInMilliseconds?: number
+  keepPausedClockRunningInBackground?: boolean
 }
 
 /**
@@ -14,23 +16,59 @@ export interface ClockOptions<T> {
  * changed by using a custom formatter (see options.customFormatter).
  *
  * @template [T=string]
- * @param options options.locales and options.dateTimeFormatOptions will be directly forwarded to date.toLocaleTimeString(). You can also use options.customFormatter to override the output of the hook. The output must match the generic type of the hook.
+ * @param options options.locales and options.dateTimeFormatOptions will be directly forwarded to date.toLocaleTimeString().
+ *                You can also use options.customFormatter to override the output of the hook. The output must match the generic type of the hook.
+ *                options.keepPausedClockRunningInBackground will allow to only pause the output but not the underlying clock, so that it resumes at the correct time.
  * @returns The current (formatted) time
  */
 const useClock = <T = string>(options?: ClockOptions<T>) => {
-  const startTimeMs = options?.startTimeInMilliseconds || Date.now()
-  const startTimeInSeconds = startTimeMs / 1000
+  const {
+    keepPausedClockRunningInBackground = true,
+    startTimeInMilliseconds = Date.now(),
+    locales,
+    dateTimeFormatOptions,
+    customFormatter,
+  } = options || {}
+  const startTimeInSeconds = startTimeInMilliseconds / 1000
+  const [timeDuringPause, setTimeDuringPause] = useState<T | null>(null)
 
   const [currentTimeInSeconds, controls] = useTimer(startTimeInSeconds, {
     startOnMount: true,
+    resetOnStop: false, // would be weird UX for a clock
+    destroyIntervalOnPause: false, // for better accuracy on pause
   })
   const date = new Date(currentTimeInSeconds * 1000)
 
-  const formattedTime = options?.customFormatter
-    ? options?.customFormatter(date)
-    : date.toLocaleTimeString(options?.locales, options?.dateTimeFormatOptions)
+  const formattedTime = customFormatter
+    ? customFormatter(date)
+    : (date.toLocaleTimeString(locales, dateTimeFormatOptions) as T)
 
-  return [formattedTime, controls] as [T, IntervalControls]
+  const customPause = useCallback(() => {
+    if (keepPausedClockRunningInBackground) {
+      setTimeDuringPause(formattedTime)
+    } else {
+      controls.pause()
+    }
+  }, [formattedTime, controls.pause])
+
+  const customResume = useCallback(() => {
+    if (keepPausedClockRunningInBackground) {
+      setTimeDuringPause(null)
+    } else {
+      controls.resume()
+    }
+  }, [controls.resume])
+
+  const clockControls = {
+    ...controls,
+    pause: customPause,
+    resume: customResume,
+  }
+
+  return [timeDuringPause || formattedTime, clockControls] as [
+    T,
+    CounterControls
+  ]
 }
 
 export default useClock
