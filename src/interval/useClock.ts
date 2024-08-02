@@ -67,7 +67,7 @@ const useClock = <T = string>(options?: ClockOptions<T>) => {
 
   return [timeDuringPause || formattedTime, clockControls] as [
     T,
-    CounterControls
+    CounterControls,
   ]
 }
 
