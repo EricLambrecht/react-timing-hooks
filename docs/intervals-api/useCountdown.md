@@ -37,15 +37,16 @@ return <span>{counter}</span>
 
 ## API
 
-`useCountdown(start = 0, options = {})`
+`useCountdown(start = 0, settings = {})`
 {: .fs-5 .fw-300 }
 
 ### Params
 
-| Name                 | Default       | Description                                                                                                  |
-|:---------------------|:--------------|:-------------------------------------------------------------------------------------------------------------|
-| start                | _is required_ | The initial value of the countdown                                                                           |
-| options.startOnMount | `false`       | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`. |
+| Name                  | Default       | Description                                                                                                  |
+|:----------------------|:--------------|:-------------------------------------------------------------------------------------------------------------|
+| start                 | _is required_ | The initial value of the countdown                                                                           |
+| settings.startOnMount | `false`       | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`. |
+| settings.resetOnStop  | `false`       | If true, the counter will reset to it's starting value on stop/reaching it's end. If false, it won't.        |
 
 
 
@@ -53,7 +54,7 @@ return <span>{counter}</span>
 
 An array of format `[countdownValue, intervalControls]`, the first value is the current countdown value.
 
-The second value is an object of interval controls (start, stop, pause, etc.), see [useInterval()](/react-timing-hooks/intervals-api/useInterval.html#return-value).
+The second value is an object of counter controls (start, stop, pause, etc.), see [useCounter()](/react-timing-hooks/intervals-api/useCounter.html#return-value).
 
 ## Note
 

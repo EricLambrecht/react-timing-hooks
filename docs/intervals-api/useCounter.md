@@ -11,7 +11,10 @@ certain amount (`settings.stepSize`) every x  milliseconds (`settings.interval`)
 A start value (`settings.start`) can also be defined.
 
 **Note**: By default, the counter is _stopped_ on mount and has to be started manually. 
-If you want the counter to start immediately on mount, use `options.startOnMount`.
+If you want the counter to start immediately on mount, use `settings.startOnMount`.
+
+Stopping the counter will also reset the timer value to it's initial value per default. 
+However, this can be changed via `settings.resetOnStop`.
 
 If you want a counter that counts up by 1 every second, you can use the 
 [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) hook.
@@ -50,13 +53,24 @@ return <span>{counter}</span>
 | settings.interval     | `1000`  | The duration between each counter step                                                                       |
 | settings.stepSize     | `1`     | The amount that is added after each counter step                                                             |
 | settings.startOnMount | `false` | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`. |
-
+| settings.resetOnStop  | `true`  | If true, the counter will reset to the start value on stop. If false, it won't.                              |
+| settings.destroyIntervalOnPause  | `true`  | If false, the interval is kept running without doing anything until resumed.                      |
 
 
 ### Return value
 
-An Array of `[counterValue, intervalControls]`.
+An Array of `[counterValue, counterControls]`.
 
 The first array item is the current counter value (starting at `settings.start`). This will change every `settings.interval` ms by `settings.stepSize`.
 
-The second value is an object of interval controls (start, stop, pause, etc.), see [useInterval()](/react-timing-hooks/intervals-api/useInterval.html#return-value).
+The second value is an object of counter controls:
+
+| Name      | Description                                                                                                                         |
+|:----------|:------------------------------------------------------------------------------------------------------------------------------------|
+| isPaused  | A boolean that indicates whether the counter is currently paused                                                                    |
+| isStopped | A boolean that indicates whether the counter is currently stopped. Meaning it cannot be resumed, but only restarted via `start()`.  |
+| pause     | A function that will temporarily pause the counter. If `settings.destroyIntervalOnPause` is true it will destroy the underlying interval.|
+| resume    | A function that resumes a paused counter.                                                                                           |
+| stop      | A function that stops the underlying interval. If `settings.resetOnStop` is true, this will reset the counter.                      |
+| start     | A function that start's the counter.                                                                                                |
+| reset     | A function that resets the counter to it's starting value.                                                                          |
