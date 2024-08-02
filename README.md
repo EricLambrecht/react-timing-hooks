@@ -20,7 +20,7 @@ clean up, or writing boilerplate to pause/resume intervals etc.
   * window.requestAnimationFrame() – [All Hooks][raf-api] | [MDN][raf-mdn]
   * window.requestIdleCallback() – [All Hooks][idle-cb-api] | [MDN][idle-cb-mdn]
 * …and **additional [utility hooks][all-hooks]** for things like
-  * rate-limiting: `useDebounce()`, `useThrottle()`
+  * rate-limiting: `useThrottledState()`, `useDebounce()`, `useThrottle()`
   * rendering: `useAnimationFrameLoop()`
   * counters: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`

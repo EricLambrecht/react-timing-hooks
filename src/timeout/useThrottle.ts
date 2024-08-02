@@ -22,7 +22,7 @@ export type ThrottleOptions = {
  * @param waitMs Minimum waiting time between consecutive calls
  * @param options
  * @param [options.leading = true] If true, invoke the callback immediately/before the timeout
- * @param [options.trailing = true] If true, queue invocations for after the timeout
+ * @param [options.trailing = true] If true, queue invocations to be called after the timeout
  */
 export function useThrottle<T extends (...args: never[]) => unknown>(
   callback: T,
@@ -30,8 +30,8 @@ export function useThrottle<T extends (...args: never[]) => unknown>(
   options: ThrottleOptions = {}
 ): (...args: Parameters<T>) => NodeJS.Timeout | number {
   const { leading = true, trailing = true } = options
-  const hadUnsuccessfulAttempt = useRef(false)
-  const trailingArgs = useRef<Parameters<T> | null>(null)
+  const hasQueuedCall = useRef(false)
+  const queuedArgs = useRef<Parameters<T> | null>(null)
   const throttledCallback = useRef<T>(callback)
   const timeoutId = useRef<TimeoutId | null>(null)
 
@@ -53,29 +53,31 @@ export function useThrottle<T extends (...args: never[]) => unknown>(
     (...args: Parameters<T>) => {
       if (timeoutId.current) {
         if (trailing) {
-          hadUnsuccessfulAttempt.current = true
-          trailingArgs.current = args
+          hasQueuedCall.current = true
+          queuedArgs.current = args
         }
         return timeoutId.current
       }
 
-      if (!hadUnsuccessfulAttempt.current) {
+      if (!hasQueuedCall.current) {
         if (leading) {
           throttledCallback.current(...args)
         } else if (trailing) {
-          hadUnsuccessfulAttempt.current = true
-          trailingArgs.current = args
+          hasQueuedCall.current = true
+          queuedArgs.current = args
         }
       }
 
       timeoutId.current = setTimeout(() => {
         timeoutId.current = null
-        if (hadUnsuccessfulAttempt.current) {
+        if (hasQueuedCall.current) {
           if (trailing) {
-            throttledCallback.current(...trailingArgs.current!)
+            throttledCallback.current(...queuedArgs.current!)
           }
-          execThrottled(...trailingArgs.current!)
-          hadUnsuccessfulAttempt.current = false
+          // restart loop with(!) a queued call, but without a timer running, essentially just restarting the timer
+          execThrottled(...queuedArgs.current!) 
+          // remove queued call afterwards
+          hasQueuedCall.current = false
         }
       }, waitMs)
 

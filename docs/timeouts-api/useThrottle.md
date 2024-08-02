@@ -31,9 +31,10 @@ return <button onClick={onClick}>Spam me!</button>
 
 ## API
 
-### Params
-
 `useThrottle(callback, waitMs, options)`
+{: .fs-5 .fw-300 }
+
+### Params
 
 | Name             | Default     | Description                                                 |
 |:-----------------|-------------|:------------------------------------------------------------|

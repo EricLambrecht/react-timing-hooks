@@ -14,7 +14,7 @@ describe('useThrottle', () => {
     clearTimeoutSpy.mockClear()
   })
 
-  it('it calls the throttled callback immediately and only once', () => {
+  it('it calls the throttled callback immediately and only once with default settings', () => {
     const timeoutHandler = jest.fn()
 
     renderHook(() => {

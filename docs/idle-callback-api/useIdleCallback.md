@@ -26,9 +26,10 @@ return <button onClick={trackClickWhenIdle}>Track me!</button>
 
 ## API
 
-### Params
-
 `useIdleCallback(callback, options)`
+{: .fs-5 .fw-300 }
+
+### Params
 
 | Name             | Default value       | Description                                             |
 |:-----------------|:--------------------|:--------------------------------------------------------|

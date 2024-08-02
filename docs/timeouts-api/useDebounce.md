@@ -31,9 +31,10 @@ return <textarea onKeyUp={onKeyUp}>Lorem ipsum</textarea>
 
 ## API
 
-### Params
-
 `useDebounce(callback, waitMs, options)`
+{: .fs-5 .fw-300 }
+
+### Params
 
 | Name             | Default     | Description                                                             |
 |:-----------------|-------------|:------------------------------------------------------------------------|

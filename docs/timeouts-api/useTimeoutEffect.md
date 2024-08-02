@@ -28,9 +28,10 @@ useTimeoutEffect((timeout, clear) => {
 
 ## API
 
-### Params
-
 `useTimeoutEffect(effectCallback, timeout)`
+{: .fs-5 .fw-300 }
+
+### Params
 
 | name           | description                                                          |
 |:---------------|:---------------------------------------------------------------------|

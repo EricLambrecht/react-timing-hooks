@@ -1,7 +1,7 @@
 ---
 layout: default
 title: List of all hooks
-nav_order: 6
+nav_order: 7
 has_children: false
 ---
 
@@ -21,7 +21,8 @@ In case you wonder where to find them.
 
 ## By Use Case
 
-### Rate Limiting
+### Rate Limiting, Throttling, Debouncing
+- [useThrottledState](/react-timing-hooks/general-utility/useThrottledState.html) - tame rapid firing state updates, reducing the number of React updates
 - [useThrottle](/react-timing-hooks/timeouts-api/useThrottle.html)
 - [useDebounce](/react-timing-hooks/timeouts-api/useDebounce.html)
 

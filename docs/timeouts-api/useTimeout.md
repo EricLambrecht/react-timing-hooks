@@ -32,9 +32,10 @@ return <button onClick={hideDelayed}>Hide!</button>
 
 ## API
 
-### Params
-
 `useTimeout(callback, timeout)`
+{: .fs-5 .fw-300 }
+
+### Params
 
 | Name     | Description                                                    |
 |:---------|:---------------------------------------------------------------|

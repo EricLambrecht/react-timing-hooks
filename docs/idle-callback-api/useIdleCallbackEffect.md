@@ -28,9 +28,10 @@ useIdleCallbackEffect(onIdle => {
 
 ## API
 
-### Params
-
 `useIdleCallbackEffect(effectCallback, deps)`
+{: .fs-5 .fw-300 }
+
+### Params
 
 | Name             | Description                                                                                           |
 |:-----------------|:------------------------------------------------------------------------------------------------------|
