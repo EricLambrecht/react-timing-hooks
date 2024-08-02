@@ -7,7 +7,7 @@ export type DebounceOptions = {
 }
 
 /**
- * Debounces a callback. A debounce is similar to a throttle, but every attempt to call the function resets the 
+ * Debounces a callback. A debounce is similar to a throttle, but every attempt to call the function resets the
  * block-timer until the function can be executed again. This means that if the debounced callback is consistently
  * called too frequently, it will not be called again at all - until it stops for long enough time.
  *

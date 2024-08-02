@@ -75,7 +75,7 @@ export function useThrottle<T extends (...args: never[]) => unknown>(
             throttledCallback.current(...queuedArgs.current!)
           }
           // restart loop with(!) a queued call, but without a timer running, essentially just restarting the timer
-          execThrottled(...queuedArgs.current!) 
+          execThrottled(...queuedArgs.current!)
           // remove queued call afterwards
           hasQueuedCall.current = false
         }

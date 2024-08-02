@@ -11,7 +11,7 @@ function useThrottledState<T>(
 ): [T, (value: T) => void] {
   const [actualStateValue, setActualStateValue] = useState<T>(initialState)
 
-  const setState = useThrottle(setActualStateValue, delayInMs);
+  const setState = useThrottle(setActualStateValue, delayInMs)
 
   return [actualStateValue, setState]
 }

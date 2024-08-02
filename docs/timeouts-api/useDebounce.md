@@ -9,8 +9,8 @@ nav_order: 4
 Debounces a callback.
 {: .fs-6 .fw-300 }
 
-Use this hook if you want a function that "piles up" consecutive calls to invoke the callback only once after a
-specified timeout after the last call happened. This is called **debouncing**.
+Use this hook if you want a function that "blocks" consecutive calls until a specified
+time has passed since the last invocation. This is called **debouncing**.
 
 If you want a callback that [doesn't debounce but throttles][thr-vs-deb], take a look at `useThrottle()`.
  
