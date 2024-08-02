@@ -48,9 +48,9 @@ yarn add react-timing-hooks
 
 [https://ericlambrecht.github.io/react-timing-hooks/](https://ericlambrecht.github.io/react-timing-hooks/)
 
-**To migrate from v3 to v4:**
+**How to migrate**
 
-https://ericlambrecht.github.io/react-timing-hooks/migrations/v3v4.html
+https://ericlambrecht.github.io/react-timing-hooks/migrations/
 
 ## Examples
 
