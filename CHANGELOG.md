@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v4.0.2...v5.0.0) (2024-08-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* Paused clocks will now keep running in the background by default
+* Counters will now reset on stop by default.
+
+### Features
+
+* Add reset function to counters, and option to reset on stop ([b1c8ee9](https://github.com/EricLambrecht/react-timing-hooks/commit/b1c8ee9a15cc48fa00375e4c9a528e7ec2c0838a))
+* Add useThrottledState() hook to tame rapid firing state updates ([f56261a](https://github.com/EricLambrecht/react-timing-hooks/commit/f56261adea022e7d18a7c713a0710973d4624ddd)), closes [#35](https://github.com/EricLambrecht/react-timing-hooks/issues/35)
+* Allow clock to keep running in background during pause (to resume at the right time) ([8021bcd](https://github.com/EricLambrecht/react-timing-hooks/commit/8021bcdbbf5a4fe190d15dc82463f91d207864ec))
+
+
+### Bug Fixes
+
+* Fix some vulnerabilities using npm audit fix ([1be9a7a](https://github.com/EricLambrecht/react-timing-hooks/commit/1be9a7a578b8ed2c88acd1e1b4c1430c780a4e35))
+* Fix timers not resetting on stop ([f19ef08](https://github.com/EricLambrecht/react-timing-hooks/commit/f19ef086b1c6814089dfb61a4b336ffac11aa561)), closes [#36](https://github.com/EricLambrecht/react-timing-hooks/issues/36)
+
 ### [4.0.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v4.0.0...v4.0.1) (2022-12-18)
 
 
