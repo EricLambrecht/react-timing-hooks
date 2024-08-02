@@ -13,9 +13,9 @@
     "commit": "git-cz",
     "prettier:check": "prettier --list-different \"{src,integration-tests}/**/*.{ts,tsx}\"",
     "prettier:write": "prettier --write \"{src,integration-tests}/**/*.{ts,tsx}\"",
-    "build": "rimraf \"./tmp\" && rollup -c",
+    "build": "rimraf \"./tmp\" && rollup -c --bundleConfigAsCjs",
     "build:watch": "npm run build -- --watch",
-    "build:prod": "rimraf \"./dist\" && rollup -c rollup.config.prod.js",
+    "build:prod": "rimraf \"./dist\" && rollup -c rollup.config.prod.js --bundleConfigAsCjs",
     "release": "standard-version --dry-run && cli-confirm \"Do you really want to create a new release? (Y/N)\" && standard-version",
     "prepublishOnly": "cli-confirm \"Do you really want to publish the current release? (Y/N)\" && npm run test && npm run build:prod"
   },
@@ -52,6 +52,7 @@
   },
   "homepage": "https://ericlambrecht.github.io/react-timing-hooks/",
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.6",
     "@shopify/jest-dom-mocks": "^4.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -72,11 +73,11 @@
     "react-dom": "^18.2.0",
     "react-test-renderer": "^18.2.0",
     "replace": "^1.2.1",
-    "rimraf": "^3.0.2",
-    "rollup": "^2.67.3",
-    "rollup-plugin-typescript2": "^0.27.3",
+    "rimraf": "^6.0.1",
+    "rollup": "^4.19.2",
     "standard-version": "^9.0.0",
     "ts-jest": "^29.0.3",
+    "tslib": "^2.6.3",
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
