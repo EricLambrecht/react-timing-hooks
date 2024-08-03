@@ -323,8 +323,8 @@ see [CONTRIBUTING.md](https://github.com/EricLambrecht/react-timing-hooks/blob/m
 [interval-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/setInterval
 [raf-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
 [idle-cb-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
-[timeout-api]: https://ericlambrecht.github.io/react-timing-hooks/timeouts-api/
-[interval-api]: https://ericlambrecht.github.io/react-timing-hooks/intervals-api/
-[raf-api]: https://ericlambrecht.github.io/react-timing-hooks/animation-api/
-[idle-cb-api]: https://ericlambrecht.github.io/react-timing-hooks/idle-callback-api/
+[timeout-api]: https://ericlambrecht.github.io/react-timing-hooks/callbacks/useTimeout.html
+[interval-api]: https://ericlambrecht.github.io/react-timing-hooks/loops-and-intervals/
+[raf-api]: https://ericlambrecht.github.io/react-timing-hooks/loops-and-intervals/useAnimationFrameLoop.html
+[idle-cb-api]: https://ericlambrecht.github.io/react-timing-hooks/callbacks/useIdleCallback.html
 [all-hooks]: https://ericlambrecht.github.io/react-timing-hooks/list-of-all-hooks/
