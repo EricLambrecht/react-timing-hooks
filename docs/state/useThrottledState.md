@@ -24,6 +24,9 @@ This is also helpful if you have a `useEffect()` hook that you don't want to run
 > state variable, it might only be _queued_ for an update. But do not worry: no updates will be lost. 
 > Eventually the latest call to the `setState` method will always be processed and cause an actual update.
 
+{: .highlight }
+Like `useState<T>()`, `useThrottledState<T>()` is also generic to define the type of the state.
+
 ## Example
 
 ```javascript

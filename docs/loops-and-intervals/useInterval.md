@@ -24,10 +24,10 @@ By default, the interval is _stopped_ on mount and has to be started manually. I
 
 #### Alternatives
 
-If you want to loop very fast – maybe because you want to animate something – 
+- If you want to loop very fast – maybe because you want to animate something – 
 you might want to use [useAnimationFrameLoop()](/react-timing-hooks/animation-api/useAnimationFrameLoop.html) instead which yields better performance in these cases.
 
-If you only want to increase or decrease a numeric value in a regular interval,
+- If you only want to increase or decrease a numeric value in a regular interval,
 take a look at [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
 
 

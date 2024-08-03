@@ -10,6 +10,7 @@ This hook creates a sort of clock, i.e. a reactive time-based value that updates
 
 The output of useClock is easily customizable via the `options` argument, see [below](#params).
 
+{: .highlight }
 `useClock` is also generic (by default `useClock<string>` is used). The generic type has to be specified if a 
 custom formatter (see `options.customFormatter`) is used that returns something else than a string.
 
