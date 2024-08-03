@@ -12,14 +12,14 @@ nav_order: 5
 Use this hook if you want to create a **countdown**, i.e. a reactive number that is **decremented every second**.
 The hook will stop its interval automatically when it reaches the end.
 
-The event callback `options.onEnd()` will be called as soon as the end value is reached.
+The event callback **`options.onEnd()`** will be called as soon **as the end value is reached**.
 
 {: .note }
 By default, the countdown is _stopped_ on mount and has to be started manually. 
 If you want the countdown to start automatically on mount, use `options.startOnMount`.
 
 This hook is similar to [useTimer()](/react-timing-hooks/loops-and-intervals/useTimer.html) which counts _up_ every second, but does not have an end value.
-If you need a countdown that count's upwards, you can use `options.stepSize` and change it to `1` or higher.
+If you need a countdown that counts *upwards*, you can use `options.stepSize` and change it to `1` or higher.
 
 #### Alternatives
 

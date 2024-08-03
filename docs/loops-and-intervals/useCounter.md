@@ -14,6 +14,7 @@ A start value (`settings.start`) can also be defined.
 By default, the counter is _stopped_ on mount and has to be started manually. 
 If you want the counter to start automatically on mount, use `settings.startOnMount`.
 
+{: .note }
 Stopping the counter will also **reset the counter** to it's initial start-value per default. 
 However, this can be changed via `settings.resetOnStop`. You can manually reset it via the returned
 `reset()` control-function.

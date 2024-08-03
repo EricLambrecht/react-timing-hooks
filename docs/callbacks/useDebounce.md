@@ -21,6 +21,9 @@ If you want a non-debouncing and non-throttling version, take a look at `useTime
 
 Pending timeouts will also be cleared in case the component unmounts.
 
+#### Alternatives
+- For throttling: [useThrottle()](/react-timing-hooks/callbacks/useThrottle.html).
+- For callbacks that execute when the browser is idle: [useIdleCallback()](/react-timing-hooks/callbacks/useIdleCallback.html).
 
 ## Example
 

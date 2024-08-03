@@ -30,7 +30,7 @@ return <button onClick={runMyFuncOnAnimationFrame}>Click Me</button>
 
 ## API
 
-`useAnimationFrame()`
+`useAnimationFrame(callback)`
 {: .fs-5 .fw-300 }
 
 ### Params
@@ -41,7 +41,7 @@ return <button onClick={runMyFuncOnAnimationFrame}>Click Me</button>
 
 ### Return value
 
-A function. If you call this function, your `callback` will be executed at the next available animation frame.
+A function. If you call this function, your `callback` will be queued and executed at the next available animation frame.
 
 ## Notes
 

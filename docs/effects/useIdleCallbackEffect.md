@@ -11,8 +11,8 @@ to the callback args.
 
 There might be cases where the simpler `useIdleCallback()` hook might be more suitable.
 
-{: .highlight }
-Any registered idle callbacks will be canceled on unmount.
+{: .note }
+Pending registered idle callbacks will be canceled on unmount.
 
 ## Example
 

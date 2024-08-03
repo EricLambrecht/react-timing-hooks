@@ -21,6 +21,11 @@ even if it was called more frequently.
 By default, the throttled function will always be called immediately (`options.leading` is true by default) and then
 (`options.trailing` is true by default) also after every X milliseconds for consecutive calls.
 
+#### Alternatives
+
+- If you want to throttle the state updates, you can use [useThrottledState()](/react-timing-hooks/state/useThrottledState.html).
+- If you want to debounce: [useDebounce()](/react-timing-hooks/callbacks/useDebounce.html).
+
 ## Example
 
 ```javascript

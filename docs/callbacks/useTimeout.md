@@ -15,11 +15,14 @@ This **will not debounce or throttle** the callbacks, i.e. consecutive calls of 
 new timeouts even if some are still pending. If you want a debouncing version, take a look at `useDebounce()`.
 If you want a throttling version, see `useThrottle()`.
 
-Pending timeouts will only(!) be cleared in case the component unmounts.
+{: .note }
+Pending timeouts will only(!) be cleared in case the component unmounts. If you want to clear them manually, you can do so via the returned timeout id.
 
 #### Alternatives
 
-If you want to execute a timeout every time a certain value changes, `useTimeoutEffect()` might be better suited.
+- If you want to execute a timeout every time a certain value changes, `useTimeoutEffect()` might be better suited.
+- For throttling [useThrottle()](/react-timing-hooks/callbacks/useThrottle.html).
+- For debouncing [useThrottle()](/react-timing-hooks/callbacks/useThrottle.html).
 
 ## Example
 
