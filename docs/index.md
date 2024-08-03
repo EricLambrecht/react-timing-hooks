@@ -8,6 +8,13 @@ has_children: false
 <img alt="logo" src="https://github.com/EricLambrecht/react-timing-hooks/raw/main/logo.png" width="680" />
 
 # Quick Start
+This is the documentation of react-timing-hooks.
+{: .fs-6 .fw-300 }
+
+[List of hooks](/react-timing-hooks/list-of-all-hooks/){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
+[View it on GitHub][repo]{: .btn .fs-5 .mb-4 .mb-md-0 }
+
+---
 
 ## Installation
 
@@ -137,3 +144,4 @@ useEffect(() => {
 [timeout-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
 [idle-cb-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
 [raf-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
+[repo]: https://github.com/EricLambrecht/react-timing-hooks
