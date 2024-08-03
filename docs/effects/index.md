@@ -7,9 +7,10 @@ has_children: true
 
 # Effects
 
-React hooks that wrap [window.requestIdleCallback()][idle-cb-mdn].
+React hooks that are based on `useEffect()`.
 {: .fs-6 .fw-300 }
 
-All of these hooks will automatically take care of unregistering / cancelling any pending idle callbacks that you started if the component unmounts for example.
+These hooks behave like a regular `useEffect` except that you gain access to timeouts etc. in your effect callback. 
+These timeouts (or idle callbacks) will be managed by react-timing-hooks, i.e. they will also be cleaned up properly.
 
 [idle-cb-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
