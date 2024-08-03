@@ -46,7 +46,8 @@ In case you wonder where to find them.
 - [useClock](/react-timing-hooks/loops-and-intervals/useClock.html) - displays a real-time digital clock
 
 #### Tracking
-- [useIdleCallback](/react-timing-hooks/callbacks/useIdleCallback.html)**
+- [useIdleCallbackEffect](/react-timing-hooks/effects/useIdleCallbackEffect.html)
+- [useIdleCallback](/react-timing-hooks/callbacks/useIdleCallback.html)
 
 
 [interval-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/setInterval
