@@ -13,40 +13,40 @@ In case you wonder where to find them.
 ## By Javascript function
 
 #### Set Timeout | [MDN][timeout-mdn]
-- [useTimeout](/react-timing-hooks/timeouts-api/useTimeout.html)
-- [useTimeoutEffect](/react-timing-hooks/timeouts-api/useTimeoutEffect.html)
+- [useTimeout](/react-timing-hooks/callbacks/useTimeout.html)
+- [useTimeoutEffect](/react-timing-hooks/effects/useTimeoutEffect.html)
 
 #### Set Interval | [MDN][interval-mdn]
-- [useInterval](/react-timing-hooks/intervals-api/useInterval.html)
+- [useInterval](/react-timing-hooks/loops-and-intervals/useInterval.html)
 
 #### Request Idle Callback | [MDN][idle-cb-mdn]
-- [useIdleCallback](/react-timing-hooks/idle-callback-api/useIdleCallback.html).
-- [useIdleCallbackEffect](/react-timing-hooks/idle-callback-api/useIdleCallbackEffect.html)
+- [useIdleCallback](/react-timing-hooks/callbacks/useIdleCallback.html).
+- [useIdleCallbackEffect](/react-timing-hooks/effects/useIdleCallbackEffect.html)
 
 #### Request Animation Frame | [MDN][raf-mdn]
-- [useAnimationFrame](/react-timing-hooks/animation-api/useAnimationFrame.html)
-- [useAnimationFrameLoop](/react-timing-hooks/animation-api/useAnimationFrameLoop.html)
+- [useAnimationFrame](/react-timing-hooks/callbacks/useAnimationFrame.html)
+- [useAnimationFrameLoop](/react-timing-hooks/loops-and-intervals/useAnimationFrameLoop.html)
 
 ## By use case
 
 #### Rate limiting / throttling / debouncing
-- [useThrottledState](/react-timing-hooks/general-utility/useThrottledState.html) - tame rapid firing state updates, reducing the number of React updates
-- [useThrottle](/react-timing-hooks/timeouts-api/useThrottle.html)
-- [useDebounce](/react-timing-hooks/timeouts-api/useDebounce.html)
+- [useThrottledState](/react-timing-hooks/state/useThrottledState.html) - tame rapid firing state updates, reducing the number of React updates
+- [useThrottle](/react-timing-hooks/callbacks/useThrottle.html)
+- [useDebounce](/react-timing-hooks/callbacks/useDebounce.html)
 
 #### Reactive counters & timers
-- [useCounter](/react-timing-hooks/intervals-api/useCounter.html) - a reactive, customizable counter
-- [useTimer](/react-timing-hooks/intervals-api/useTimer.html) - a timer
-- [useCountdown](/react-timing-hooks/intervals-api/useCountdown.html) - a countdown (ends automatically)
+- [useCounter](/react-timing-hooks/loops-and-intervals/useCounter.html) - a reactive, customizable counter
+- [useTimer](/react-timing-hooks/loops-and-intervals/useTimer.html) - a timer
+- [useCountdown](/react-timing-hooks/loops-and-intervals/useCountdown.html) - a countdown (ends automatically)
 
 #### GFX / animation /  rendering
-- [useAnimationFrameLoop](/react-timing-hooks/animation-api/useAnimationFrameLoop.html) - for animations, rendering etc.
+- [useAnimationFrameLoop](/react-timing-hooks/loops-and-intervals/useAnimationFrameLoop.html) - for animations, rendering etc.
 
 #### Time
-- [useClock](/react-timing-hooks/intervals-api/useClock.html) - displays a real-time digital clock
+- [useClock](/react-timing-hooks/loops-and-intervals/useClock.html) - displays a real-time digital clock
 
 #### Tracking
-- [useIdleCallback](/react-timing-hooks/idle-callback-api/useIdleCallback.html)**
+- [useIdleCallback](/react-timing-hooks/callbacks/useIdleCallback.html)**
 
 
 [interval-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/setInterval

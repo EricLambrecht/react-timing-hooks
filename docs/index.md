@@ -53,7 +53,7 @@ There are currently hooks available for:
 **All hooks are documented on this page** (see sidebar). They should be pretty straight forward to use, but feel free
 to add an issue on GitHub if you have any ideas for improvement.
 
-{: .note-title }
+{: .highlight-title }
 > Package size / Treeshaking
 > 
 > This package is extremely small already (see [here](https://bundlephobia.com/result?p=react-timing-hooks)), but your bundle

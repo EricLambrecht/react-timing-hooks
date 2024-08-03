@@ -8,10 +8,16 @@ nav_order: 2
 
 Use this hook to create a callback that executes the provided function via [`window.requestAnimationFrame()`][raf-mdn].
 
-{: .highlight-title }
+{: .warning }
 > Note
 >
 > _This hook is quite low level._ You might want to use `useAnimationFrameLoop()` or `useIdleCallback()` instead.
+
+#### Alternatives
+
+- [useAnimationFrameLoop()](/react-timing-hooks/loops-and-intervals/useAnimationFrameLoop.html)
+- [useIdleCallback()](/react-timing-hooks/callbacks/useIdleCallback.html)
+- [useTimeout()](/react-timing-hooks/callbacks/useTimeout.html)
 
 ## Example
 

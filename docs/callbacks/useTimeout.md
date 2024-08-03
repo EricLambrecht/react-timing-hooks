@@ -19,7 +19,7 @@ Pending timeouts will only(!) be cleared in case the component unmounts.
 
 #### Alternatives
 
-If you want to execute a timeout every time a certain value changes, `useTimeoutEffect` might be better suited.
+If you want to execute a timeout every time a certain value changes, `useTimeoutEffect()` might be better suited.
 
 ## Example
 

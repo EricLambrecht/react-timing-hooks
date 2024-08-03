@@ -21,6 +21,7 @@ If you want a non-debouncing and non-throttling version, take a look at `useTime
 
 Pending timeouts will also be cleared in case the component unmounts.
 
+
 ## Example
 
 ```javascript

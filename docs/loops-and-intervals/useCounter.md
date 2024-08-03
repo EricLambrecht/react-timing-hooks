@@ -21,10 +21,10 @@ However, this can be changed via `settings.resetOnStop`. You can manually reset 
 #### Alternatives
 
 - If you want a counter that counts up by 1 every second, you can use the 
-[useTimer()](/react-timing-hooks/intervals-api/useTimer.html) hook.
+[useTimer()](/react-timing-hooks/loops-and-intervals/useTimer.html) hook.
 
 - If you want a counter that starts at a certain number and stops at another, use 
-[useCountdown()](/react-timing-hooks/intervals-api/useCountdown.html).
+[useCountdown()](/react-timing-hooks/loops-and-intervals/useCountdown.html).
 
 ## Example
 

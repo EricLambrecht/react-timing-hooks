@@ -16,8 +16,8 @@ Stopping the timer will also reset the timer to it's initial value per default. 
 
 #### Alternatives
 
-- For a more versatile hook, look at [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
-- For a "reverse timer", see [useCountdown()](/react-timing-hooks/intervals-api/useCountdown.html).
+- For a more versatile hook, look at [useCounter()](/react-timing-hooks/loops-and-intervals/useCounter.html).
+- For a "reverse timer", see [useCountdown()](/react-timing-hooks/loops-and-intervals/useCountdown.html).
 
 ## Example
 
@@ -48,6 +48,6 @@ return <span>{timerValue}</span>
 
 An array of format `[timerValue, counterControls]`, the first value is the current countdown value. This will be incremented by 1, every second.
 
-The second value is an object of counter controls (start, stop, pause, etc.), see [useCounter()](/react-timing-hooks/intervals-api/useCounter.html#return-value).
+The second value is an object of counter controls (start, stop, pause, etc.), see [useCounter()](/react-timing-hooks/loops-and-intervals/useCounter.html#return-value).
 
 

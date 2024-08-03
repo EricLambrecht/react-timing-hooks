@@ -9,7 +9,7 @@ nav_order: 1
 This works like a regular `useEffect` hook, except that it adds a `setTimeout` like function
 to the callback args. This way, one our multiple timeouts can be triggered every time state or props of your component change.
 
-If you want to just fire a simple function call after a specific delay, you might want to use `useTimeout` instead.
+If you want to just fire a simple function call after a specific delay, you might want to use `useTimeout()` instead.
 
 Any timeout will be automatically cleared on unmount.
 

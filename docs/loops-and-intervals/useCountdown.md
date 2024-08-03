@@ -18,12 +18,12 @@ The event callback `options.onEnd()` will be called as soon as the end value is 
 By default, the countdown is _stopped_ on mount and has to be started manually. 
 If you want the countdown to start automatically on mount, use `options.startOnMount`.
 
-This hook is similar to [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) which counts _up_ every second, but does not have an end value.
+This hook is similar to [useTimer()](/react-timing-hooks/loops-and-intervals/useTimer.html) which counts _up_ every second, but does not have an end value.
 If you need a countdown that count's upwards, you can use `options.stepSize` and change it to `1` or higher.
 
 #### Alternatives
 
-For a more freedom/versatility, you can use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
+For a more freedom/versatility, you can use [useCounter()](/react-timing-hooks/loops-and-intervals/useCounter.html).
 
 ## Example
 
@@ -57,7 +57,7 @@ return <span>{counter}</span>
 
 An array of format `[countdownValue, intervalControls]`, the first value is the current countdown value.
 
-The second value is an object of counter controls (start, stop, pause, etc.), see [useCounter()](/react-timing-hooks/intervals-api/useCounter.html#return-value).
+The second value is an object of counter controls (start, stop, pause, etc.), see [useCounter()](/react-timing-hooks/loops-and-intervals/useCounter.html#return-value).
 
 ## Note
 
