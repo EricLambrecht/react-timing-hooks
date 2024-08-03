@@ -1,5 +1,6 @@
 ---
 title: useDebounce
+description: A React hook to created debounced callbacks
 parent: Callbacks / Functions
 nav_order: 3
 ---

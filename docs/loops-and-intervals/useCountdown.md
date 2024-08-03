@@ -1,5 +1,6 @@
 ---
 title: useCountdown
+description: A React hook to create a reactive countdown
 parent: Loops & Intervals
 nav_order: 5
 ---

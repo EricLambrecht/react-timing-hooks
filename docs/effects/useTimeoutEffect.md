@@ -1,5 +1,6 @@
 ---
 title: useTimeoutEffect
+description: A React hook to create a useEffect with timeout
 parent: Effects
 nav_order: 1
 ---

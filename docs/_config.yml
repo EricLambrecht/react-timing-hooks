@@ -1,6 +1,7 @@
 remote_theme: just-the-docs/just-the-docs
 title: React Timing Hooks
 description: API documentation for react-timing-hooks
+tagline: API documentation for react-timing-hooks
 search_enabled: true
 callouts:
   note:
@@ -18,3 +19,4 @@ callouts:
 aux_links:
   "React Timing Hooks on GitHub":
     - "https://github.com/EricLambrecht/react-timing-hooks"    
+

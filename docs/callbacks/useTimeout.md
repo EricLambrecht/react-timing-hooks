@@ -1,5 +1,6 @@
 ---
 title: useTimeout
+description: A React hook tp wrap setTimeout()
 parent: Callbacks / Functions
 nav_order: 1
 ---

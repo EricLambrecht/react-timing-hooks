@@ -1,5 +1,6 @@
 ---
 title: useTimer
+description: A React hook to create a reactive timer. Runs every second.
 parent: Loops & Intervals
 nav_order: 4
 ---

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Migrations
+description: A list of migrations for breaking changes
 nav_order: 7
 has_children: true
 ---

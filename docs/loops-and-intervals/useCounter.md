@@ -1,5 +1,6 @@
 ---
 title: useCounter
+description: A React hook to create a reactive counter
 parent: Loops & Intervals
 nav_order: 2
 ---

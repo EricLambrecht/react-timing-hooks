@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Loops & Intervals
+description: React hooks for creating loops and intervals
 nav_order: 2
 has_children: true
 ---

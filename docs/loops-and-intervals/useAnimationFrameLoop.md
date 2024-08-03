@@ -1,5 +1,6 @@
 ---
 title: useAnimationFrameLoop
+description: A React hook to create a loop based on animation frames
 parent: Loops & Intervals
 nav_order: 3
 ---

@@ -1,5 +1,6 @@
 ---
 title: useThrottle
+description: A React hook to created throttled callbacks
 parent: Callbacks / Functions
 nav_order: 2
 ---

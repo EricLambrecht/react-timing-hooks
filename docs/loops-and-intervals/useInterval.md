@@ -1,5 +1,6 @@
 ---
 title: useInterval
+description: A React hook to create a reactive interval . A wrapper for setInterval.
 parent: Loops & Intervals
 nav_order: 1
 ---

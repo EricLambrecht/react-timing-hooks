@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Callbacks / Functions
+description: React hooks to create timed callbacks
 nav_order: 3
 has_children: true
 ---

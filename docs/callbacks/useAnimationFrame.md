@@ -1,5 +1,6 @@
 ---
 title: useAnimationFrame
+description: A React hook that wraps window.requestAnimationFrame()
 parent: Callbacks / Functions
 nav_order: 5
 ---

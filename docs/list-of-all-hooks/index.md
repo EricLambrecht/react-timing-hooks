@@ -1,6 +1,7 @@
 ---
 layout: default
 title: List of all hooks
+description: An overview of all included React hooks in this package
 nav_order: 6
 has_children: false
 ---

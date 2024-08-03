@@ -1,5 +1,6 @@
 ---
 title: useIdleCallback
+description: A React hook that wraps window.requestIdleCallback()
 parent: Callbacks / Functions
 nav_order: 4
 ---

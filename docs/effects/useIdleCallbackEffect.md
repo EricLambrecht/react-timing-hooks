@@ -1,5 +1,6 @@
 ---
 title: useIdleCallbackEffect
+description: A React hook to create a useEffect with idle callbacks
 parent: Effects
 nav_order: 2
 ---

@@ -1,5 +1,6 @@
 ---
 title: useThrottledState
+description: A React hook to that throttles updates to useState().
 parent: State
 nav_order: 1
 ---

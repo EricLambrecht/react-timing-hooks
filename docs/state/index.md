@@ -1,6 +1,7 @@
 ---
 layout: default
 title: State
+description: React hooks to create delayed or asynchronous useState() versions.
 nav_order: 5
 has_children: true
 ---
