@@ -14,3 +14,7 @@ callouts:
     color: red  
   highlight:
     color: blue    
+# Aux links for the upper right navigation
+aux_links:
+  "React Timing Hooks on GitHub":
+    - "https://github.com/EricLambrecht/react-timing-hooks"    
