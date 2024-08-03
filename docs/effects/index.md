@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Idle Callbacks
-nav_order: 5
+title: Effects
+nav_order: 4
 has_children: true
 ---
 
-# Idle Callbacks
+# Effects
 
 React hooks that wrap [window.requestIdleCallback()][idle-cb-mdn].
 {: .fs-6 .fw-300 }

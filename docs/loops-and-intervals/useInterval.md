@@ -1,6 +1,6 @@
 ---
 title: useInterval
-parent: Intervals
+parent: Loops & Intervals
 nav_order: 1
 ---
 
@@ -9,14 +9,20 @@ nav_order: 1
 A react wrapper for [setInterval](https://developer.mozilla.org/en-US/docs/Web/API/setInterval) – no leaks on unmount!
 {: .fs-6 .fw-300 }
 
-This hook allows you to do certain actions at a regular interval, i.e. **loops**. 
-It is a react-wrapper for the native javascript function `setInterval`.
+This hook allows you to do certain actions at a regular interval, a.k.a. *loops*. 
+It is a React-wrapper for the native Javascript function [`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/setInterval).
 
 In addition to the standard Javascript API, the returned callbacks allow you to **pause, resume, stop and start** the interval, too.
 
-**Note**: By default, the interval is _stopped_ on mount and has to be started manually. If you want the interval to start immediately on mount, use `options.startOnMount`.
+{: .note }
+By default, the interval is _stopped_ on mount and has to be started manually. If you want the interval to start automatically on mount, use `options.startOnMount`.
 
-You can also stop the interval or start the interval in a stopped state by setting a delay value of `null`.
+{: .important-title }
+> Good to know
+>
+> Intervals also stop if you set the `delay` argument to `null`.
+
+#### Alternatives
 
 If you want to loop very fast – maybe because you want to animate something – 
 you might want to use [useAnimationFrameLoop()](/react-timing-hooks/animation-api/useAnimationFrameLoop.html) instead which yields better performance in these cases.
@@ -25,7 +31,7 @@ If you only want to increase or decrease a numeric value in a regular interval,
 take a look at [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
 
 
-## Example
+## Examples
 
 ### Simple interval that starts immediately on mount
 

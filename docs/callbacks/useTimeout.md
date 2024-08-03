@@ -1,6 +1,6 @@
 ---
 title: useTimeout
-parent: Timeouts
+parent: Callbacks / Functions
 nav_order: 2
 ---
 
@@ -16,6 +16,8 @@ new timeouts even if some are still pending. If you want a debouncing version, t
 If you want a throttling version, see `useThrottle()`.
 
 Pending timeouts will only(!) be cleared in case the component unmounts.
+
+#### Alternatives
 
 If you want to execute a timeout every time a certain value changes, `useTimeoutEffect` might be better suited.
 

@@ -1,6 +1,6 @@
 ---
 title: useAnimationFrame
-parent: Animation
+parent: Callbacks / Functions
 nav_order: 2
 ---
 
@@ -8,8 +8,10 @@ nav_order: 2
 
 Use this hook to create a callback that executes the provided function via [`window.requestAnimationFrame()`][raf-mdn].
 
-_This hook is quite low level._ 
-You might want to use `useAnimationFrameLoop()` or `useIdleCallback()` instead.
+{: .highlight-title }
+> Note
+>
+> _This hook is quite low level._ You might want to use `useAnimationFrameLoop()` or `useIdleCallback()` instead.
 
 ## Example
 

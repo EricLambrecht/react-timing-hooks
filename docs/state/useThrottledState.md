@@ -9,15 +9,20 @@ nav_order: 1
 Manage rapidly changing state in your application without producing too many updates/re-renders!
 {: .fs-6 .fw-300 }
 
-This hook allows you to throttle state updates, which in turn can throttle re-rerenders and/or effect
+This hook is based on a combination of `useThrottle()` && React's `useState()`.
+
+It allows you to throttle state updates, which in turn can reduce the amount of re-rerenders and/or effect
 updates. If you have a component, service, or interval that rapidly fires state updates, this hook allows
 you to do that without forcing an _actual_ update within React which would trigger a re-render.
 
 This is also helpful if you have a `useEffect()` hook that you don't want to run too often.
 
-Keep in mind: This means that not every update is necessarily immediately reflected in the
-state variable, it might only be _queued_ for an update. But do not worry: no updates will be lost. 
-Eventually the latest call to the `setState` method will always be processed and cause an actual update.
+{: .note-title }
+> Keep in mind
+>
+> This means that not every update is necessarily immediately reflected in the
+> state variable, it might only be _queued_ for an update. But do not worry: no updates will be lost. 
+> Eventually the latest call to the `setState` method will always be processed and cause an actual update.
 
 ## Example
 

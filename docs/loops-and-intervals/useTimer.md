@@ -1,6 +1,6 @@
 ---
 title: useTimer
-parent: Intervals
+parent: Loops & Intervals
 nav_order: 4
 ---
 
@@ -8,12 +8,16 @@ nav_order: 4
 
 Use this hook if you want to create a timer, i.e. a reactive number that is **incremented every second**.
 
-**Note**: By default, the timer is _stopped_ on mount and has to be started manually. If you want the timer to start immediately on mount, use `settings.startOnMount`.
+{: .note }
+By default, the timer is _stopped_ on mount and has to be started manually. If you want the timer to start immediately on mount, use `settings.startOnMount`.
 
-Stopping the timer will also reset the timer value to it's initial value per default. However, this can be changed via `settings.resetOnStop`.
+Stopping the timer will also reset the timer to it's initial value per default. However, this can be changed via `settings.resetOnStop`. You can manually reset it via the returned `reset()` control-function.
 
-For a more versatile hook, look at [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
-For a "reverse timer", see [useCountdown()](/react-timing-hooks/intervals-api/useCountdown.html).
+
+#### Alternatives
+
+- For a more versatile hook, look at [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
+- For a "reverse timer", see [useCountdown()](/react-timing-hooks/intervals-api/useCountdown.html).
 
 ## Example
 

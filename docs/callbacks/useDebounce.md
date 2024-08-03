@@ -1,6 +1,6 @@
 ---
 title: useDebounce
-parent: Timeouts
+parent: Callbacks / Functions
 nav_order: 4
 ---
 
@@ -12,8 +12,11 @@ Debounces a callback.
 Use this hook if you want a function that "blocks" consecutive calls until a specified
 time has passed since the last invocation. This is called **debouncing**.
 
-If you want a callback that [doesn't debounce but throttles][thr-vs-deb], take a look at `useThrottle()`.
- 
+{: .note-title }
+> Throttle vs. Debounce
+>
+> If you want a callback that [doesn't debounce but throttles][thr-vs-deb], take a look at `useThrottle()`.
+
 If you want a non-debouncing and non-throttling version, take a look at `useTimeout()`.
 
 Pending timeouts will also be cleared in case the component unmounts.

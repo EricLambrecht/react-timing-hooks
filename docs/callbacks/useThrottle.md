@@ -1,6 +1,6 @@
 ---
 title: useThrottle
-parent: Timeouts
+parent: Callbacks / Functions
 nav_order: 3
 ---
 
@@ -12,8 +12,11 @@ Throttles a callback.
 Can be used for **rate-limiting** – the callback will only be invoked every X milliseconds (X being the set timeout),
 even if it was called more frequently.
 
-Similar, [but different(!)][thr-vs-deb], is the `useDebounce()` hook, which blocks the invocation entirely until the function was
-stopped being called for X milliseconds.
+{: .note-title }
+> Throttle vs. Debounce
+>
+> Similar, [but different(!)][thr-vs-deb], is the `useDebounce()` hook, which blocks the invocation entirely until the function was
+> stopped being called for X milliseconds.
 
 By default, the throttled function will always be called immediately (`options.leading` is true by default) and then
 (`options.trailing` is true by default) also after every X milliseconds for consecutive calls.

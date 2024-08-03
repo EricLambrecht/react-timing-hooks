@@ -1,13 +1,13 @@
 ---
 layout: default
-title: General Utility
-nav_order: 6
+title: State
+nav_order: 5
 has_children: true
 ---
 
-# General Utility
+# State
 
-React hooks that provide solutions for common tasks or improve quality-of-life.
+React hooks that function similar to `useState()`.
 {: .fs-6 .fw-300 }
 
 These hooks are implemented using one or many of the low-level hooks included in `react-timing-hooks`.

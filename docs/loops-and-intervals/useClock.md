@@ -1,7 +1,7 @@
 ---
 title: useClock
-parent: Intervals
-nav_order: 5
+parent: Loops & Intervals
+nav_order: 6
 ---
 
 # useClock

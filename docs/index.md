@@ -19,37 +19,48 @@ npm i react-timing-hooks
 yarn add react-timing-hooks
 ```
 
-**Note:** You have to install React `^16.8.0`, `^17.0.0` or `^18.0.0`, too, in order to use this package.
+{: .note }
+Since this is a React package, you have to install React `^16.8.0`, `^17.0.0` or `^18.0.0`, too, in order to use this package.
+
+## Getting started
+
+Simply import the hook you need and use it in your React app! Here is an overview of all hooks in this package: [list of all hooks](/react-timing-hooks/list-of-all-hooks/).
+
+{: .important-title }
+> Typescript
+>
+> This package is developed in Typescript, so **everything is typed out of the box**. You don't need to install types seperately.
    
-## Overview
+## Background
 
 In general all of these hooks are more or less wrappers for standard javascript functions. But since they can be quite
 a pain to handle in React components (leaks upon unmount etc.), I wrote this little package.
 
 There are currently hooks available for:
 
-* setTimeout (useTimeout, useTimeoutEffect)
-* setInterval (useInterval, useTimer, useClock)
-* requestAnimationFrame (useAnimationFrame, useAnimationFrameLoop)
-* requestIdleCallback (useIdleCallback, useIdleCallbackEffect)
+* [setTimeout][timeout-mdn] (useTimeout, useTimeoutEffect, useThrottledState, ...)
+* [setInterval][interval-mdn] (useInterval, useTimer, useClock, ...)
+* [requestAnimationFrame][raf-mdn] (useAnimationFrame, useAnimationFrameLoop)
+* [requestIdleCallback][idle-cb-mdn] (useIdleCallback, useIdleCallbackEffect)
 
-The APIs of all hooks are documented on this page (see sidebar). They should be pretty straight forward, but feel free
+**All hooks are documented on this page** (see sidebar). They should be pretty straight forward to use, but feel free
 to add an issue on GitHub if you have any ideas for improvement.
 
-### Typescript
-
-This package is developed in Typescript, so everything is typed out of the box. You don't need to install types seperately.
-
-### Package size / Treeshaking
-
-This package is extremely small already (see [here](https://bundlephobia.com/result?p=react-timing-hooks)), but your bundle
-size will be even less affected by this package, because it's completely **tree-shakable**, i.e. only hooks you actually use
-will be bundled into your app js.
+{: .note-title }
+> Package size / Treeshaking
+> 
+> This package is extremely small already (see [here](https://bundlephobia.com/result?p=react-timing-hooks)), but your bundle
+> size will be even less affected by this package, because it's completely **tree-shakable**, i.e. only hooks you actually use
+> will be bundled into your app js.
 
 ### Preventing leaks on unmount
 
-Normally, timeouts, intervals etc. would have to be cleaned up manually if used inside a React component. 
-With React Timing Hooks you don't have to do that.
+One of the most cumbersome things when dealing with timeouts and intervals in React is the **boilerplate** you have to write in order to use them properly.
+
+What you what normally do is to write clean-up code to manually clear pending timeouts/intervals in your React components. 
+**With React Timing Hooks you don't have to do that.**
+
+#### Example
 
 For example: You might have a timeout that runs under a certain condition. In this case a cleanup
 has to be done in a separate `useEffect` call that cleans everything up (but only on unmount).
@@ -108,7 +119,7 @@ In this case `react-timing-hooks` automatically took care of cleaning up the tim
 
 ### Memoization
 
-You **don't have to worry about memoization** of your callbacks (by using `useCallback`) for example. React Timing Hooks is taking care of that for you. So even if you pass a simple inline arrow function to one of these hooks, the return value (if there is one) will not change on every render but instead stay the same (i.e. it will be memoized).
+Memoization is important if you depend on callbacks in your hook dependency arrays. You **don't have to worry about memoization** of your callbacks (by wrapping stuff in `useCallback` for example). React Timing Hooks is taking care of that for you. So even if you pass a simple inline arrow function to one of these hooks, the return value (if there is one) will not change on every render but instead stay the same (i.e. it will be memoized).
 
 This means something like this is safe to do:
 
@@ -122,3 +133,7 @@ useEffect(() => {
 }, [foo, onFooChange])
 ```
 
+[interval-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/setInterval
+[timeout-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/setTimeout
+[idle-cb-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback
+[raf-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame

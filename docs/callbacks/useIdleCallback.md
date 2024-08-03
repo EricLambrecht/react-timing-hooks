@@ -6,10 +6,11 @@ nav_order: 1
 
 # useIdleCallback
 
-Use this hook if you want to delay the execution of a function to a time when the browser is idle.
+Use this hook if you want to delay the execution of a function to a time **when the browser is idle**.
 
 A good use-case for this might be _user tracking_, for instance.
 
+{: .important }
 See [requestIdleCallback()](https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback) to learn
 more about the concept of "idle callbacks".
 

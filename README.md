@@ -8,29 +8,29 @@
 
 ## What's this?!
 
-This is a very little package with **React hooks wrapping time-related Vanilla JS functions**, 
+This is a very little package with **React hooks wrapping time-related vanilla Javascript functions**,
 so you can use them with minimal effort in your React apps without having to worry about manual 
 clean up, or writing boilerplate to pause/resume intervals etc.
 
 ### Feature Overview
 
-* Several React hooks **wrapping Vanilla JS functions** like:
-  * setInterval() – [All Hooks][interval-api] | [MDN][interval-mdn]
-  * setTimeout() – [All Hooks][timeout-api] | [MDN][timeout-mdn]
-  * window.requestAnimationFrame() – [All Hooks][raf-api] | [MDN][raf-mdn]
-  * window.requestIdleCallback() – [All Hooks][idle-cb-api] | [MDN][idle-cb-mdn]
-* …and **additional [utility hooks][all-hooks]** for things like
-  * rate-limiting: `useThrottledState()`, `useDebounce()`, `useThrottle()`
-  * rendering: `useAnimationFrameLoop()`
-  * counters: `useCounter()`, `useCountdown()`, `useTimer()`
+* Hooks for all timing-related **vanilla JS functions** like:
+  * setInterval() –> [useInterval()][interval-api] | [MDN][interval-mdn]
+  * setTimeout() –> [useTimeout()][timeout-api] | [MDN][timeout-mdn]
+  * requestAnimationFrame() –> [useAnimationFrame()][raf-api] | [MDN][raf-mdn]
+  * requestIdleCallback() –> [useIdleCallback()][idle-cb-api] | [MDN][idle-cb-mdn]
+* …and **additional [utility hooks][all-hooks]** for common tasks like
+  * throttling: `useThrottledState()`, `useThrottle()`, `useDebounce()`
+  * GFX/animation/rendering: `useAnimationFrameLoop()`
+  * reactive counters: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`
-  * effects: `useTimeoutEffect()`, `useIdleCallbackEffect()`
-* Ability to **pause, resume, start or stop intervals**
+  * async effects: `useTimeoutEffect()`, `useIdleCallbackEffect()`
+* **Reactive intervals**: intervals can be controlled via **pause, resume, start or stop**
 * A **versatile API**: customizable settings, many hook "flavors" depending on the use-case.
-* **Automatic clean-ups** of pending timers, intervals etc.
+* **Automatic clean-ups** of pending timers, intervals etc. on unmount
 * Callbacks are **automatically memoized**
 * Full **Typescript** support
-* **[Lightweight](https://bundlephobia.com/result?p=react-timing-hooks)** (less than 2KB minzipped, no transitive dependencies!)
+* Very **[lightweight](https://bundlephobia.com/result?p=react-timing-hooks)** (no transitive dependencies!)
 * **Tree-shakable** — You only bundle what you use!
 
 
@@ -52,7 +52,7 @@ yarn add react-timing-hooks
 
 https://ericlambrecht.github.io/react-timing-hooks/migrations/
 
-## Examples
+## Some Examples
 
 #### A "status logger" with `useInterval()`
 ```jsx harmony

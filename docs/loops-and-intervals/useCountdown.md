@@ -1,7 +1,7 @@
 ---
 title: useCountdown
-parent: Intervals
-nav_order: 3
+parent: Loops & Intervals
+nav_order: 5
 ---
 
 # useCountdown
@@ -14,11 +14,14 @@ The hook will stop its interval automatically when it reaches the end.
 
 The event callback `options.onEnd()` will be called as soon as the end value is reached.
 
-**Note**: By default, the countdown is _stopped_ on mount and has to be started manually. 
-If you want the countdown to start immediately on mount, use `options.startOnMount`.
+{: .note }
+By default, the countdown is _stopped_ on mount and has to be started manually. 
+If you want the countdown to start automatically on mount, use `options.startOnMount`.
 
-This hook is similar to [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) which counts _up_ every second and does not have an end value.
+This hook is similar to [useTimer()](/react-timing-hooks/intervals-api/useTimer.html) which counts _up_ every second, but does not have an end value.
 If you need a countdown that count's upwards, you can use `options.stepSize` and change it to `1` or higher.
+
+#### Alternatives
 
 For a more freedom/versatility, you can use [useCounter()](/react-timing-hooks/intervals-api/useCounter.html).
 

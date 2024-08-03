@@ -1,6 +1,6 @@
 ---
 title: useIdleCallbackEffect
-parent: Idle Callbacks
+parent: Effects
 nav_order: 2
 ---
 

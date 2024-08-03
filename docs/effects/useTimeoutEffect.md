@@ -1,6 +1,6 @@
 ---
 title: useTimeoutEffect
-parent: Timeouts
+parent: Effects
 nav_order: 1
 ---
 
