@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v5.0.0...v5.0.1) (2024-08-03)
+
+
+### Bug Fixes
+
+* Fix npm package description ([39aaffb](https://github.com/EricLambrecht/react-timing-hooks/commit/39aaffb66e720bc80d0707a27723ae085ac2e609))
+
 ## [5.0.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v4.0.2...v5.0.0) (2024-08-02)
 
 
