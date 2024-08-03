@@ -11,6 +11,7 @@ to the callback args.
 
 There might be cases where the simpler `useIdleCallback()` hook might be more suitable.
 
+{: .highlight }
 Any registered idle callbacks will be canceled on unmount.
 
 ## Example
@@ -53,6 +54,7 @@ This hook has no return value.
 
 Any registered idle callbacks will be canceled on unmount.
 
+{: .warning }
 This hook **will print a console warning** if the browser doesn't support `requestIdleCallback`.
 
 [mdn]: https://developer.mozilla.org/en-US/docs/Web/API/Window/requestIdleCallback

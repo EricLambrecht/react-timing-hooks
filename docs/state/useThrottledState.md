@@ -1,6 +1,6 @@
 ---
 title: useThrottledState
-parent: General Utility
+parent: State
 nav_order: 1
 ---
 

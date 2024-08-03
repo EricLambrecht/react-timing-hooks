@@ -1,7 +1,7 @@
 ---
 title: useIdleCallback
-parent: Idle Callbacks
-nav_order: 1
+parent: Callbacks / Functions
+nav_order: 4
 ---
 
 # useIdleCallback
@@ -45,4 +45,5 @@ A function that executes your callback as an idle callback.
 
 Any registered idle callbacks will be canceled on unmount.
 
+{: .warning }
 This hook **will print a console warning** if the browser doesn't support `requestIdleCallback`.

@@ -11,6 +11,7 @@ to the callback args. This way, one our multiple timeouts can be triggered every
 
 If you want to just fire a simple function call after a specific delay, you might want to use `useTimeout()` instead.
 
+{: .highlight }
 Any timeout will be automatically cleared on unmount.
 
 ## Example
