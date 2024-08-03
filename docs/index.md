@@ -26,7 +26,7 @@ Since this is a React package, you have to install React `^16.8.0`, `^17.0.0` or
 
 Simply import the hook you need and use it in your React app! Here is an overview of all hooks in this package: [list of all hooks](/react-timing-hooks/list-of-all-hooks/).
 
-{: .important-title }
+{: .highlight-title }
 > Typescript
 >
 > This package is developed in Typescript, so **everything is typed out of the box**. You don't need to install types seperately.

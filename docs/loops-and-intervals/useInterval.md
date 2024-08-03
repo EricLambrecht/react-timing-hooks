@@ -17,7 +17,7 @@ In addition to the standard Javascript API, the returned callbacks allow you to 
 {: .note }
 By default, the interval is _stopped_ on mount and has to be started manually. If you want the interval to start automatically on mount, use `options.startOnMount`.
 
-{: .important-title }
+{: .highlight-title }
 > Good to know
 >
 > Intervals also stop if you set the `delay` argument to `null`.

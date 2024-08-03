@@ -2,3 +2,15 @@ remote_theme: just-the-docs/just-the-docs
 title: React Timing Hooks
 description: API documentation for react-timing-hooks
 search_enabled: true
+callouts:
+  note:
+    title: Note
+    color: purple
+  warning:
+    title: Warning
+    color: yellow
+  danger:
+    title: Danger
+    color: red  
+  highlight:
+    color: blue    
