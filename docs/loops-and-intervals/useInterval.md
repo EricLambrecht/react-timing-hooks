@@ -77,7 +77,7 @@ return <div>
 | Name                 | Default       | Description                                                                                                                                                                                                      |
 |:---------------------|---------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | callback             | _is required_ | A function that will be invoked as soon as the timeout expires                                                                                                                                                   |
-| delay                | _is required_ | A number or null. If numeric, it is the delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). If set to `null`, the interval will stop. |
+| delay                | _is required_ | A number (milliseconds) or null. If numeric, it is the delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). If set to `null`, the interval will stop. |
 | options.startOnMount | `false`       | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`.                                                                                                     |
 
 ### Return value
@@ -86,12 +86,12 @@ An object of interval controls:
 
 | Name      | Description                                                                                                                         |
 |:----------|:------------------------------------------------------------------------------------------------------------------------------------|
-| isPaused  | A boolean that indicates whether the interval is currently paused                                                                   |
+| isPaused  | A boolean that indicates whether the interval is currently paused.                                                                  |
 | isStopped | A boolean that indicates whether the interval is currently stopped. Meaning it cannot be resumed, but only restarted via `start()`. |
-| pause     | A function that will temporarily pause the interval without destroying it                                                           |
-| resume    | A function that resumes a paused interval                                                                                           |
+| pause     | A function that will temporarily pause the interval without destroying it, i.e. it will continue to run without executing the callback. |
+| resume    | A function that resumes a paused interval.                                                                                          |
 | stop      | A function that stops and destroys(!) the interval.                                                                                 |
-| start     | A function that restarts a stopped interval                                                                                         |
+| start     | A function that restarts a stopped interval.                                                                                        |
 
 
 ## Notes

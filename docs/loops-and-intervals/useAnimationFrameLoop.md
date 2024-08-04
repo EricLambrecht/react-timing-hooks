@@ -21,8 +21,7 @@ By default, the loop is _stopped_ on mount and has to be started manually. If yo
 The browser will call your function approximately 60 times a second (60 FPS) if the performance of your app allows it.
 
 {: .important }
-See [window.requestAnimationFrame()](https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame) to learn 
-more about the inner workings of "animation frames".
+See [window.requestAnimationFrame()][raf-mdn] to learn more about the inner workings of "animation frames".
 
 ## Example
 
@@ -69,4 +68,19 @@ const Renderer = () => {
 
 ### Return value
 
-This hook has no return value.
+An object of animation frame loop controls:
+
+| Name      | Description                                                                                                                     |
+|:----------|:--------------------------------------------------------------------------------------------------------------------------------|
+| isPaused  | A boolean that indicates whether the loop is currently paused.                                                                  |
+| isStopped | A boolean that indicates whether the loop is currently stopped. Meaning it cannot be resumed, but only restarted via `start()`. |
+| pause     | A function that will temporarily pause the loop without destroying it, i.e. it will continue to run without executing the callback. |
+| resume    | A function that resumes a paused loop.                                                                                          |
+| stop      | A function that stops and destroys(!) the loop.                                                                                 |
+| start     | A function that restarts a stopped loop.     
+
+## Notes
+
+The loop will be destroyed on unmount.
+
+[raf-mdn]: https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame
