@@ -50,6 +50,9 @@ In case you wonder where to find them.
 - [useIdleCallbackEffect](/react-timing-hooks/effects/useIdleCallbackEffect.html)
 - [useIdleCallback](/react-timing-hooks/callbacks/useIdleCallback.html)
 
+#### Oscillation
+- [useOscillator](/react-timing-hooks/loops-and-intervals/useOscillator.html)
+
 
 ## By alphabet
 
@@ -62,6 +65,7 @@ In case you wonder where to find them.
 - [useIdleCallback](/react-timing-hooks/callbacks/useIdleCallback.html).
 - [useIdleCallbackEffect](/react-timing-hooks/effects/useIdleCallbackEffect.html)
 - [useInterval](/react-timing-hooks/loops-and-intervals/useInterval.html)
+- [useOscillator](/react-timing-hooks/loops-and-intervals/useOscillator.html)
 - [useThrottle](/react-timing-hooks/callbacks/useThrottle.html)
 - [useThrottledState](/react-timing-hooks/state/useThrottledState.html)
 - [useTimeout](/react-timing-hooks/callbacks/useTimeout.html)

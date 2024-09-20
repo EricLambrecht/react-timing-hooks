@@ -25,6 +25,7 @@ clean up, or writing boilerplate to pause/resume intervals etc.
   * reactive counters: `useCounter()`, `useCountdown()`, `useTimer()`
   * time: `useClock()`
   * async effects: `useTimeoutEffect()`, `useIdleCallbackEffect()`
+  * oscillation: `useOscillator()`
 * **Reactive intervals**: intervals can be controlled via **pause, resume, start or stop**
 * A **versatile API**: customizable settings, many hook "flavors" depending on the use-case.
 * **Automatic clean-ups** of pending timers, intervals etc. on unmount
