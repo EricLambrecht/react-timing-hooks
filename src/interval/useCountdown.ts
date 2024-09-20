@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
-import useCounter, { CounterSettings } from './useCounter'
-import { IntervalControls } from './useInterval'
+import useCounter, {
+  type CounterControls,
+  type CounterSettings,
+} from './useCounter'
 import { logError } from '../util/logging'
 
 export type CountdownSettings = Partial<CounterSettings> & {
@@ -28,7 +30,7 @@ const useCountdown = (
   from: number,
   to: number,
   settings: CountdownSettings = {}
-): [number, IntervalControls] => {
+): [number, CounterControls] => {
   const onEndCallback = useRef(settings.onEnd)
   const [value, counterControls] = useCounter({
     start: from,
