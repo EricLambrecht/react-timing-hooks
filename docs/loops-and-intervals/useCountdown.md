@@ -56,7 +56,7 @@ return <span>{counter}</span>
 
 ### Return value
 
-An array of format `[countdownValue, intervalControls]`, the first value is the current countdown value.
+An array of format `[countdownValue, counterControls]`, the first value is the current countdown value.
 
 The second value is an object of counter controls (start, stop, pause, etc.), see [useCounter()](/react-timing-hooks/loops-and-intervals/useCounter.html#return-value).
 

@@ -29,7 +29,7 @@ return <span>{currentTime}</span>
 
 ## API
 
-`useClock<T=string>(options: ClockOptions): [T, IntervalControls]`
+`useClock<T=string>(options: ClockOptions): [T, CounterControls]`
 {: .fs-5 .fw-300 }
 
 ### Params
