@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.0.2](https://github.com/EricLambrecht/react-timing-hooks/compare/v5.0.1...v5.0.2) (2024-09-20)
+
+
+### Bug Fixes
+
+* Fix useCountdown typing ([2053287](https://github.com/EricLambrecht/react-timing-hooks/commit/2053287f9cd77535385c07648cff3ee582b0353f)), closes [#40](https://github.com/EricLambrecht/react-timing-hooks/issues/40)
+
 ### [5.0.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v5.0.0...v5.0.1) (2024-08-03)
 
 
