@@ -8,6 +8,7 @@ import useControls, { Controls } from '../controls/useControls'
 export type IntervalControls = Omit<Controls, 'isPausedRef'>
 
 export type IntervalOptions = {
+  /** If true, the interval will start running as soon as the component using this hook is mounted. If false, it has to be started manually via `start()`. */
   startOnMount?: boolean
 }
 
@@ -21,7 +22,7 @@ export type IntervalOptions = {
  * @param callback A function that will be called at the specified interval
  * @param delay time in milliseconds between each invocation of callback. If set to `null` the interval will come to a halt.
  * @param options A set of options to control the interval behaviour.
- * @param [options.startOnMount = false] (optional) Defaults to false. If true, the interval will immediately start on mount. If false, it has to be started manually via `start()`.
+ *
  * @returns An object of properties to control the interval or see it's status
  */
 const useInterval = <T extends Function>(

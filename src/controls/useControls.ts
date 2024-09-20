@@ -4,9 +4,13 @@ export type Controls = {
   isPaused: boolean
   isStopped: boolean
   isPausedRef: MutableRefObject<boolean>
+  /** Pauses the interval */
   pause: () => void
+  /** Resumes the interval */
   resume: () => void
+  /** Stops the interval */
   stop: () => void
+  /** Starts the interval */
   start: () => void
 }
 

@@ -2,7 +2,7 @@
 title: useClock
 description: A React hook to show the current time
 parent: Loops & Intervals
-nav_order: 6
+nav_order: 7
 ---
 
 # useClock

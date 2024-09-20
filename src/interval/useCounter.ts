@@ -10,6 +10,7 @@ export type CounterSettings = {
 } & IntervalOptions
 
 export type CounterControls = IntervalControls & {
+  /** Will reset the counter to the starting value */
   reset(): void
 }
 

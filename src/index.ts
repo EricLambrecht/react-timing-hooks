@@ -13,7 +13,14 @@ import useAnimationFrame from './animation-frame/useAnimationFrame'
 import useAnimationFrameLoop from './animation-frame/useAnimationFrameLoop'
 import useClock from './interval/useClock'
 import { ClockOptions } from './interval/useClock'
-import useCounter, { CounterSettings } from './interval/useCounter'
+import useCounter, {
+  CounterSettings,
+  CounterControls,
+} from './interval/useCounter'
+import useOscillator, {
+  OscillatorSettings,
+  OscillatorControls,
+} from './interval/useOscillator'
 import useCountdown, { CountdownSettings } from './interval/useCountdown'
 import { DebounceOptions, useDebounce } from './timeout/useDebounce'
 import { ThrottleOptions, useThrottle } from './timeout/useThrottle'
@@ -29,6 +36,7 @@ export {
   useIdleCallback,
   useIdleCallbackEffect,
   useInterval,
+  useOscillator,
   useThrottle,
   useTimer,
   useTimeout,
@@ -36,11 +44,14 @@ export {
   useThrottledState,
   ClockOptions,
   CountdownSettings as CountdownOptions,
+  CounterControls,
   CounterSettings,
   DebounceOptions,
   IdleCallbackEffectCallback,
   IntervalControls,
   IntervalOptions,
+  OscillatorControls,
+  OscillatorSettings,
   ThrottleOptions,
   TimeoutEffectCallback,
 }
