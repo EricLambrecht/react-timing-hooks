@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.1.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v5.0.2...v5.1.0) (2024-09-20)
+
+
+### Features
+
+* Add useOscillator() hook - Toggles a boolean on and off repeatedly ([0b80200](https://github.com/EricLambrecht/react-timing-hooks/commit/0b80200dab6ee6dd5ced9b58af2e87da2f2a48eb))
+* New option `isLeading` for the useInterval() hook ([98a95db](https://github.com/EricLambrecht/react-timing-hooks/commit/98a95db823843fa8d15c3a4320359265adba8782)), closes [#39](https://github.com/EricLambrecht/react-timing-hooks/issues/39)
+
 ### [5.0.2](https://github.com/EricLambrecht/react-timing-hooks/compare/v5.0.1...v5.0.2) (2024-09-20)
 
 
