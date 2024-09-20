@@ -1,6 +1,6 @@
-import { act, renderHook } from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 import useTimeout from './useTimeout'
-import { useEffect } from 'react'
+import { act, useEffect } from 'react'
 import { advanceTimersUsingAct } from '../testing/advanceTimersUsingAct'
 
 describe('useTimeout', () => {

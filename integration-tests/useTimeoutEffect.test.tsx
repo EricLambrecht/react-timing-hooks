@@ -1,6 +1,6 @@
-import { render, act, fireEvent } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import { useTimeoutEffect } from '../.tmp/index'
-import React, { useState } from 'react'
+import React, { act, useState } from 'react'
 import { removeFlushTimers } from './helpers'
 
 jest.useFakeTimers()

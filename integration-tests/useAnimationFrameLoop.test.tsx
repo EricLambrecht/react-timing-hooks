@@ -1,6 +1,6 @@
-import { render, act, fireEvent, screen } from '@testing-library/react'
+import { render, fireEvent, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { act, useCallback, useEffect, useState } from 'react'
 import { useAnimationFrameLoop } from '../.tmp/index'
 // @ts-ignore
 import { animationFrame } from '@shopify/jest-dom-mocks'

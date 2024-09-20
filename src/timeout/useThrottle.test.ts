@@ -1,6 +1,6 @@
-import { act, renderHook } from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 import { ThrottleOptions, useThrottle } from './useThrottle'
-import { useEffect } from 'react'
+import { act, useEffect } from 'react'
 import { advanceTimersUsingAct } from '../testing/advanceTimersUsingAct'
 
 describe('useThrottle', () => {

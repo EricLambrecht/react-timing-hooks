@@ -1,8 +1,8 @@
 // @ts-ignore
 import { animationFrame, ensureMocksReset } from '@shopify/jest-dom-mocks'
-import { renderHook, act } from '@testing-library/react'
+import { renderHook } from '@testing-library/react'
 import useAnimationFrameLoop from './useAnimationFrameLoop'
-import { useEffect } from 'react'
+import { act, useEffect } from 'react'
 
 describe('useAnimationFrameLoop', () => {
   beforeAll(() => {

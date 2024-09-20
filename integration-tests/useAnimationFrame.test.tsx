@@ -1,5 +1,5 @@
-import { render, act, fireEvent } from '@testing-library/react'
-import React, { useEffect, useState } from 'react'
+import { render, fireEvent } from '@testing-library/react'
+import React, { act, useEffect, useState } from 'react'
 import { useAnimationFrame } from '../.tmp/index'
 // @ts-ignore
 import { animationFrame } from '@shopify/jest-dom-mocks'

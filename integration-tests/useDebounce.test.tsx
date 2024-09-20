@@ -1,7 +1,7 @@
-import { screen, render, act, fireEvent } from '@testing-library/react'
+import { screen, render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { useDebounce } from '../.tmp'
-import React, { useState } from 'react'
+import React, { act, useState } from 'react'
 import { removeFlushTimers } from './helpers'
 import { advanceTimersUsingAct } from '../src/testing/advanceTimersUsingAct'
 
