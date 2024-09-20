@@ -53,14 +53,14 @@ return <span>{counter}</span>
 
 ### Params
 
-| Name                  | Default | Description                                                                                                  |
-|:----------------------|:--------|:-------------------------------------------------------------------------------------------------------------|
-| settings.start        | `0`     | The initial value of the counter                                                                             |
-| settings.interval     | `1000`  | The duration between each counter step                                                                       |
-| settings.stepSize     | `1`     | The amount that is added after each counter step                                                             |
-| settings.startOnMount | `false` | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`. |
-| settings.resetOnStop  | `true`  | If true, the counter will reset to the start value on stop. If false, it won't.                              |
-| settings.destroyIntervalOnPause  | `true`  | If false, the interval is kept running without doing anything until resumed.                      |
+| Name                            | Default | Description                                                                                                  |
+|:--------------------------------|:--------|:-------------------------------------------------------------------------------------------------------------|
+| settings.start                  | `0`     | The initial value of the counter                                                                             |
+| settings.interval               | `1000`  | The duration between each counter step                                                                       |
+| settings.stepSize               | `1`     | The amount that is added after each counter step                                                             |
+| settings.startOnMount           | `false` | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`. |
+| settings.resetOnStop            | `true`  | If true, the counter will reset to the start value on stop. If false, it won't.                              |
+| settings.destroyIntervalOnPause | `true`  | If false, the interval is kept running without doing anything until resumed.                                 |
 
 
 ### Return value
@@ -71,12 +71,12 @@ The first array item is the current counter value (starting at `settings.start`)
 
 The second value is an object of counter controls:
 
-| Name      | Description                                                                                                                         |
-|:----------|:------------------------------------------------------------------------------------------------------------------------------------|
-| isPaused  | A boolean that indicates whether the counter is currently paused                                                                    |
-| isStopped | A boolean that indicates whether the counter is currently stopped. Meaning it cannot be resumed, but only restarted via `start()`.  |
-| pause     | A function that will temporarily pause the counter. If `settings.destroyIntervalOnPause` is true it will destroy the underlying interval.|
-| resume    | A function that resumes a paused counter.                                                                                           |
-| stop      | A function that stops the underlying interval. If `settings.resetOnStop` is true, this will reset the counter.                      |
-| start     | A function that start's the counter.                                                                                                |
-| reset     | A function that resets the counter to it's starting value.                                                                          |
+| Name      | Description                                                                                                                               |
+|:----------|:------------------------------------------------------------------------------------------------------------------------------------------|
+| isPaused  | A boolean that indicates whether the counter is currently paused                                                                          |
+| isStopped | A boolean that indicates whether the counter is currently stopped. Meaning it cannot be resumed, but only restarted via `start()`.        |
+| pause     | A function that will temporarily pause the counter. If `settings.destroyIntervalOnPause` is true it will destroy the underlying interval. |
+| resume    | A function that resumes a paused counter.                                                                                                 |
+| stop      | A function that stops the underlying interval. If `settings.resetOnStop` is true, this will reset the counter.                            |
+| start     | A function that start's the counter.                                                                                                      |
+| reset     | A function that resets the counter to it's starting value.                                                                                |

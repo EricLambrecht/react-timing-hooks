@@ -21,7 +21,8 @@ By default, the interval is _stopped_ on mount and has to be started manually. I
 {: .highlight-title }
 > Good to know
 >
-> Intervals also stop if you set the `delay` argument to `null`.
+> By default, `setInterval` waits one entire interval step to fire its callback for the first time. However, `useInterval()` 
+> supports an `isLeading` option to invoke the provided callback immediately upon start. 
 
 #### Alternatives
 
@@ -74,11 +75,12 @@ return <div>
 
 ### Params
 
-| Name                 | Default       | Description                                                                                                                                                                                                      |
-|:---------------------|---------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| callback             | _is required_ | A function that will be invoked as soon as the timeout expires                                                                                                                                                   |
+| Name                 | Default       | Description                                                                                                                                                                                                                     |
+|:---------------------|---------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| callback             | _is required_ | A function that will be invoked as soon as the timeout expires                                                                                                                                                                  |
 | delay                | _is required_ | A number (milliseconds) or null. If numeric, it is the delay between each execution of `callback`. See [setInterval()](https://developer.mozilla.org/en-US/docs/Web/API/setInterval). If set to `null`, the interval will stop. |
-| options.startOnMount | `false`       | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`.                                                                                                     |
+| options.startOnMount | `false`       | If true, the counter will immediately start on mount. If false, it has to be started manually via `start()`.                                                                                                                    |
+| options.isLeading    | `false`       | If true, the provided callback will be invoked immediately on start. If false (default), the callback's first invocation will be after the first interval step, same behaviour as Javascript's `setInterval`.                   |
 
 ### Return value
 
