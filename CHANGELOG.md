@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [5.1.1](https://github.com/EricLambrecht/react-timing-hooks/compare/v5.1.0...v5.1.1) (2025-11-06)
+
+
+### Bug Fixes
+
+* Fix package breaking reference error in logError/logWarning functions ([8abc434](https://github.com/EricLambrecht/react-timing-hooks/commit/8abc4341f380bc8c0db43779301429ef42cc4c34)), closes [#41](https://github.com/EricLambrecht/react-timing-hooks/issues/41)
+
 ## [5.1.0](https://github.com/EricLambrecht/react-timing-hooks/compare/v5.0.2...v5.1.0) (2024-09-20)
 
 
