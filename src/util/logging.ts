@@ -5,10 +5,19 @@ const buildMessage = (message: string) => {
 }
 
 export const log = (logFunction: 'log' | 'warn' | 'error', message: string) => {
-  if (process.env?.NODE_ENV === 'test') {
+  // Avoid referencing `process` in environments where it's not defined (i.e. browsers)
+  if (
+    typeof process !== 'undefined' &&
+    process.env &&
+    process.env.NODE_ENV === 'test'
+  ) {
     return
   }
-  console[logFunction](buildMessage(message))
+
+  // Defensive: ensure console method exists
+  if (typeof console[logFunction] === 'function') {
+    console[logFunction](buildMessage(message))
+  }
 }
 
 export const logInfo = (message: string) => log('log', message)
