@@ -43,6 +43,7 @@ export function useThrottle<T extends (...args: never[]) => unknown>(
     return () => {
       if (timeoutId.current) {
         clearTimeout(timeoutId.current)
+        timeoutId.current = null
       }
     }
   }, [])

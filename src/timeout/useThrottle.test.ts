@@ -213,7 +213,7 @@ describe('useThrottle', () => {
     })
   })
 
-  it('properly cleans up timeout after unmount', async () => {
+  it('cleans up timeout after unmount', async () => {
     const timeoutHandler = jest.fn()
 
     const { unmount } = renderHook(() => {
@@ -230,6 +230,26 @@ describe('useThrottle', () => {
     })
 
     expect(clearTimeoutSpy).toHaveBeenCalledTimes(1)
+  })
+
+  it('cleans up and sets up again in strict mode', async () => {
+    const timeoutHandler = jest.fn()
+
+    renderHook(
+      () => {
+        const func = useThrottle(timeoutHandler, 500, { leading: false })
+        useEffect(() => {
+          func()
+        }, [func])
+      },
+      { reactStrictMode: true }
+    )
+
+    await act(() => {
+      jest.runAllTimers()
+    })
+
+    expect(timeoutHandler).toHaveBeenCalledTimes(1)
   })
 
   it('returns the timeout id for manual clearance', async () => {
