@@ -56,11 +56,12 @@
     "@shopify/jest-dom-mocks": "^5.2.0",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
+    "@testing-library/dom": "^8.0.0",
     "@testing-library/user-event": "^14.5.2",
     "@types/jest": "^29.5.12",
     "@types/node": "^14.18.34",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "cli-confirm": "^1.0.1",
     "commitizen": "^4.3.0",
     "emoji-cz": "^0.3.1",
@@ -69,9 +70,9 @@
     "node-fetch": "^2.6.7",
     "polyfill-object.fromentries": "^1.0.1",
     "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-test-renderer": "^18.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-test-renderer": "^19.0.0",
     "replace": "^1.2.2",
     "rimraf": "^6.0.1",
     "rollup": "^4.19.2",
@@ -81,7 +82,7 @@
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
-    "react": "^16.8.0 || ^17.0.0 || ^18.0.0"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
   },
   "config": {
     "commitizen": {
