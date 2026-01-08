@@ -1,6 +1,6 @@
 {
   "name": "react-timing-hooks",
-  "version": "5.1.1",
+  "version": "5.2.0",
   "description": "React hooks for setTimeout, setInterval, requestAnimationFrame, requestIdleCallback",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
